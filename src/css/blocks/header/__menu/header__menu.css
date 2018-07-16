@@ -1,5 +1,111 @@
 
 .header__menu{
+	border-bottom: 1px solid;
+	border-color: var(--gray_d7d);
+	box-shadow: 0px 3px 12px 0px rgba(22, 22, 22, .17);	
+	& .link{
+		text-decoration: none;
+		display: block;
+	}	
+	& .list{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	& > .page__wrapper{
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: center;
+		& > .list{
+			display: flex;
+			flex-direction: row;
+			align-items: stretch;
+			justify-content: center;
+			& .list__item{
 
+			}
+			& > .list__item{
+				position: relative;
+				&:hover,
+				&.list__item--active,
+				&.current-menu-item{
+					&::after{
+						content: '';
+						display: block;
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						width: 100%;
+						height: 4px;
+						background-color: var(--red_b01);
+					}
+				}
+				&:hover{
+					& > .list{
+						display: block;
+					}
+				}
+				& .nav__item{
+					font-weight: var(--fw-bold);
+					letter-spacing: 1px;
+					& > .link{
+						padding-left: 22px;
+						padding-right: 22px;						
+					}
+				}
+				& > .nav__item{
+					text-transform: uppercase;
+					font-size: 20px;
+					font-family: PTSans;
+					& > .link{
+						padding-top: 14px;
+						padding-bottom: 14px;						
+					}
+				}				
+				& > .list{
+					display: none;
+					position: absolute;
+					top: 100%;
+					left: 0;
+					background-color: var(--black);
+					color: var(--white);
+					max-width: none;
+					& .list__item{
+						display: block;
+						width: 100%;
+						&:not(:last-of-type){
+							border-bottom: 1px solid;
+							border-color: color(#707070 alpha(60%));
+						}
+						&:hover,
+						&.list__item--active,
+						&.current-menu-item{
+							color: var(--red_b01);
+							text-decoration: underline;
+						}					
+					}
+					& .nav__item{
+						white-space: nowrap;
+						& > .link{
+							padding-top: 12px;				
+							padding-bottom: 12px;							
+						}				
+					}					
+				}				
+			}	
+		}
+	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+										
+	}	
+	@media (--xl-viewport){
+										
+	}
 }
 

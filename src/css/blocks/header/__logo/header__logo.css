@@ -1,7 +1,9 @@
 
 .header__logo{
+	display: block;
 	border-bottom: 1px solid;
 	border-color: var(--gray_d7d);
+	text-decoration: none;
 	& > .page__wrapper{
 		display: flex;
 		flex-direction: row;

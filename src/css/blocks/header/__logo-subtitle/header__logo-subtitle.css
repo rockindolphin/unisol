@@ -2,6 +2,7 @@
 .header__logo-subtitle{
 	color: var(--red_b01);
 	font-size: 20px;
-	font-family: 'PTSans';
+	font-family: PTSans;
+	line-height: 1;
 }
 

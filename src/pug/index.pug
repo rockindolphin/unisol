@@ -34,7 +34,7 @@ html(lang="ru")
 							input.control__field(type="text", placeholder="Поиск по сайту" @focus="onFocus", @blur="onBlur")
 							button.btn.btn--icon(type="submit")
 								+icon('search')
-				.header__logo
+				a.header__logo(href="/")
 					.page__wrapper
 						.header__logo-left
 							include ../images/logo-left.svg
@@ -45,6 +45,47 @@ html(lang="ru")
 								| Официальный сайт Межрегионального профсоюза работников высшей школы
 						.header__logo-right
 							include ../images/logo-right.svg
+				nav.header__menu
+					.page__wrapper
+						ul.list
+							//-.current-menu-item
+							li.list__item
+								.nav__item
+									a.link(href='#')
+										| Профсоюз				
+								ul.list
+									li.list__item
+										.nav__item
+											a.link(href='#')
+												| Руководящие органы
+									li.list__item
+										.nav__item
+											a.link(href='#')
+												| История создания
+									li.list__item
+										.nav__item
+											a.link(href='#')
+												| Устав
+									li.list__item
+										.nav__item
+											a.link(href='#')
+												| Комиссии
+							li.list__item
+								.nav__item
+									a.link(href='#')
+										| Отделения			
+							li.list__item
+								.nav__item
+									a.link(href='#')
+										| Наши действия				
+							li.list__item
+								.nav__item
+									a.link(href='#')
+										| Решения ЦС					
+							li.list__item
+								.nav__item
+									a.link(href='#')
+										| Контакты					
 			main.page__main
 				.page__wrapper
 					| page__main
