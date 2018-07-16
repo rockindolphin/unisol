@@ -34,6 +34,17 @@ html(lang="ru")
 							input.control__field(type="text", placeholder="Поиск по сайту" @focus="onFocus", @blur="onBlur")
 							button.btn.btn--icon(type="submit")
 								+icon('search')
+				.header__logo
+					.page__wrapper
+						.header__logo-left
+							include ../images/logo-left.svg
+						.header__logo-text
+							.header__logo-title
+								| Университетская солидарность
+							.header__logo-subtitle
+								| Официальный сайт Межрегионального профсоюза работников высшей школы
+						.header__logo-right
+							include ../images/logo-right.svg
 			main.page__main
 				.page__wrapper
 					| page__main

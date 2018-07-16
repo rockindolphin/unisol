@@ -1,5 +1,14 @@
 
 .header__logo{
-
+	border-bottom: 1px solid;
+	border-color: var(--gray_d7d);
+	& > .page__wrapper{
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: space-between;
+		padding-top: 22px;
+		padding-bottom: 45px;
+	}
 }
 

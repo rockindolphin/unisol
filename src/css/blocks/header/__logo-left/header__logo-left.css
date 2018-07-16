@@ -1,5 +1,7 @@
 
 .header__logo-left{
-
+	flex-shrink: 0;
+	width: 194px;
+	height: 121px;
 }
 

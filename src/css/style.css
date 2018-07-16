@@ -11,6 +11,9 @@
 	--black: #000000;
 	--white: #ffffff;
 
+	--red_b01:  #b01e21;
+	--gray_d7d:  #d7d7d7;
+
 
 	/*Fonts*/
 	--fw-thin: 100;
@@ -38,22 +41,36 @@
 /* FONTS */
 
 @font-face {
-    font-family: PTSerif;
-    src: 	url('../fonts/PTSerif/PTSerifRegular.woff'),
-    		url('../fonts/PTSerif/PTSerifRegular.woff2');
-    font-style: normal;
-    font-weight: var(--fw-normal);
+	font-family: PTSerif;
+	src: 	url('../fonts/PTSerif/PTSerifRegular.woff2'),
+			url('../fonts/PTSerif/PTSerifRegular.woff');
+	font-style: normal;
+	font-weight: var(--fw-normal);
 }
 
 @font-face {
-    font-family: PTSerif;
-    src: 	url('../fonts/PTSerif/PTSerifItalic.woff'),
-    		url('../fonts/PTSerif/PTSerifItalic.woff2');
-    font-style: italic;
-    font-weight: var(--fw-normal);
+	font-family: PTSerif;
+	src: 	url('../fonts/PTSerif/PTSerifItalic.woff2'),
+			url('../fonts/PTSerif/PTSerifItalic.woff');
+	font-style: italic;
+	font-weight: var(--fw-normal);
 }
 
+@font-face {
+	font-family: PTSerif;
+	src: 	url('../fonts/PTSerif/PTSerifBoldItalic.woff2'),
+			url('../fonts/PTSerif/PTSerifBoldItalic.woff');
+	font-style: italic;
+	font-weight: var(--fw-bold);
+}
 
+@font-face {
+	font-family: PTSans;
+	src: 	url('../fonts/PTSans/PTSansRegular.woff2'),
+			url('../fonts/PTSans/PTSansRegular.woff');
+	font-style: normal;
+	font-weight: var(--fw-normal);
+}
 
 /* OTHER */
 
