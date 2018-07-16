@@ -1,0 +1,11 @@
+
+.btn{
+	display: inline-block;
+	font-weight: var(--fw-normal);
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border: 1px solid transparent;
+}
+

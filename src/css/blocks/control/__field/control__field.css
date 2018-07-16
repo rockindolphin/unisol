@@ -1,0 +1,10 @@
+
+.control__field{
+	display: block;
+	width: 100%;
+	padding: 5px 10px;
+	background-color: var(--white);
+	border: 1px solid;
+	border-color: var(--black);
+}
+

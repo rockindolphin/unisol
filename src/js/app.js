@@ -27,6 +27,20 @@
 		});
 
 		
+		var headerSearch = new Vue({
+			el: '.header__search',
+			data: {
+				isActive: false,
+			},
+			methods: {
+				onFocus: function(){
+					this.isActive = true;
+				},
+				onBlur: function(){
+					this.isActive = false;
+				}
+			}
+		})		
 
 	});	
 

@@ -38,10 +38,18 @@
 /* FONTS */
 
 @font-face {
-    font-family: Circe;
-    src: 	url('../fonts/Circe/CirceRegular.woff'),
-    		url('../fonts/Circe/CirceRegular.woff2');
+    font-family: PTSerif;
+    src: 	url('../fonts/PTSerif/PTSerifRegular.woff'),
+    		url('../fonts/PTSerif/PTSerifRegular.woff2');
     font-style: normal;
+    font-weight: var(--fw-normal);
+}
+
+@font-face {
+    font-family: PTSerif;
+    src: 	url('../fonts/PTSerif/PTSerifItalic.woff'),
+    		url('../fonts/PTSerif/PTSerifItalic.woff2');
+    font-style: italic;
     font-weight: var(--fw-normal);
 }
 
@@ -67,7 +75,7 @@ body{
 	min-height: 100%;
 	margin:  0;
 	padding: 0;
-	font-family: Circe, sans-serif;
+	font-family: PTSerif, sans-serif;
 	font-size: 16px;
 	line-height: 1.4;
 	color: var(--black);

@@ -1,5 +1,27 @@
 
 .header__top{
-
+	background-color: var(--black);
+	color: var(--white);
+	& > .page__wrapper{
+		min-height: 60px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+										
+	}	
+	@media (--xl-viewport){
+										
+	}
 }
 

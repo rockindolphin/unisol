@@ -58,8 +58,7 @@ function pugToHtml(filepath){
 	miss.pipe(
 		gulp.src( filepath ),
 		pug({pretty: '\t', doctype: 'html', locals: {config: config, path: path, gulp: gulp, rename: rename, del: del, images: images}}),
-		w3cjs(),
-		//w3cjs.reporter(),
+		/*w3cjs(),
 		through2.obj(function(file, enc, cb){
 			cb(null, file);
 			if (!file.w3cjs.success){
@@ -69,7 +68,7 @@ function pugToHtml(filepath){
 					plugin:'w3cjs',
 					message:`${w3c.extract}\r\n lastLine:${w3c.lastLine}\r\n lastColumn:${w3c.lastColumn}`});
 			}
-		}),       
+		}),*/       
 		gulp.dest( path.resolve(dist) ), 
 		(err) => {
 			if (err) return err_log(err);

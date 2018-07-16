@@ -1,0 +1,25 @@
+
+.header__search{
+	display: flex;
+	align-items: stretch;
+	opacity: 0.6;
+	font-style: italic;
+	width: 100%;
+	max-width: 368px;	
+	& .control__field{
+		background-color: transparent;
+		border:  none;
+		border-bottom: 1px solid;
+		border-color: var(--white);
+		padding: 3px 0;
+		&:focus{
+			outline: none;
+		}
+	}
+	& .btn{
+		background-color: transparent;
+		border:  none;
+		min-width: 45px; 
+	}
+}
+
