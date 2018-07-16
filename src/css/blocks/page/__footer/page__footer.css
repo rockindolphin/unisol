@@ -1,0 +1,17 @@
+
+.page__footer{
+	width: 100%;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+										
+	}	
+	@media (--xl-viewport){
+										
+	}
+}
+

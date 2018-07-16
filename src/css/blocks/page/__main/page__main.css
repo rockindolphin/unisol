@@ -1,0 +1,18 @@
+
+.page__main{
+	width: 100%;
+	flex-grow: 1;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+										
+	}	
+	@media (--xl-viewport){
+										
+	}
+}
+

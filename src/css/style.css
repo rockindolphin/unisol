@@ -1,8 +1,8 @@
 
 :root{
 	/*Variables*/
-	--wrapper-max: 1140px; 
-	--page-gap: 20px;  
+	--wrapper-max: 1164px; 
+	--page-gap: 15px;  
 	--scrollbar-width:  0px;
 	--anim-dur:  0.4s;
 
