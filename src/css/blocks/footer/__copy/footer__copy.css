@@ -1,0 +1,10 @@
+
+.footer__copy{
+	width: 100%;
+	font-size: 14px;
+	font-family: PTSans;
+	max-width: 90ch;
+	padding-top: 20px;
+	color: color(#ffffff alpha(30%));
+	line-height: 1;
+}

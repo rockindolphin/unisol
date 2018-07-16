@@ -1,7 +1,9 @@
 
 .header__logo-left{
 	flex-shrink: 0;
-	width: 194px;
-	height: 121px;
+	& > .icon{
+		width: 194px;
+		height: 122px;
+	}
 }
 

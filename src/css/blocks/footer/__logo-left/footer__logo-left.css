@@ -1,0 +1,12 @@
+
+.footer__logo-left{
+	flex-shrink: 0;
+	margin-right: 22px;	
+	& > .icon{
+		display: block;
+		opacity: 0.6;
+		width: 130px;
+		height: 82px;
+	}
+}
+

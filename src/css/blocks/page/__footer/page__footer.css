@@ -1,6 +1,17 @@
 
 .page__footer{
 	width: 100%;
+	background-color: var(--black);
+	color: var(--white);
+	& > .page__wrapper{
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		padding-top: 40px;
+		padding-bottom: 60px;
+	}
 	@media (--sm-viewport){
 										
 	}	

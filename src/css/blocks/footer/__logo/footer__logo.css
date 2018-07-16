@@ -1,0 +1,8 @@
+
+.footer__logo{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+
