@@ -1,0 +1,122 @@
+
+:root{
+	/*Variables*/
+	--wrapper-max: 1140px; 
+	--page-gap: 20px;  
+	--scrollbar-width:  0px;
+	--anim-dur:  0.4s;
+
+
+	/*Colors*/
+	--black: #000000;
+	--white: #ffffff;
+
+
+	/*Fonts*/
+	--fw-thin: 100;
+	--fw-extra-light: 200;
+	--fw-light: 300;
+	--fw-normal: 400;
+	--fw-medium: 500;
+	--fw-semi-bold: 600;
+	--fw-bold: 700;
+	--fw-extra-bold: 800;
+	--fw-black: 900;
+	
+}
+
+
+@custom-media --xs-viewport (width >= 0px);
+@custom-media --sm-viewport (width >= 576px);
+@custom-media --md-viewport (width >= 768px);
+@custom-media --lg-viewport (width >= 992px);
+@custom-media --xl-viewport (width >= 1200px);
+
+@custom-selector :--all-headers h1, h2, h3, h4, h5, h6;
+@custom-selector :--table-cell td, th;
+
+/* FONTS */
+
+@font-face {
+    font-family: Circe;
+    src: 	url('../fonts/Circe/CirceRegular.woff'),
+    		url('../fonts/Circe/CirceRegular.woff2');
+    font-style: normal;
+    font-weight: var(--fw-normal);
+}
+
+
+
+/* OTHER */
+
+*{
+	box-sizing: border-box;
+	max-width: 100%;
+	word-break: break-word;
+	&:matches(:active,:focus){
+		
+	}
+	&:visited{
+		
+	}
+}
+
+html,
+body{
+	width: 100%;
+	min-height: 100%;
+	margin:  0;
+	padding: 0;
+	font-family: Circe, sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+	color: var(--black);
+	font-weight: var(--fw-normal);
+}
+
+
+a{
+	color: currentcolor;
+	&:hover,
+	&:active{
+
+	}
+}
+
+img{
+	max-width: 100%;
+}
+
+@supports(object-fit: contain){
+	img{
+		object-fit: contain;
+	}
+}
+
+:--all-headers{
+	/*font-weight: var(--fw-bold);*/
+}
+
+h1{
+	
+}
+h2{
+
+}
+h3{
+
+}
+h4{
+	
+}
+h5{
+
+}
+h6{
+	
+}
+
+
+
+
+
