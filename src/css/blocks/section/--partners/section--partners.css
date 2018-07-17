@@ -1,0 +1,22 @@
+
+.section--partners{
+	width: 100%;
+	border-top:  1px solid;
+	border-color: var(--gray_d7d);
+	padding-top: 22px;
+	padding-bottom: 22px;
+	& > .page__wrapper{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	& .partner{
+		&:not(:last-of-type){
+			margin-right: 25px;
+		}
+		&:not(:first-of-type){
+			margin-left: 25px;
+		}
+	}
+}

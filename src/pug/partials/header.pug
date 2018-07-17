@@ -1,0 +1,82 @@
+include ../mixins.pug
+
+header.page__header
+	.header__top
+		.page__wrapper
+			ul.list.socials.header__socials
+				li.list__item
+					a.link(href="#")
+						+icon('facebook')
+				li.list__item
+					a.link(href="#")
+						+icon('vkontakte')
+				li.list__item
+					a.link(href="#")
+						+icon('youtube')
+				li.list__item
+					a.link(href="#")
+						+icon('telegram')
+				li.list__item
+					ul.list.header__language
+						li.list__item
+							a.link(href="#")
+								+icon('britain')
+						li.list__item.list__item--hidden
+							a.link(href="#")
+								+icon('russia')
+			form.header__search(v-bind:class="{ 'header__search--active': isActive }")
+				input.control__field(type="text", placeholder="Поиск по сайту" @focus="onFocus", @blur="onBlur")
+				button.btn.btn--icon(type="submit")
+					+icon('search')
+	a.header__logo(href="/")
+		.page__wrapper
+			.header__logo-left
+				+icon('logo-left')
+			.header__logo-text
+				.header__logo-title
+					| Университетская солидарность
+				.header__logo-subtitle
+					| Официальный сайт Межрегионального профсоюза работников высшей школы
+			.header__logo-right
+				include ../../images/logo-right.svg
+	nav.header__menu
+		.page__wrapper
+			ul.list
+				//-.current-menu-item
+				li.list__item
+					.nav__item
+						a.link(href='#')
+							| Профсоюз				
+					ul.list
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| Руководящие органы
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| История создания
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| Устав
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| Комиссии
+				li.list__item
+					.nav__item
+						a.link(href='#')
+							| Отделения			
+				li.list__item
+					.nav__item
+						a.link(href='#')
+							| Наши действия				
+				li.list__item
+					.nav__item
+						a.link(href='#')
+							| Решения ЦС					
+				li.list__item
+					.nav__item
+						a.link(href='#')
+							| Контакты					

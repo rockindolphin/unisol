@@ -6,114 +6,13 @@ html(lang="ru")
 	body.page
 		include ../images/sprite.svg
 		.page__body
-			header.page__header
-				.header__top
-					.page__wrapper
-						ul.list.socials.header__socials
-							li.list__item
-								a.link(href="#")
-									+icon('facebook')
-							li.list__item
-								a.link(href="#")
-									+icon('vkontakte')
-							li.list__item
-								a.link(href="#")
-									+icon('youtube')
-							li.list__item
-								a.link(href="#")
-									+icon('telegram')
-							li.list__item
-								ul.list.header__language
-									li.list__item
-										a.link(href="#")
-											+icon('britain')
-									li.list__item.list__item--hidden
-										a.link(href="#")
-											+icon('russia')
-						form.header__search(v-bind:class="{ 'header__search--active': isActive }")
-							input.control__field(type="text", placeholder="Поиск по сайту" @focus="onFocus", @blur="onBlur")
-							button.btn.btn--icon(type="submit")
-								+icon('search')
-				a.header__logo(href="/")
-					.page__wrapper
-						.header__logo-left
-							+icon('logo-left')
-						.header__logo-text
-							.header__logo-title
-								| Университетская солидарность
-							.header__logo-subtitle
-								| Официальный сайт Межрегионального профсоюза работников высшей школы
-						.header__logo-right
-							include ../images/logo-right.svg
-				nav.header__menu
-					.page__wrapper
-						ul.list
-							//-.current-menu-item
-							li.list__item
-								.nav__item
-									a.link(href='#')
-										| Профсоюз				
-								ul.list
-									li.list__item
-										.nav__item
-											a.link(href='#')
-												| Руководящие органы
-									li.list__item
-										.nav__item
-											a.link(href='#')
-												| История создания
-									li.list__item
-										.nav__item
-											a.link(href='#')
-												| Устав
-									li.list__item
-										.nav__item
-											a.link(href='#')
-												| Комиссии
-							li.list__item
-								.nav__item
-									a.link(href='#')
-										| Отделения			
-							li.list__item
-								.nav__item
-									a.link(href='#')
-										| Наши действия				
-							li.list__item
-								.nav__item
-									a.link(href='#')
-										| Решения ЦС					
-							li.list__item
-								.nav__item
-									a.link(href='#')
-										| Контакты					
+			include ./partials/header.pug
 			main.page__main
 				.page__wrapper
-					| page__main
-			footer.page__footer
-				.page__wrapper
-					.footer__logo
-						.footer__logo-left
-							+icon('logo-left-white')
-						.footer__logo-text
-							.footer__logo-title
-								| Университетская солидарность
-							.footer__logo-subtitle
-								| Официальный сайт Межрегионального профсоюза работников высшей школы
-					.footer__socials-wrapper
-						div Следите за новостями:
-						ul.list.socials.footer__socials
-							li.list__item
-								a.link(href="#")
-									+icon('facebook')
-							li.list__item
-								a.link(href="#")
-									+icon('vkontakte')
-							li.list__item
-								a.link(href="#")
-									+icon('youtube')
-							li.list__item
-								a.link(href="#")
-									+icon('telegram')
-					.footer__copy
-						| Использование материалов сайта (распространение, воспроизведение, передача, перевод, переработка и др.) допускается при условии указания источника в форме активной гиперссылки.
+					.page__main-content
+						| content
+					aside.page__main-aside
+						| aside
+			include ./partials/partners.pug
+			include ./partials/footer.pug
 		+scripts()

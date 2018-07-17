@@ -1,0 +1,29 @@
+include ../mixins.pug
+
+footer.page__footer
+	.page__wrapper
+		.footer__logo
+			.footer__logo-left
+				+icon('logo-left-white')
+			.footer__logo-text
+				.footer__logo-title
+					| Университетская солидарность
+				.footer__logo-subtitle
+					| Официальный сайт Межрегионального профсоюза работников высшей школы
+		.footer__socials-wrapper
+			div Следите за новостями:
+			ul.list.socials.footer__socials
+				li.list__item
+					a.link(href="#")
+						+icon('facebook')
+				li.list__item
+					a.link(href="#")
+						+icon('vkontakte')
+				li.list__item
+					a.link(href="#")
+						+icon('youtube')
+				li.list__item
+					a.link(href="#")
+						+icon('telegram')
+		.footer__copy
+			| Использование материалов сайта (распространение, воспроизведение, передача, перевод, переработка и др.) допускается при условии указания источника в форме активной гиперссылки.
