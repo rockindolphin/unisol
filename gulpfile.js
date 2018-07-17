@@ -32,7 +32,9 @@ const gulp = require('gulp'),
 	cleanCSS = require('gulp-clean-css'),
 	PO = require('pofile'),
 	each = require('gulp-each'),
+	sass = require('gulp-sass'),
 	stringifyObject = require('stringify-object'),
+	autoprefixer = require('gulp-autoprefixer'),
 	server = require('gulp-server-livereload');
 
 
@@ -191,6 +193,20 @@ function sprite_png(){
 	}))
 	.pipe(gulp.dest( path.resolve(dist, 'images') ));	
 }
+
+gulp.task('utilities', function(){
+	miss.pipe(
+		gulp.src( path.resolve(src, 'css', 'bootstrap_utilities.scss') ),
+		sass(),
+		autoprefixer({
+			browsers: browsers
+		}),    
+		gulp.dest( path.resolve(dist, 'css') ), 
+		(err) => {
+			if (err) return err_log(err);
+		}
+	);			
+});
 
 gulp.task('server', [], () => {
 	return gulp.src( dist )
@@ -360,6 +376,8 @@ gulp.task('default', ['clear_dist', 'server'], () => {
 	let pug_watcher = chokidar.watch( path.resolve(src, 'pug', '*.pug'), { ignored: /mixins\.pug/, ignoreInitial: true } );
 	pug_watcher.on('change', (filepath) => { pugToHtml(filepath) });
 	pug_watcher.on('add', (filepath) => { pugToHtml(filepath) });	
+
+	gulp.start('utilities');
 
 });
 

@@ -1,0 +1,92 @@
+// stylelint-disable declaration-no-important
+
+//
+// Border
+//
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      .border#{$infix}         { border: $border-width solid $border-color !important; }
+      .border#{$infix}-top     { border-top: $border-width solid $border-color !important; }
+      .border#{$infix}-right   { border-right: $border-width solid $border-color !important; }
+      .border#{$infix}-bottom  { border-bottom: $border-width solid $border-color !important; }
+      .border#{$infix}-left    { border-left: $border-width solid $border-color !important; }
+
+      .border#{$infix}-0        { border: 0 !important; }
+      .border#{$infix}-top-0    { border-top: 0 !important; }
+      .border#{$infix}-right-0  { border-right: 0 !important; }
+      .border#{$infix}-bottom-0 { border-bottom: 0 !important; }
+      .border#{$infix}-left-0   { border-left: 0 !important; }
+
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .border-#{$color} {
+    border-color: $value !important;
+  }
+}
+
+.border-white {
+  border-color: $white !important;
+}
+
+//
+// Border-radius
+//
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      .rounded#{$infix} {
+        border-radius: $border-radius !important;
+      }
+      .rounded#{$infix}-top {
+        border-top-left-radius: $border-radius !important;
+        border-top-right-radius: $border-radius !important;
+      }
+      .rounded#{$infix}-right {
+        border-top-right-radius: $border-radius !important;
+        border-bottom-right-radius: $border-radius !important;
+      }
+      .rounded#{$infix}-bottom {
+        border-bottom-right-radius: $border-radius !important;
+        border-bottom-left-radius: $border-radius !important;
+      }
+      .rounded#{$infix}-left {
+        border-top-left-radius: $border-radius !important;
+        border-bottom-left-radius: $border-radius !important;
+      }
+
+      .rounded#{$infix}-circle {
+        border-radius: 50% !important;
+      }
+
+      .rounded#{$infix}-0 {
+        border-radius: 0 !important;
+      }
+
+      .rounded#{$infix}-top-0 {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+      }
+
+      .rounded#{$infix}-right-0 {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+
+      .rounded#{$infix}-bottom-0 {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+
+      .rounded#{$infix}-left-0 {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+      }
+
+  }
+}

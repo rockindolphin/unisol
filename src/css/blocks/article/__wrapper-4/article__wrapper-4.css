@@ -1,0 +1,12 @@
+
+.article__wrapper-4{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-wrap: wrap;	
+	& .article{
+		max-width: calc(25% - var(--aside-gap)/2);
+	}
+}
+

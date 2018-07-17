@@ -3,5 +3,10 @@
 	font-family: PTSans;
 	background-color: var(--gray_464);
 	color: var(--white);
+	& .article__wrapper-4{
+		& .article{
+			max-width: calc(25% - 100px);
+		}	
+	}
 }
 

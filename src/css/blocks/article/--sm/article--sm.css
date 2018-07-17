@@ -1,16 +1,12 @@
 
 .article--sm{
-	max-width: 215px;
 	& .article__title{
 		font-size: 20px;
 		line-height: 1.2;
+		letter-spacing: 0.8px;
 	}
-	& .article__pic{
-		&::before{
-			content: '';
-			display: block;
-			padding-top: 75%;
-		}
-	}	
+	& .article__info{
+		margin-bottom: 12px;
+	}
 }
 
