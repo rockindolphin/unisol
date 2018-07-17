@@ -1,0 +1,26 @@
+
+.article--md{
+	max-width: 365px;
+	& .article__title{
+		font-size: 20px;
+	    letter-spacing: 0.9px;
+	    line-height: 1.2;
+	}
+	& .article__pic{
+		&::before{
+			content: '';
+			display: block;
+			padding-top: 56%;
+		}
+	}	
+	& .article__pic-wrapper{
+		padding: 16px 12px;
+	}
+	& .categories__item{
+		padding:  4px 9px;
+	}
+	& .categories__title{
+		margin-bottom: 15px;
+	}
+}
+

@@ -1,0 +1,7 @@
+
+.article__date{
+	color: var(--gray_707);
+	margin-right: 0.8em;
+	flex-shrink: 0;
+}
+

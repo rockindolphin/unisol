@@ -1,0 +1,16 @@
+
+.article__pic{
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: flex-start;
+	background-color: var(--gray_d7d);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-bottom: 14px;
+	& > img{
+		display: none;
+	}
+}
+

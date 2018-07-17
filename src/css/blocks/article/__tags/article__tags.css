@@ -1,0 +1,13 @@
+
+.article__tags{
+	color: var(--red_b01);
+	& .tags__item{
+		text-decoration: none;
+		&:not(:last-of-type){
+			&::after{
+				content: '\00a0•\00a0';
+			}
+		}
+	}
+}
+

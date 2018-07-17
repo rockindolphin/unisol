@@ -1,0 +1,13 @@
+
+.article__categories{
+	font-family: PTSans;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	& .categories__item{
+		margin-right: 2px;
+		background-color: var(--gray_464);
+		text-decoration: none;
+	}
+}
+

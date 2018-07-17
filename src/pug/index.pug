@@ -1,4 +1,5 @@
 include ./mixins.pug
+include ./partials/articles.pug
 
 doctype html
 html(lang="ru")
@@ -10,9 +11,59 @@ html(lang="ru")
 			main.page__main
 				.page__wrapper
 					.page__main-content
-						| content
+						+article--lg(1)
+						p md
+						article.article.article--md
+							.article__pic
+								img(src="images/articles/article-2.jpg", alt="article-2", data-bg="true")
+								.article__pic-wrapper
+									.article__categories
+										a.categories__item(href="#")
+											| Действия
+										a.categories__item(href="#")
+											| МГУ
+							.article__info
+								.article__date
+									| 28 мая 2018
+								.article__tags
+									a.tags__item(href="#")
+										| FIFA2018
+									a.tags__item(href="#")
+										| FIFAFANFEST
+									a.tags__item(href="#")
+										| Андроник Арутюнов
+									a.tags__item(href="#")
+										| Задержание
+									a.tags__item(href="#")
+										| Пикет
+							.article__title
+								| Во время одиночного пикета задержан сопредседатель «Университетской солидарности» Андроник Арутюнов
+							.article__excerpt
+								| Задержание произошло во время одиночного пикета возле метро Университет в поддержку студента МГУ Дмитрия Петелина, обвиненного в вандализме, а также всех студентов и преподавателей МГУ, которые протестуют против размещения фан-зоны на его территории.
 					aside.page__main-aside
 						| aside
+			.section.section--actions
+				.page__wrapper
+					p sm
+					article.article.article--sm
+						.article__pic
+							img(src="images/articles/article-3.jpg", alt="article-3", data-bg="true")
+						.article__info
+							.article__date
+								| 28 мая 2018
+						.article__title
+							| Активисты «Университетской солидарности» поддержали акцию за свободный Интернет
+			.page__wrapper
+				p xs
+				article.article.article--xs
+					.article__info
+						.article__date
+							| 27.05.18
+					.article__title
+						| «Бунд физкека». Студенты и преподаватели недовольны реформой в вузе»
+					.article__info
+						.article__source
+							| Радио Свобода																								
 			include ./partials/partners.pug
 			include ./partials/footer.pug
 		+scripts()

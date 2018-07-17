@@ -1,0 +1,36 @@
+-
+	var articles = [
+		{
+			id: 1,
+			title: 'Ванда Тиллес на площадке СПЧ призвала создавать «первички» для борьбы с нарушениями трудовых прав преподавателей',
+			excerpt: '21 мая в Администрации Президента состоялось специальное заседание Совета развитию гражданского общества и правам человека при Президенте Российской Федерации на тему «Реализация права граждан на образование и защита прав участников образовательного процесса». В ходе мероприятия председатель Постоянной комиссии СПЧ по культурным правам, образованию и науке Анита Соболева рассказала о нарушении прав профессорско-преподавательского состава. В заседании также приняла участие и выступила с докладом сопредседатель межрегионального профсоюза работников высшей школы «Университетская солидарность», доцент Югорского... ',
+			date: '28 мая 2018',
+			source: '',
+			tags: ['Ванда Тиллес', 'Высшее образование', 'Защита прав', 'Первичка', 'ППС', 'Сокращения'],
+			categories: ['Заявления ППО', 'Документы']
+		}
+	];
+
+mixin article--lg(id)
+	- var article = articles.filter(item => item.id === id);
+	if article.length > 0
+		- 
+			var pic_url = `images/articles/article-${article[0].id}.jpg`
+			var pic_alt = `article-${article[0].id}`
+		article.article.article--lg
+			.article__pic
+				img(src=pic_url, alt=pic_alt, data-bg="true")
+				.article__pic-wrapper
+					.article__categories
+						each category in article[0].categories
+							a.categories__item(href="#") #{category}
+					.article__title #{article[0].title}
+			.article__info
+				.article__date #{article[0].date}
+				.article__tags
+					each tag in article[0].tags					
+						a.tags__item(href="#") #{tag}
+			.article__excerpt #{article[0].excerpt}		
+	else
+		p(style="color: red;")= 'Error! article not found'
+

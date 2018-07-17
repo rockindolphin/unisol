@@ -1,0 +1,11 @@
+
+.article__info{
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: flex-start;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-family: PTSans;	
+}
+

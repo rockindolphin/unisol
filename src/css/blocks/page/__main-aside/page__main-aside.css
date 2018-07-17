@@ -2,5 +2,6 @@
 .page__main-aside{
 	width: 100%;
 	max-width: 365px;
+	flex-shrink: 0;
 }
 
