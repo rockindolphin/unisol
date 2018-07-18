@@ -1,0 +1,11 @@
+
+.link--show-more{
+	text-decoration: underline;
+	text-transform: uppercase;
+	color: var(--red_b01);
+	display: block;
+	width: 100%;
+	text-align: left;
+	font-weight: var(--fw-bold);
+}
+

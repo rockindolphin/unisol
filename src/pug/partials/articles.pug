@@ -133,7 +133,8 @@
 			date: '28 мая 2018',
 			source: '',
 			tags: ['А.А.Арутюнов', 'Высшая Школа'],
-			categories: []
+			categories: [],
+			youtube: 'l1cjKN6huuo'
 		},		
 		{
 			id: 16,
@@ -142,7 +143,8 @@
 			date: '28 мая 2018',
 			source: '',
 			tags: ['А.А.Арутюнов', 'Высшая Школа'],
-			categories: []
+			categories: [],
+			youtube: 'Ypg2SZbn2To'
 		},		
 		{
 			id: 17,
@@ -288,19 +290,24 @@ mixin articles--xl(arr)
 	each id in arr
 		+article--xl(id)
 
-mixin article--lg(id)
+mixin article--lg(id, isVideo)
 	- var article = articles.filter(item => item.id === id);
 	if article.length > 0
 		- 
 			var pic_url = `images/articles/article-${article[0].id}.jpg`
 			var pic_alt = `article-${article[0].id}`
+			var youtube_url = `https://www.youtube.com/embed/${article[0].youtube}`
 		article.article.article--lg
 			.article__pic
-				img(src=pic_url, alt=pic_alt, data-bg="true")
-				.article__pic-wrapper
-					.article__categories
-						each category in article[0].categories
-							a.categories__item(href="#") #{category}
+				if isVideo
+					.article__video
+						iframe(src=youtube_url, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='true')
+				else
+					img(src=pic_url, alt=pic_alt, data-bg="true")
+					.article__pic-wrapper
+						.article__categories
+							each category in article[0].categories
+								a.categories__item(href="#") #{category}
 			.article__info
 				.article__date #{article[0].date}
 				.article__tags

@@ -9,6 +9,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin-bottom: 14px;
+	position: relative;
 	& > img{
 		display: none;
 	}

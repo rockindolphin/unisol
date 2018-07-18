@@ -1,0 +1,7 @@
+
+.page__main-aside--bordered{
+	border: 1px solid;
+	border-color: var(--gray_d7d);
+	padding: 28px 20px;
+}
+
