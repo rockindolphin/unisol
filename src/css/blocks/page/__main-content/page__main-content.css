@@ -1,5 +1,6 @@
 
 .page__main-content{
+	width: 100%;
 	margin-right: var(--aside-gap);
 }
 
