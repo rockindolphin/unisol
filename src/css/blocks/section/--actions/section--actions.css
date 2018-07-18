@@ -3,9 +3,13 @@
 	font-family: PTSans;
 	background-color: var(--gray_464);
 	color: var(--white);
+	& > .page__wrapper{
+		padding-top: 22px;
+		padding-bottom: 28px;
+	}
 	& .article__wrapper-4{
 		& .article{
-			max-width: calc(25% - 100px);
+			max-width: calc(25% - 75px);
 		}	
 	}
 }

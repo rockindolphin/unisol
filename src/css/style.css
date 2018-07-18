@@ -6,6 +6,7 @@
 	--scrollbar-width:  0px;
 	--anim-dur:  0.4s;
 	--aside-gap:  36px;
+	--aside-max:  365px;
 
 	/*Colors*/
 	--black: #000000;
@@ -15,6 +16,8 @@
 	--gray_d7d:  #d7d7d7;
 	--gray_707:  #707070;
 	--gray_464:  #464646;
+	--gray_faf:  #fafafa;
+	--gray_f3f:  #f3f3f3;
 
 
 	/*Fonts*/

@@ -1,0 +1,13 @@
+
+.banner--join{
+	background: #ffffff;
+	background-repeat: no-repeat;
+	background-image:	url('../images/banners/banner-join-desaturated.png'),
+						url('../images/banners/banner-join-colorized.png'), 
+						linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 60%, rgba(0,0,0,0.1) 100%);
+	background-position: right 10px, -340px 10px, 0 0;
+	&:hover{
+		background-position: -340px 10px, right 10px, 0 0;
+	}
+}
+

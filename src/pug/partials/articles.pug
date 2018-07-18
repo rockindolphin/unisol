@@ -274,7 +274,7 @@ mixin article--xl(id)
 					.article__categories
 						each category in article[0].categories
 							a.categories__item(href="#") #{category}
-					.article__title #{article[0].title}
+					a.article__title(href="#") #{article[0].title}
 			.article__info
 				.article__date #{article[0].date}
 				.article__tags
@@ -306,7 +306,7 @@ mixin article--lg(id)
 				.article__tags
 					each tag in article[0].tags					
 						a.tags__item(href="#") #{tag}
-			.article__title #{article[0].title}
+			a.article__title(href="#") #{article[0].title}
 			.article__excerpt #{cutText(article[0].excerpt, 180)}		
 	else
 		p(style="color: red;")= 'Error! article not found'
@@ -326,7 +326,7 @@ mixin article--md(id)
 				img(src=pic_url, alt=pic_alt, data-bg="true")
 			.article__info
 				.article__date #{article[0].date}
-			.article__title #{article[0].title}		
+			a.article__title(href="#") #{article[0].title}		
 	else
 		p(style="color: red;")= 'Error! article not found'
 
@@ -343,7 +343,7 @@ mixin article--sm(id)
 				.article__tags
 					each tag in article[0].tags					
 						a.tags__item(href="#") #{tag}				
-			.article__title #{article[0].title}
+			a.article__title(href="#") #{article[0].title}
 			.article__info
 				.article__source #{article[0].source}		
 	else
@@ -359,7 +359,7 @@ mixin article--xs(id)
 		article.article.article--xs
 			.article__info
 				.article__date #{article[0].date}
-			.article__title #{article[0].title}
+			a.article__title(href="#") #{article[0].title}
 			.article__info
 				.article__source #{article[0].source}		
 	else

@@ -1,5 +1,7 @@
 
 .article__title{
+	display: block;
 	font-weight: var(--fw-bold);
+	text-decoration: none;
 }
 
