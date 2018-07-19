@@ -263,13 +263,14 @@
 		return overflow ? resp.join(' ') + '...' : resp.join(' ');
 	} 
 
-mixin article--xl(id)
+mixin article--xl(id, userClass)
 	- var article = articles.filter(item => item.id === id);
+	- uc = {class: userClass || ''};
 	if article.length > 0
 		- 
 			var pic_url = `images/articles/article-${article[0].id}.jpg`
 			var pic_alt = `article-${article[0].id}`
-		article.article.article--xl
+		article.article.article--xl()&attributes(uc)
 			.article__pic
 				img(src=pic_url, alt=pic_alt, data-bg="true")
 				.article__pic-wrapper
@@ -286,18 +287,19 @@ mixin article--xl(id)
 	else
 		p(style="color: red;")= 'Error! article not found'
 
-mixin articles--xl(arr)
+mixin articles--xl(arr, userClass)
 	each id in arr
-		+article--xl(id)
+		+article--xl(id, userClass)
 
-mixin article--lg(id, isVideo)
+mixin article--lg(id, userClass, isVideo)
 	- var article = articles.filter(item => item.id === id);
+	- uc = {class: userClass || ''};
 	if article.length > 0
 		- 
 			var pic_url = `images/articles/article-${article[0].id}.jpg`
 			var pic_alt = `article-${article[0].id}`
 			var youtube_url = `https://www.youtube.com/embed/${article[0].youtube}`
-		article.article.article--lg
+		article.article.article--lg()&attributes(uc)
 			.article__pic
 				if isVideo
 					.article__video
@@ -318,17 +320,18 @@ mixin article--lg(id, isVideo)
 	else
 		p(style="color: red;")= 'Error! article not found'
 
-mixin articles--lg(arr)
+mixin articles--lg(arr, userClass, isVideo)
 	each id in arr
-		+article--lg(id)
+		+article--lg(id, userClass, isVideo)
 
-mixin article--md(id)
+mixin article--md(id, userClass)
 	- var article = articles.filter(item => item.id === id);
+	- uc = {class: userClass || ''};
 	if article.length > 0
 		- 
 			var pic_url = `images/articles/article-${article[0].id}.jpg`
 			var pic_alt = `article-${article[0].id}`
-		article.article.article--md
+		article.article.article--md()&attributes(uc)
 			.article__pic
 				img(src=pic_url, alt=pic_alt, data-bg="true")
 			.article__info
@@ -337,14 +340,15 @@ mixin article--md(id)
 	else
 		p(style="color: red;")= 'Error! article not found'
 
-mixin articles--md(arr)
+mixin articles--md(arr, userClass)
 	each id in arr
-		+article--md(id)
+		+article--md(id, userClass)
 
-mixin article--sm(id)
+mixin article--sm(id, userClass)
 	- var article = articles.filter(item => item.id === id);
+	- uc = {class: userClass || ''};
 	if article.length > 0
-		article.article.article--sm
+		article.article.article--sm()&attributes(uc)
 			.article__info
 				.article__date #{article[0].date}
 				.article__tags
@@ -356,14 +360,15 @@ mixin article--sm(id)
 	else
 		p(style="color: red;")= 'Error! article not found'
 
-mixin articles--sm(arr)
+mixin articles--sm(arr, userClass)
 	each id in arr
-		+article--sm(id)
+		+article--sm(id, userClass)
 
-mixin article--xs(id)
+mixin article--xs(id, userClass)
 	- var article = articles.filter(item => item.id === id);
+	- uc = {class: userClass || ''};
 	if article.length > 0
-		article.article.article--xs
+		article.article.article--xs()&attributes(uc)
 			.article__info
 				.article__date #{article[0].date}
 			a.article__title(href="#") #{article[0].title}
@@ -372,6 +377,6 @@ mixin article--xs(id)
 	else
 		p(style="color: red;")= 'Error! article not found'
 
-mixin articles--xs(arr)
+mixin articles--xs(arr, userClass)
 	each id in arr
-		+article--xs(id)
+		+article--xs(id, userClass)

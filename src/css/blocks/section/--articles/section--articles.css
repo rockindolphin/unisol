@@ -1,0 +1,12 @@
+
+.section--articles{
+	& > .page__wrapper{
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: space-between;
+		padding-top: 35px;	
+		padding-bottom: 35px;	
+	}
+}
+
