@@ -9,7 +9,7 @@
 	border-radius: 50%;
 	background-color: var(--gray_faf);
 	text-decoration: none;
-	&:not(:last-of-type){
+	&:not(:last-child){
 		margin-right: 10px;
 	}
 }
