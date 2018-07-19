@@ -1,0 +1,21 @@
+
+.list--contacts{
+	& > li{
+		font-size: 20px;
+		font-weight: var(--fw-bold);
+		font-family: PTSans;
+		& > span{
+			font-size: 20px;
+			font-weight: var(--fw-bold);
+			font-family: PTSans;
+		}
+		& > *{
+			font-family: PTSerif;
+			font-weight: normal;
+			font-size: 18px;
+			margin-top: 18px;
+			margin-bottom: 18px;
+		}
+	}
+}
+
