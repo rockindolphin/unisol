@@ -1,0 +1,6 @@
+
+.pagination__item--current{
+	color: var(--white);
+	background-color: var(--red_b01)
+}
+

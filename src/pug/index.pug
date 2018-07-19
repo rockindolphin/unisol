@@ -1,6 +1,7 @@
 include ./mixins.pug
 include ./partials/articles.pug
 include ./partials/showmore.pug
+include ./partials/banners.pug
 
 doctype html
 html(lang="ru")
@@ -20,36 +21,19 @@ html(lang="ru")
 							+article--sm(18)
 				section.section.section--banners
 					.page__wrapper
-						.banner.banner--first-aid
-							h3.block__title.fs-3.color--red.mt-0.mb-2 «Первая помощь»
-							ul.list.list--dots.my-0
-								li.list__item 
-									a.link(href="#") Как учредить первичную профсоюзную организацию?
-								li.list__item 
-									a.link(href="#") Когда вызовут один на один к начальству...
-								li.list__item 
-									a.link(href="#") Чем может и должна заниматься первичка профсоюза?
-							div.text-right
-								a.color--red(href="#") еще статьи
-						.banner.banner--structure
-							h3.block__title.fs-3.mt-0.mb-2 Первичные организации
-							ul.list.list--chewrons.my-0
-								li.list__item 
-									.font-weight-bold.font--serif.fs-7.mb-2 Группы в университетах
-									p.color--gray.mt-0
-										| Мы защищаем права и интересы работников учебных заведений. Найдите свой университет или создайте первичную организацию 
-						a.banner.banner--join.pt-6(href="#")
-							h3.block__title.fs-3.mt-6.mb-0 Вступить в профсоюз
-							p.mt-0 Присоединяйтесь к нам!
+						+banner-first-aid()
+						+banner-structure()
+						+banner-join()
 				section.section.section--articles
 					.page__wrapper
 						.page__main-content
 							.article__wrapper-2
 								+articles--lg([2,5,6,7], 'mb-6')
 							+showmore()
-						aside.page__main-aside.page__main-aside--bordered
-							h3.block__title.fs-3.mt-0.mb-3 Вокруг университета
-							+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
+						aside.page__main-aside
+							.block--bordered
+								h3.block__title.fs-3.mt-0.mb-3 Вокруг университета
+								+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
 				section.section.section--actions
 					.page__wrapper
 						h2.block__title.fs-3 Наши действия
