@@ -1,7 +1,8 @@
 
 .header__logo-left{
 	flex-shrink: 0;
-	& > .icon{
+	& > .icon,
+	& > svg{
 		width: 194px;
 		height: 122px;
 	}
