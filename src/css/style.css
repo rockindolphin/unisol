@@ -63,6 +63,14 @@
 
 @font-face {
 	font-family: PTSerif;
+	src: 	url('../fonts/PTSerif/PTSerifBold.woff2'),
+			url('../fonts/PTSerif/PTSerifBold.woff');
+	font-style: normal;
+	font-weight: var(--fw-bold);
+}
+
+@font-face {
+	font-family: PTSerif;
 	src: 	url('../fonts/PTSerif/PTSerifBoldItalic.woff2'),
 			url('../fonts/PTSerif/PTSerifBoldItalic.woff');
 	font-style: italic;
