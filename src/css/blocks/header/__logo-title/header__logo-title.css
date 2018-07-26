@@ -1,7 +1,7 @@
 
 .header__logo-title{	
 	font-size: 42px;
-	letter-spacing: 2px;
+	/*letter-spacing: 2px;*/
 	font-weight: var(--fw-bold);
 	font-style: italic;
 	text-transform: uppercase;

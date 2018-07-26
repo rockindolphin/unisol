@@ -47,7 +47,7 @@
 				}
 				& .nav__item{
 					font-weight: var(--fw-bold);
-					letter-spacing: 1px;
+					/*letter-spacing: 1px;*/
 					& > .link{
 						padding-left: 22px;
 						padding-right: 22px;						

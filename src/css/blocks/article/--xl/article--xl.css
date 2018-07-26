@@ -2,7 +2,6 @@
 .article--xl{
 	& .article__title{
 		font-size: 28px;
-		letter-spacing: 1.2px;
 		line-height: 1.2;
 	}
 	& .article__pic{

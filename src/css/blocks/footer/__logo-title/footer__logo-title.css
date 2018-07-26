@@ -4,7 +4,7 @@
 	font-weight: var(--fw-bold);
 	font-style: italic;
 	color: color(#ffffff alpha(60%));
-	letter-spacing: 1.4px;
+	/*letter-spacing: 1.4px;*/
 	text-transform: uppercase;
 	margin-bottom: 8px;
 }

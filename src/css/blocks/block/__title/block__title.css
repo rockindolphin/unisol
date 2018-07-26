@@ -1,7 +1,7 @@
 
 .block__title{
 	font-family: PTSans;
-	letter-spacing: 0.2px;
+	/*letter-spacing: 0.2px;*/
 	font-weight: var(--fw-bold);
 	margin-top: 0;
 }
