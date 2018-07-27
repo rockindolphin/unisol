@@ -14,7 +14,7 @@ html(lang="ru")
 				section.section.section--articles
 					.page__wrapper.mb-7.pb-3
 						.page__main-content
-							h1.block__title.fs-3.font--serif.mt-0.mb-3 Руководящие органы профсоюза							
+							a.block__title.fs-3.font--serif.mt-0.mb-3(href="#") Руководящие органы профсоюза							
 							.blog
 								i
 									| Руководящие органы профсоюза избраны II очередной конференцией профсоюза 4-5 февраля 2017 г.
@@ -70,11 +70,11 @@ html(lang="ru")
 							+banner-structure('mb-5')
 							+banner-join('mb-5')
 							.block--bordered
-								h3.block__title.fs-3.mt-0.mb-3 Вокруг университета
+								a.block__title.fs-3.mt-0.mb-3(href="#") Вокруг университета
 								+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
 				section.section
 					.page__wrapper
-						h2.block__title.fs-3 Контекст
+						a.block__title.fs-3.mb-4(href="#") Контекст
 						.article__wrapper-3
 							+articles--lg([11,23,24])
 			include ./partials/partners.pug

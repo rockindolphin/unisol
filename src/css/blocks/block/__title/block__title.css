@@ -4,5 +4,7 @@
 	/*letter-spacing: 0.2px;*/
 	font-weight: var(--fw-bold);
 	margin-top: 0;
+	display: block;
+	text-decoration: none;
 }
 
