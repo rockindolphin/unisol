@@ -85,6 +85,14 @@
 	font-weight: var(--fw-normal);
 }
 
+@font-face {
+	font-family: PTSans;
+	src: 	url('../fonts/PTSans/PTSansBold.woff2'),
+			url('../fonts/PTSans/PTSansBold.woff');
+	font-style: normal;
+	font-weight: var(--fw-bold);
+}
+
 /* OTHER */
 
 *{
