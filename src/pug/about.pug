@@ -1,0 +1,47 @@
+include ./mixins/mixins.pug
+
+doctype html
+html(lang="ru")
+	+head()
+	body.page
+		include ../images/sprite.svg
+		.page__body
+			include ./partials/header.pug
+			main.page__main.mb-7.pb-3
+				section.section.section--articles
+					.page__wrapper.mb-7.pb-3
+						.page__main-content
+							a.block__title.fs-3.font--serif.mt-0.mb-3(href="#") Профсоюз						
+							.blog
+								p
+									| Профсоюз «Университетская солидарность» ставит своей главной целью объединение вузовских преподавателей, как для защиты своих прав и для выработки предложений по выведению вузов из глубокого системного кризиса, так и для выработки новой модели высшего образования, ориентированной на удовлетворение общественных потребностей, гуманизацию и демократизацию общества, и свободной от давления коммерческих интересов и бюрократии.
+								img(src="images/pages/page-about.jpg", alt="page-about")
+								b
+									p
+										| Уставные документы и руководящие органы
+									ul
+										li 
+											| Декларация профсоюза, утвержденная Учредительной конференцией 27 апреля 2013 г.
+										li 
+											| Устав профсоюза, в редакции 5 февраля 2017 г.
+										li 
+											| Руководящие органы профсоюза
+										li 
+											| Контрольно-ревизионная комиссия
+										li 
+											| Комиссии профсоюза
+										li 
+											| История создания
+								hr
+								#share
+								include partials/comments.pug
+						aside.page__main-aside
+							+banner-first-aid('mb-5')
+							+banner-structure('mb-5')
+							+banner-join('mb-5')
+							.block--bordered
+								a.block__title.fs-3.mt-0.mb-3(href=around_page) Вокруг университета
+								+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
+			include ./partials/partners.pug
+			include ./partials/footer.pug
+		+scripts()
