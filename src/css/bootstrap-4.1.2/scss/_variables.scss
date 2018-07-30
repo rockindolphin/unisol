@@ -131,11 +131,13 @@ $spacers: () !default;
 $spacers: map-merge(
   (
     0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
-    3: $spacer,
-    4: ($spacer * 1.5),
-    5: ($spacer * 3)
+    1: ($spacer * .25), //4px
+    2: ($spacer * .5), //8px
+    3: $spacer, //16px
+    4: ($spacer * 1.5), //24px
+    5: ($spacer * 1.875), //30px
+    6: ($spacer * 3), //48px
+    7: ($spacer * 3.75), //60px
   ),
   $spacers
 );
@@ -263,6 +265,21 @@ $font-weight-bold:            700 !default;
 
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
+
+// font-sizes
+$font-sizes: () !default;
+$font-sizes: map-merge((
+  0: ($font-size-base * 0),      //0px
+  1: ($font-size-base * 2.5),    //40px
+  2: ($font-size-base * 2),      //32px
+  3: ($font-size-base * 1.75),   //28px
+  4: ($font-size-base * 1.5),    //24px
+  5: ($font-size-base * 1.25),   //20px
+  6: ($font-size-base * 1.125),  //18px
+  7: ($font-size-base * 1),      //16px
+  8: ($font-size-base * 0.875),  //14px
+  9: ($font-size-base * 0.8125), //13px
+), $font-sizes);
 
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
