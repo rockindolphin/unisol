@@ -194,9 +194,9 @@ function sprite_png(){
 	.pipe(gulp.dest( path.resolve(dist, 'images') ));	
 }
 
-gulp.task('utilities', function(){
+function utilities(){
 	miss.pipe(
-		gulp.src( path.resolve(src, 'css', 'bootstrap_utilities.scss') ),
+		gulp.src( path.resolve(src, 'css', 'bootstrap.scss') ),
 		sass(),
 		autoprefixer({
 			browsers: browsers
@@ -205,7 +205,11 @@ gulp.task('utilities', function(){
 		(err) => {
 			if (err) return err_log(err);
 		}
-	);			
+	);	
+}
+
+gulp.task('utilities', function(){
+	utilities();
 });
 
 gulp.task('server', [], () => {
@@ -378,6 +382,9 @@ gulp.task('default', ['clear_dist', 'server'], () => {
 	pug_watcher.on('add', (filepath) => { pugToHtml(filepath) });	
 
 	gulp.start('utilities');
+	let utilities_watcher = chokidar.watch( path.resolve(src, 'css', 'bootstrap-4.1.2', 'scss', '**', '*') );
+	utilities_watcher.on('change', (filepath) => { utilities() });
+	utilities_watcher.on('add', (filepath) => { utilities() });		
 
 });
 

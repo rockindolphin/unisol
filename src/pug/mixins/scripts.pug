@@ -1,0 +1,5 @@
+mixin scripts()
+	- function pDate() {return new Date().getTime();}
+	script(src="js/vendors/jquery-3.2.1.min.js")
+	script(src="js/vendors/vue.js")
+	script(src="js/app.js?ver=" + pDate())

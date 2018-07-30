@@ -1,5 +1,3 @@
-include ../mixins.pug
-
 header.page__header
 	.header__top
 		.page__wrapper
@@ -28,7 +26,7 @@ header.page__header
 				input.control__field(type="text", placeholder="Поиск по сайту" @focus="onFocus", @blur="onBlur")
 				button.btn.btn--icon(type="submit")
 					+icon('search')
-	a.header__logo(href="/")
+	a.header__logo(href=href=index_page)
 		.page__wrapper
 			.header__logo-left
 				include ../../images/logo-left.svg
@@ -50,7 +48,7 @@ header.page__header
 					ul.list
 						li.list__item
 							.nav__item
-								a.link(href='#')
+								a.link(href=rulers_page)
 									| Руководящие органы
 						li.list__item
 							.nav__item
@@ -67,7 +65,36 @@ header.page__header
 				li.list__item
 					.nav__item
 						a.link(href='#')
-							| Отделения			
+							| Отделения
+					ul.list
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| МФТИ
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| МГУ
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| СПБГУ
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| СПБГАВМ
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| ИВГУ
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| УРФУ
+						li.list__item
+							.nav__item
+								a.link(href='#')
+									| ЮГУ
 				li.list__item
 					.nav__item
 						a.link(href='#')
