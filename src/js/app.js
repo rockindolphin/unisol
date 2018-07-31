@@ -40,7 +40,20 @@
 					this.isActive = false;
 				}
 			}
-		})		
+		});
+
+		$("#share").jsSocials({
+			shares: [			
+				'facebook', 
+				'vkontakte', 
+				'telegram'
+			],
+			//url: 'http://url.to.share',
+			text: 'text to share',
+			showLabel: false,
+			showCount: false,
+			shareIn: 'popup',
+		});				
 
 	});	
 

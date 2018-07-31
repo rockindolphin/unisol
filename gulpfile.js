@@ -208,8 +208,22 @@ function utilities(){
 	);	
 }
 
+function css_vendors(){
+	miss.pipe(
+		gulp.src( [path.resolve(src, 'css', 'vendors', '*.css'), '!src/css/vendors/normalize.css'] ),  
+		gulp.dest( path.resolve(dist, 'css', 'vendors') ), 
+		(err) => {
+			if (err) return err_log(err);
+		}
+	);	
+}
+
 gulp.task('utilities', function(){
 	utilities();
+});
+
+gulp.task('css_vendors', function(){
+	css_vendors();
 });
 
 gulp.task('server', [], () => {
@@ -384,7 +398,12 @@ gulp.task('default', ['clear_dist', 'server'], () => {
 	gulp.start('utilities');
 	let utilities_watcher = chokidar.watch( path.resolve(src, 'css', 'bootstrap-4.1.2', 'scss', '**', '*') );
 	utilities_watcher.on('change', (filepath) => { utilities() });
-	utilities_watcher.on('add', (filepath) => { utilities() });		
+	utilities_watcher.on('add', (filepath) => { utilities() });
+
+	gulp.start('css_vendors');
+	let css_vendors_watcher = chokidar.watch( path.resolve(src, 'css', 'vendors', '*.css'), { ignored: /normalize\.css/, ignoreInitial: true } );
+	css_vendors_watcher.on('change', (filepath) => { css_vendors() });
+	css_vendors_watcher.on('add', (filepath) => { css_vendors() });		
 
 });
 
