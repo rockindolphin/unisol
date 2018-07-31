@@ -3,7 +3,6 @@
 	/*max-width: 365px;*/
 	& .article__title{
 		font-size: 20px;
-	    line-height: 1.2;
 	    margin-bottom: 14px;
 	}
 	& .article__pic{
@@ -15,6 +14,9 @@
 	}	
 	& .article__pic-wrapper{
 		padding: 16px 12px;
+	}
+	& .article__categories{
+		margin-bottom: 8px;
 	}
 	& .categories__item{
 		padding:  4px 9px;

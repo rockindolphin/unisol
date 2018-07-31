@@ -220,12 +220,12 @@
 		},		
 		{
 			id: 25,
-			title: '',
-			excerpt: '',
-			date: '',
+			title: 'Андроник Арутюнов оштрафован на 20 тысяч рублей за одиночный пикет в поддержку Дмитрия Петелина',
+			excerpt: 'Никулинский суд Москвы оштрафовал сопредседателя Межрегионального профсоюза работников высшей школы «Университетская солидарность» Андроника Арутюнова на 20 тыс. руб. (минимальный штраф по вменявшейся статье 20.2 часть 2 КоАП) за проведение одиночного пикета против уголовного преследования студента филологического факультета МГУ Дмитрия Петелина.',
+			date: '28 мая 2018',
 			source: '',
-			tags: [],
-			categories: []
+			tags: ['Андроник Арутюнов', 'Задержание', 'МГУпротивфанзоны', 'Пикет', 'Суд'],
+			categories: ['Действия', 'МГУ']
 		},		
 		{
 			id: 26,
@@ -263,6 +263,25 @@
 		return overflow ? resp.join(' ') + '...' : resp.join(' ');
 	} 
 
+mixin article--full(id)
+	- var article = articles.filter(item => item.id === id);
+	if article.length > 0
+		- 
+			var pic_url = `images/articles/article-${article[0].id}.jpg`
+			var pic_alt = `article-${article[0].id}`
+		.article__categories
+			each category in article[0].categories
+				a.categories__item(href=tag_page) #{category}
+		.article__info
+			.article__date #{article[0].date}
+			.article__tags
+				each tag in article[0].tags
+					a.tags__item(href="#") #{tag}
+		.article__title #{article[0].title}
+		img(src=pic_url, alt=pic_alt)
+	else
+		p(style="color: red;")= 'Error! article not found'
+
 mixin article--xl(id, userClass)
 	- var article = articles.filter(item => item.id === id);
 	- uc = {class: userClass || ''};
@@ -277,7 +296,7 @@ mixin article--xl(id, userClass)
 					.article__categories
 						each category in article[0].categories
 							a.categories__item(href=tag_page) #{category}
-					a.article__title(href="#") #{article[0].title}
+					a.article__title(href=news_page) #{article[0].title}
 			.article__info
 				.article__date #{article[0].date}
 				.article__tags
@@ -315,7 +334,7 @@ mixin article--lg(id, userClass, isVideo)
 				.article__tags
 					each tag in article[0].tags					
 						a.tags__item(href="#") #{tag}
-			a.article__title(href="#") #{article[0].title}
+			a.article__title(href=news_page) #{article[0].title}
 			.article__excerpt #{cutText(article[0].excerpt, 180)}		
 	else
 		p(style="color: red;")= 'Error! article not found'
@@ -336,7 +355,7 @@ mixin article--md(id, userClass)
 				img(src=pic_url, alt=pic_alt, data-bg="true")
 			.article__info
 				.article__date #{article[0].date}
-			a.article__title(href="#") #{article[0].title}		
+			a.article__title(href=news_page) #{article[0].title}		
 	else
 		p(style="color: red;")= 'Error! article not found'
 
@@ -354,7 +373,7 @@ mixin article--sm(id, userClass)
 				.article__tags
 					each tag in article[0].tags					
 						a.tags__item(href="#") #{tag}				
-			a.article__title(href="#") #{article[0].title}
+			a.article__title(href=news_page) #{article[0].title}
 			.article__info
 				.article__source #{article[0].source}		
 	else
@@ -371,7 +390,7 @@ mixin article--xs(id, userClass)
 		article.article.article--xs()&attributes(uc)
 			.article__info
 				.article__date #{article[0].date}
-			a.article__title(href="#") #{article[0].title}
+			a.article__title(href=news_page) #{article[0].title}
 			.article__info
 				.article__source #{article[0].source}		
 	else

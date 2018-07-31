@@ -4,9 +4,12 @@
 	font-size: 12px;
 	text-transform: uppercase;
 	/*letter-spacing: 0.6px;*/
+	margin-bottom: 15px;
 	& .categories__item{
+		padding:  4px 9px;
 		margin-right: 2px;
 		background-color: var(--gray_464);
+		color: var(--white);
 		text-decoration: none;
 	}
 }

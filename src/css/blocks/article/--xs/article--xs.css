@@ -4,7 +4,7 @@
 		margin-bottom: 3px;
 	}
 	& .article__title{
-		line-height: 1.2;
+		font-size: 16px;
 		margin-bottom: 4px;
 	}	
 }

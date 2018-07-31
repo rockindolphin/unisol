@@ -3,7 +3,7 @@
 	/*max-width: 215px;*/
 	& .article__title{
 		font-size: 20px;
-		line-height: 1.2;
+		margin-bottom: 4px;
 	}
 	& .article__pic{
 		&::before{

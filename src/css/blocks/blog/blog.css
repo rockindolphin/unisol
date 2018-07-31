@@ -37,5 +37,11 @@
 		border-bottom: 1px solid;
 		border-color: var(--gray_d7d);
 	}
+	& blockquote{
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 28px;
+		font-style: italic;
+	}
 }
 
