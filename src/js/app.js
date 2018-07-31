@@ -42,11 +42,15 @@
 			}
 		});
 
-
+		//socials
 		jsSocials.shares.odnoklassniki = {
 			label: "Odnoklassniki",
 			logo: "fa fa-odnoklassniki",
 			shareUrl: "https://connect.ok.ru/offer?url={url}&title={text}",
+			countUrl: '',
+			getCount: function(data) {
+				return '';
+			}			
 		}
 
 		$("#share").jsSocials({
@@ -58,7 +62,7 @@
 			],
 			//url: 'http://url.to.share',
 			text: 'text to share',
-			showLabel: false,
+			showLabel: true,
 			showCount: false,
 			shareIn: 'popup',
 		});				

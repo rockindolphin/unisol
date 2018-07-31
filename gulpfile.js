@@ -218,12 +218,30 @@ function css_vendors(){
 	);	
 }
 
+function jssocials(){
+	miss.pipe(
+		gulp.src( path.resolve(src, 'css', 'vendors', 'jssocials', 'jssocials.scss') ),
+		sass(),
+		autoprefixer({
+			browsers: browsers
+		}),    
+		gulp.dest( path.resolve(dist, 'css', 'vendors') ), 
+		(err) => {
+			if (err) return err_log(err);
+		}
+	);	
+}
+
 gulp.task('utilities', function(){
 	utilities();
 });
 
 gulp.task('css_vendors', function(){
 	css_vendors();
+});
+
+gulp.task('jssocials', function(){
+	jssocials();
 });
 
 gulp.task('server', [], () => {
@@ -404,6 +422,11 @@ gulp.task('default', ['clear_dist', 'server'], () => {
 	let css_vendors_watcher = chokidar.watch( path.resolve(src, 'css', 'vendors', '*.css'), { ignored: /normalize\.css/, ignoreInitial: true } );
 	css_vendors_watcher.on('change', (filepath) => { css_vendors() });
 	css_vendors_watcher.on('add', (filepath) => { css_vendors() });		
+	
+	gulp.start('jssocials');
+	let jssocials_watcher = chokidar.watch( path.resolve(src, 'css', 'vendors', 'jssocials', '**', '*'), { ignoreInitial: true } );
+	jssocials_watcher.on('change', (filepath) => { jssocials() });
+	jssocials_watcher.on('add', (filepath) => { jssocials() });		
 
 });
 
