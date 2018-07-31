@@ -1,0 +1,8 @@
+
+.socials__icon--round{
+	& .icon{
+		width: 40px;
+		height: 40px;		
+	}
+}
+
