@@ -42,10 +42,18 @@
 			}
 		});
 
+
+		jsSocials.shares.odnoklassniki = {
+			label: "Odnoklassniki",
+			logo: "fa fa-odnoklassniki",
+			shareUrl: "https://connect.ok.ru/offer?url={url}&title={text}",
+		}
+
 		$("#share").jsSocials({
 			shares: [			
 				'facebook', 
-				'vkontakte', 
+				'vkontakte',
+				'odnoklassniki',				 
 				'telegram'
 			],
 			//url: 'http://url.to.share',
