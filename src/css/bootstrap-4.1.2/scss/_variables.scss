@@ -19,6 +19,7 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
+$gray_d7d: #d7d7d7 !default;
 
 $grays: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -315,7 +316,7 @@ $text-muted:                  $gray-600 !default;
 $blockquote-small-color:      $gray-600 !default;
 $blockquote-font-size:        ($font-size-base * 1.25) !default;
 
-$hr-border-color:             rgba($black, .1) !default;
+$hr-border-color:             $gray_d7d !default;
 $hr-border-width:             $border-width !default;
 
 $mark-padding:                .2em !default;

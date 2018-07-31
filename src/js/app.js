@@ -61,8 +61,8 @@
 				'telegram'
 			],
 			//url: 'http://url.to.share',
-			text: 'text to share',
-			showLabel: true,
+			//text: 'text to share',
+			showLabel: false,
 			showCount: false,
 			shareIn: 'popup',
 		});				

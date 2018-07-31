@@ -11,7 +11,7 @@ html(lang="ru")
 				section.section.section--articles
 					.page__wrapper.mb-7.pb-3
 						.page__main-content
-							a.block__title.fs-3.font--serif.mt-0.mb-3(href="#") Руководящие органы профсоюза							
+							+page_title('Руководящие органы профсоюза', 'mb-3')
 							.blog
 								i
 									| Руководящие органы профсоюза избраны II очередной конференцией профсоюза 4-5 февраля 2017 г.
@@ -58,9 +58,9 @@ html(lang="ru")
 								hr
 								p
 									i
-										| По всем вопросам, связанным с сайтом и с публикацией своих статей и материалов на его страницах, обращайтесь к Арутюнову Андронику — <a href="mailto:andronick.arutyunov@gmail.com">andronick.arutyunov@gmail.com</a>.
+										| По всем вопросам, связанным с сайтом и с публикацией своих статей и материалов на его страницах, обращайтесь к <br>Арутюнову Андронику — <a href="mailto:andronick.arutyunov@gmail.com">andronick.arutyunov@gmail.com</a>.
 								hr
-								#share
+								include partials/share.pug
 								include partials/comments.pug
 						aside.page__main-aside
 							+banner-first-aid('mb-5')
@@ -69,6 +69,8 @@ html(lang="ru")
 							.block--bordered
 								a.block__title.fs-3.mt-0.mb-3(href=around_page) Вокруг университета
 								+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
+				.page__wrapper
+					hr
 				section.section
 					.page__wrapper
 						a.block__title.fs-3.mb-4(href="#") Контекст

@@ -11,14 +11,13 @@ html(lang="ru")
 				section.section.section--articles
 					.page__wrapper.mb-7.pb-3
 						.page__main-content
-							a.block__title.fs-3.font--serif.mt-0.mb-3(href="#") Профсоюз						
+							+page_title('Профсоюз')
 							.blog
 								p
 									| Профсоюз «Университетская солидарность» ставит своей главной целью объединение вузовских преподавателей, как для защиты своих прав и для выработки предложений по выведению вузов из глубокого системного кризиса, так и для выработки новой модели высшего образования, ориентированной на удовлетворение общественных потребностей, гуманизацию и демократизацию общества, и свободной от давления коммерческих интересов и бюрократии.
 								img(src="images/pages/page-about.jpg", alt="page-about")
+								h5 Уставные документы и руководящие органы
 								b
-									p
-										| Уставные документы и руководящие органы
 									ul
 										li 
 											| Декларация профсоюза, утвержденная Учредительной конференцией 27 апреля 2013 г.
@@ -32,9 +31,10 @@ html(lang="ru")
 											| Комиссии профсоюза
 										li 
 											| История создания
+								br
 								hr
-								#share
-								include partials/comments.pug
+							include partials/share.pug
+							include partials/comments.pug
 						aside.page__main-aside
 							+banner-first-aid('mb-5')
 							+banner-structure('mb-5')

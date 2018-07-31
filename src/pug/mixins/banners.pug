@@ -1,7 +1,7 @@
 mixin banner-first-aid(userClass)
 	- uc = {class: userClass || ''};
 	.banner.banner--first-aid()&attributes(uc)
-		a.block__title.fs-3.color--red.mt-0.mb-2(href="#") «Первая помощь»
+		a.banner__title.fs-3.color--red.mt-0.mb-2(href="#") «Первая помощь»
 		ul.list.list--dots.my-0
 			li.list__item 
 				a.link(href="#") Как учредить первичную профсоюзную организацию?
@@ -14,14 +14,14 @@ mixin banner-first-aid(userClass)
 mixin banner-structure(userClass)
 	- uc = {class: userClass || ''};
 	.banner.banner--structure()&attributes(uc)
-		a.block__title.fs-3.mt-0.mb-2(href="#") Первичные организации
+		a.banner__title.fs-3.mt-0.mb-2(href="#") Первичные организации
 		ul.list.list--chewrons.my-0
 			li.list__item 
-				.font-weight-bold.font--serif.fs-7.mb-2 Группы в университетах
+				b.font--serif.fs-7.mb-2 Группы в университетах
 				p.color--gray.mt-0
 					| Мы защищаем права и интересы работников учебных заведений. Найдите свой университет или создайте первичную организацию 
 mixin banner-join(userClass)
 	- uc = {class: userClass || ''};
 	a.banner.banner--join.pt-6(href="#")&attributes(uc)
-		h3.block__title.fs-3.mt-6.mb-0 Вступить в профсоюз
+		h3.banner__title.mt-6.mb-0 Вступить в профсоюз
 		p.mt-0 Присоединяйтесь к нам!

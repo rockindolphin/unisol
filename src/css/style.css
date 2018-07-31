@@ -140,7 +140,7 @@ img{
 }
 
 :--all-headers{
-	/*font-weight: var(--fw-bold);*/
+	font-weight: var(--fw-bold);
 }
 
 h1{
