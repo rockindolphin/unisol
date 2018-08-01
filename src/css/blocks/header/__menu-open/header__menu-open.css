@@ -1,0 +1,27 @@
+
+.header__menu-open{
+	background: var(--white);
+	border: none;
+	box-shadow: none;
+	color: var(--black);
+	outline: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	flex-shrink: 0;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		display: none;		
+	}	
+	@media (--xl-viewport){
+										
+	}
+}
+

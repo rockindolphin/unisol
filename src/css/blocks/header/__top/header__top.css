@@ -3,13 +3,13 @@
 	background-color: var(--black);
 	color: var(--white);
 	& > .page__wrapper{
-		min-height: 60px;
+		min-height: 42px;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
-		padding-top: 12px;
-		padding-bottom: 12px;
+		padding-top: 6px;
+		padding-bottom: 6px;
 	}
 	@media (--sm-viewport){
 										
@@ -18,7 +18,11 @@
 										
 	}	
 	@media (--lg-viewport){
-										
+		& > .page__wrapper{
+			min-height: 60px;
+			padding-top: 12px;
+			padding-bottom: 12px;
+		}										
 	}	
 	@media (--xl-viewport){
 										
