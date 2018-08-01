@@ -1,0 +1,63 @@
+include ./mixins/mixins.pug
+
+doctype html
+html(lang="ru")
+	+head()
+	body.page
+		include ../images/sprite.svg
+		.page__body
+			include ./partials/header.pug
+			main.page__main.mb-7.pb-3
+				section.section.section--articles
+					.page__wrapper.mb-7.pb-3
+						.page__main-content
+							+page_title('Контакты')
+							.blog
+								p
+									| Наш регулярно проверяемый е-mail: <a href="mailto:mipt@unisolidaruty.ru">mipt@unisolidaruty.ru</a>
+								p
+									| По всем вопросам вы можете обращаться к председателю профсоюза профессору М.В. Балашову на кафедру высшей математики
+									a.d-block(href="mailto:balashov73@mail.ru") balashov73@mail.ru
+								p
+									| Или к заместителю председателя, ассистенту кафедры высшей математики А.А. Арутюнову: <a href="mailto:andronick.arutyunov@gmail.com">andronick.arutyunov@gmail.com</a>, <a href="tel:+79035323466">+7 903-532-3466</a>.
+								hr
+								form(action="#")
+									.row.mw-none.mb-5
+										.col-12
+											h2 Обратная связь
+									.row.mw-none.mb-5
+										.col-12.col-lg-6
+											input.form-control(type="text", placeholder="Имя")
+									.row.mw-none.mb-5
+										.col-12.col-lg-6
+											input.form-control(type="email", placeholder="E-mail")
+										.col-12.col-lg-6.d-flex.align-items-center
+											i.fs-8.py-1 (нигде не будет опубликован, нужен для связи с вами)
+									.row.mw-none.mb-5
+										.col-12
+											textarea.form-control(rows="7", placeholder="Текст сообщения")
+									.row.mw-none.mb-4
+										.col-12.mb-2
+											| Введите код на изображении
+										.col-12.mb-3
+											img(src="images/pages/capcha.jpg", alt="capcha")
+										.col-12.mb-2
+											input.form-control.w-auto(type="text")
+									.row.mw-none.mb-5
+										.col-12
+											button.btn.btn-link.w-auto.p-0.link--show-more.font--serif(type="submit") Отправить сообщение
+								hr
+								p
+									| Следить за действиями нашего профсоюза, а также знакомиться с последними новостями можно в социальных сетях:
+								.d-flex
+									a.socials__icon--round.mr-2(href="#")
+										+icon('facebook-round')
+									a.socials__icon--round.mr-2(href="#")
+										+icon('vkontakte-round')
+									a.socials__icon--round.mr-2(href="#")
+										+icon('telegram-round')
+						aside.page__main-aside
+							a.block__title.fs-3.mt-0.mb-3(href="#") Новости
+							+articles--lg([7, 14, 6], 'mb-5')
+			include ./partials/footer.pug
+		+scripts()
