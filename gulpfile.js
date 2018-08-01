@@ -281,6 +281,22 @@ gulp.task('sprite_png', [], () => {
 });
 
 
+gulp.task('css_bundle', function(){
+	var cssPath = path.resolve(dist, 'css');
+	miss.pipe(
+		gulp.src([
+			path.resolve(cssPath, 'vendors', '**', '*.css'),
+			path.resolve(cssPath, '*.css'),
+		]),
+		concat('bundle.css'),
+		cleanCSS({compatibility: '*'}),
+		gulp.dest( path.resolve(dist, 'css') ), 			
+		(err) => {
+			if (err) return err_log(err);
+		}	
+	);			
+});
+
 gulp.task('css', function(){
 	var cssPath = path.resolve(src, 'css');
 	miss.pipe(

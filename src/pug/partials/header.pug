@@ -3,30 +3,30 @@ header.page__header
 		.page__wrapper
 			ul.list.socials.header__socials
 				li.list__item
-					a.link(href="#")
+					a.link(href="#", aria-label="unisolidaity facebook")
 						+icon('facebook')
 				li.list__item
-					a.link(href="#")
+					a.link(href="#", aria-label="unisolidaity vkontakte")
 						+icon('vkontakte')
 				li.list__item
-					a.link(href="#")
+					a.link(href="#", aria-label="unisolidaity youtube")
 						+icon('youtube')
 				li.list__item
-					a.link(href="#")
+					a.link(href="#", aria-label="unisolidaity telegram")
 						+icon('telegram')
 				li.list__item
 					ul.list.header__language
 						li.list__item
-							a.link(href="#")
+							a.link(href="#", aria-label="toggle english")
 								+icon('britain')
 						li.list__item.list__item--hidden
-							a.link(href="#")
+							a.link(href="#", aria-label="toggle russian")
 								+icon('russia')
 			form.header__search(v-bind:class="{ 'header__search--active': isActive }")
 				input.control__field(type="text", placeholder="Поиск по сайту" @focus="onFocus", @blur="onBlur")
 				button.btn.btn--icon(type="submit")
 					+icon('search')
-			button.header__menu-open
+			button.header__menu-open(aria-label="open menu")
 				+icon('menu')
 	a.header__logo(href=href=index_page)
 		.page__wrapper

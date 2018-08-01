@@ -278,7 +278,8 @@ mixin article--blog(id)
 				each tag in article[0].tags
 					a.tags__item(href="#") #{tag}
 		.article__title #{article[0].title}
-		img(src=pic_url, alt=pic_alt)
+		//-img(src=pic_url, alt=pic_alt)
+		+picture({'src': pic_url, 'alt':pic_alt})
 	else
 		p(style="color: red;")= 'Error! article not found'
 
@@ -291,7 +292,8 @@ mixin article--xl(id, userClass)
 			var pic_alt = `article-${article[0].id}`
 		article.article.article--xl()&attributes(uc)
 			.article__pic
-				img(src=pic_url, alt=pic_alt, data-bg="true")
+				//-img(src=pic_url, alt=pic_alt, data-bg="true")
+				+picture({'src': pic_url, 'alt':pic_alt, 'data':{'data-bg': 'true'}})
 				.article__pic-wrapper
 					.article__categories
 						each category in article[0].categories
@@ -322,9 +324,10 @@ mixin article--lg(id, userClass, isVideo)
 			.article__pic
 				if isVideo
 					.article__video
-						iframe(src=youtube_url, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='true')
+						iframe(src=youtube_url, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='true', title=article[0].title)
 				else
-					img(src=pic_url, alt=pic_alt, data-bg="true")
+					//-img(src=pic_url, alt=pic_alt, data-bg="true")
+					+picture({'src': pic_url, 'alt':pic_alt, 'data':{'data-bg': 'true'}})
 					.article__pic-wrapper
 						.article__categories
 							each category in article[0].categories
@@ -352,7 +355,8 @@ mixin article--md(id, userClass)
 			var pic_alt = `article-${article[0].id}`
 		article.article.article--md()&attributes(uc)
 			.article__pic
-				img(src=pic_url, alt=pic_alt, data-bg="true")
+				//-img(src=pic_url, alt=pic_alt, data-bg="true")
+				+picture({'src': pic_url, 'alt':pic_alt, 'data':{'data-bg': 'true'}})
 			.article__info
 				.article__date #{article[0].date}
 			a.article__title(href=news_page) #{article[0].title}		

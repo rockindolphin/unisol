@@ -2,24 +2,27 @@
 	+picture({'class':'slide__img', 'src':'images/slide-0.jpg', 'alt':'slide-0', 'data':{'data-bg': 'true'}})
 
 mixin picture(opts)
-	- var name = path.parse(opts.src).name
-	- var ext = path.parse(opts.src).ext.substr(1)
-	- var srcFile = path.resolve('src','images',opts.src)
-	- var alt = opts.alt ? opts.alt : name;
-	- var className = opts.class;
-	- var data = opts.data ? opts.data : '';
-	- function setQuality(quality){ images( srcFile, quality ); }
+	-
+		var name = path.parse(opts.src).name,
+			ext = path.parse(opts.src).ext.substr(1),
+			srcFile = path.resolve('src','images',opts.src),
+			alt = opts.alt ? opts.alt : name,
+			className = opts.class,
+			data = opts.data ? opts.data : '',
+			folder = `${path.parse(opts.src).dir}/` || imgFolder;
+		function setQuality(quality){ images( srcFile, quality ); }
+		console.log(folder)
 	if opts.quality
 		#{setQuality(opts.quality)}
 	if config.images.sizes.length > 0 || config.images.webp
 		picture
 			each size in config.images.sizes
 				if config.images.webp
-					source(srcset=`${imgFolder}${name}-${size}.webp` type="image/webp" media=`(max-width: ${size}px)`)
-				source(srcset=`${imgFolder}${name}-${size}.${ext}` type=`image/${ext}` media=`(max-width: ${size}px)`)
+					source(srcset=`${folder}${name}-${size}.webp` type="image/webp" media=`(max-width: ${size}px)`)
+				source(srcset=`${folder}${name}-${size}.${ext}` type=`image/${ext}` media=`(max-width: ${size}px)`)
 			if config.images.webp
-				source(srcset=`${imgFolder}${name}.webp` type="image/webp" )
-			source(srcset=`${imgFolder}${name}.${ext}` type=`image/${ext}`)
-			img(src=`${imgFolder}${name}.${ext}`, class=className alt=alt )&attributes(data)
+				source(srcset=`${folder}${name}.webp` type="image/webp" )
+			source(srcset=`${folder}${name}.${ext}` type=`image/${ext}`)
+			img(src=`${folder}${name}.${ext}`, class=className alt=alt )&attributes(data)
 	else
-		img(src=`${imgFolder}${name}.${ext}` class=className alt=alt )&attributes(data)
+		img(src=`${folder}${name}.${ext}` class=className alt=alt )&attributes(data)
