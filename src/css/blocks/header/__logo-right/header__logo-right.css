@@ -1,7 +1,34 @@
 
 .header__logo-right{
 	flex-shrink: 0;	
-	width: 56px;
-	height: 125px;
+	order: 2;
+	position: absolute;
+	top: 15px;
+	right: var(--page-gap);
+	& > .icon,
+	& > svg{
+		width: 42px;
+		height: 90px;
+	}		
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		order: 3;
+		position: static;
+		top: 0;
+		right: 0;
+		& > .icon,
+		& > svg{
+			width: 56px;
+			height: 125px;
+		}											
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

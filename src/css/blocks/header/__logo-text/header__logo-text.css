@@ -1,6 +1,23 @@
 
 .header__logo-text{
-	margin-left: 25px;
-	margin-right: 25px;
+	width: 100%;
+	order: 3;
+	text-align: center;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		width: auto;
+		order: 2;						
+		margin-left: 25px;
+		margin-right: 25px;
+		text-align: left;
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

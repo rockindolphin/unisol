@@ -1,9 +1,25 @@
 
 .header__logo-title{	
-	font-size: 42px;
+	font-size: 26px;
 	/*letter-spacing: 2px;*/
 	font-weight: var(--fw-bold);
 	font-style: italic;
 	text-transform: uppercase;
+	line-height: 1.2;
+	margin-bottom: 8px;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 42px;			
+		line-height: 1.4;
+		margin-bottom: 8px;
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 
