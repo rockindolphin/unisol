@@ -1,8 +1,0 @@
-{
-	"images": {
-		"webp": true,
-		"generateSpriteSvg": true,
-		"generateSpritePng": false,
-		"sizes": []
-	}
-}

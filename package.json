@@ -53,6 +53,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-easy-import": "^3.0.0",
     "pump": "^1.0.2",
+    "run-sequence": "^2.2.1",
     "stringify-object": "^3.2.2",
     "through2": "^2.0.3",
     "webpack": "^3.8.1",

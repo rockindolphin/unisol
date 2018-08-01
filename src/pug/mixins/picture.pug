@@ -11,7 +11,6 @@ mixin picture(opts)
 			data = opts.data ? opts.data : '',
 			folder = `${path.parse(opts.src).dir}/` || imgFolder;
 		function setQuality(quality){ images( srcFile, quality ); }
-		console.log(folder)
 	if opts.quality
 		#{setQuality(opts.quality)}
 	if config.images.sizes.length > 0 || config.images.webp

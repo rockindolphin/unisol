@@ -35,130 +35,196 @@ const gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	stringifyObject = require('stringify-object'),
 	autoprefixer = require('gulp-autoprefixer'),
+	runSequence = require('run-sequence'),
 	server = require('gulp-server-livereload');
 
+var config = {
+	src: {
+		html:  'src/pug/*.pug',
+		manifest: 'src/root/**/*',
+		js: 'src/js/*.js',
+		js_vendors: 'src/js/vendors/*.js',
+		fonts:  'src/fonts/**/*',
+		css: [
+			'src/css/vendors/normalize.css',
+			'src/css/style.css',
+			'src/css/blocks/**/*.css'
+		],
+		bootstrap: 'src/css/bootstrap.scss',
+		jssocials: 'src/css/vendors/jssocials/jssocials.scss',
+		svg_sprites: 'src/images/sprites/svg/*.svg',
+		images:  'src/images/**/*',
+	},
+	dist: {
+		html:  'dist',
+		manifest: 'dist',
+		js: 'dist/js',
+		js_vendors: 'dist/js/vendors',
+		fonts: 'dist/fonts',
+		css: 'dist/css',
+		bootstrap: 'dist/css',
+		jssocials: 'dist/css/vendors',
+		svg_sprites: 'dist/images',
+		images: 'dist/images',
+	},
+	watch: {
+		html:  'src/pug/*.pug',
+		manifest: 'src/root/**/*',
+		js: 'src/js/*.js',
+		js_vendors: 'src/js/vendors/*.js',
+		fonts:  'src/fonts/**/*',
+		css: 'src/css/blocks/**/*.css',
+		bootstrap: 'src/css/bootstrap-4.1.2/scss/**/*.scss',
+		jssocials: 'src/css/vendors/jssocials/**/*.scss',
+		svg_sprites: 'src/images/sprites/svg/*.svg',
+		images:  'src/images/**/*',
+	},
+	browsers: ['last 2 versions','ie >= 11','> 1%'],
+	images: {
+		'webp': true,
+		'generateSpriteSvg': true,
+	}
+};
 
-const src = path.resolve(__dirname, 'src');
-const dist = path.resolve(__dirname, 'dist');
-const config = require('./tasks_config.json');
-const browsers = ['last 2 versions','ie >= 11','> 1%'];
+function err_log(error) { 
+	console.log([ 
+		'', 
+		"----------ERROR MESSAGE START----------", 
+		("[" + error.name + " in " + error.plugin + "]"), 
+		error.message, 
+		"----------ERROR MESSAGE END----------", 
+		'' 
+	].join('\n')); 
+	notifier.notify({ title: 'Error', message: error.plugin }); 
+} 
 
-function err_log(error) {
-	console.log([
-		'',
-		"----------ERROR MESSAGE START----------",
-		("[" + error.name + " in " + error.plugin + "]"),
-		error.message,
-		"----------ERROR MESSAGE END----------",
-		''
-	].join('\n'));
-	//this.end();
-	notifier.notify({ title: 'Error', message: error.plugin });
+function html(src){
+	console.log('run html');
+	miss.pipe(
+		gulp.src(src),
+		pug({pretty: '\t', doctype: 'html', locals: {config: config, path: path}}),
+		/*w3cjs(), 
+		through2.obj(function(file, enc, cb){ 
+			cb(null, file); 
+			if (!file.w3cjs.success){ 
+				let w3c = file.w3cjs.messages[0]; 
+				err_log({ 
+					name: w3c.message, 
+					plugin:'w3cjs', 
+					message:`${w3c.extract}\r\n lastLine:${w3c.lastLine}\r\n lastColumn:${w3c.lastColumn}`
+				}); 
+			} 
+		}),*/
+		gulp.dest( config.dist.html ), 		
+		(err) => { 
+			if (err) return err_log(err); 
+		} 
+	)
 }
 
-function pugToHtml(filepath){
+function copyFiles(src, dest){
+	console.log('run copyFiles');
 	miss.pipe(
-		gulp.src( filepath ),
-		pug({pretty: '\t', doctype: 'html', locals: {config: config, path: path, gulp: gulp, rename: rename, del: del, images: images}}),
-		/*w3cjs(),
-		through2.obj(function(file, enc, cb){
-			cb(null, file);
-			if (!file.w3cjs.success){
-				let w3c = file.w3cjs.messages[0];
-				err_log({
-					name: w3c.message,
-					plugin:'w3cjs',
-					message:`${w3c.extract}\r\n lastLine:${w3c.lastLine}\r\n lastColumn:${w3c.lastColumn}`});
-			}
-		}),*/       
-		gulp.dest( path.resolve(dist) ), 
+		gulp.src(src),
+		gulp.dest( dest ), 		
+		(err) => { 
+			if (err) return err_log(err); 
+		} 
+	)	
+}
+
+function js(src){
+	console.log('run js');
+	miss.pipe(
+		gulp.src( src ),
+		sourcemaps.init(),
+		babel({
+			presets: ['env'],
+			plugins: ['es6-promise']			
+		}),
+		gulpif(
+			(args.prod || args.production) || args.browserify,
+			browserify({
+				insertGlobals : true,
+			})
+		),
+		gulpif(
+			(args.prod || args.production) || args.uglify,
+			uglify() 			
+		),
+		sourcemaps.write('/'),
+		gulp.dest( config.dist.js ),
 		(err) => {
 			if (err) return err_log(err);
 		}
-	);
+	)	
 }
 
-function fonts(filepath){
-	var fontFolder = path.normalize(filepath).split(path.sep).slice(-2,-1)[0];
-	if( fontFolder == '**' ){ fontFolder = ''};
-	gulp.src( filepath )
-	.pipe( gulp.dest( path.resolve(dist, 'fonts', fontFolder ) ) );
-}
-
-function site_root(filepath){
-	gulp.src( filepath )
-	.pipe( gulp.dest( dist ) );
-}
-
-function WebP(filepath, size, quality){
-	gulp.src( filepath )
-	/*.pipe(
+function css(){
+	miss.pipe(
+		gulp.src( config.src.css ),
+		sourcemaps.init(),
+		concat('style.css'),
+		postcss([
+			cssnext({
+				browsers: config.browsers,
+				features: {
+					customProperties: {
+						preserve: true
+					}
+				} 
+			}),
+		]),	
 		gulpif(
-			size, 
-			imageResize( {crop: false, upscale: false, width: size} )
-		)
-	)
-	.pipe(
+			(args.prod || args.production) || args.cleanCSS,
+			cleanCSS({compatibility: '*'})			
+		),		
+		sourcemaps.write('/'),
+		gulp.dest( config.dist.css ), 			
+		(err) => {
+			if (err) return err_log(err);
+		}	
+	);			
+}
+
+function bootstrap(){
+	miss.pipe(
+		gulp.src( config.src.bootstrap ),
+		sass(),
+		autoprefixer({
+			browsers: config.browsers
+		}), 
 		gulpif(
-			size, 
-			rename( (f_path) => { f_path.basename += `-${size}` } )
-		)
-	)*/
-	.pipe(webp({
-		quality: quality,
-		preset: 'photo',
-		method: 6
-	}))			
-	.pipe(gulp.dest( path.resolve(dist, 'images') ));						
+			(args.prod || args.production) || args.cleanCSS,
+			cleanCSS({compatibility: '*'})			
+		),		  
+		gulp.dest( config.dist.bootstrap ), 
+		(err) => {
+			if (err) return err_log(err);
+		}
+	);	
 }
 
-function jpegPngGif(filepath, size, quality){
-	gulp.src( filepath )
-	/*.pipe(
+function jssocials(){
+	miss.pipe(
+		gulp.src( config.src.jssocials ),
+		sass(),
+		autoprefixer({
+			browsers: config.browsers
+		}),   
 		gulpif(
-			size, 
-			imageResize( {crop: false, upscale: false, width: size} )
-		)
-	)
-	.pipe(
-		gulpif(
-			size, 
-			rename( (f_path) => { f_path.basename += `-${size}` } )
-		)
-	)
-	.pipe( imagemin([
-		imagemin.gifsicle({interlaced: true}),
-		imagemin.jpegtran({progressive: true}),
-		imagemin.optipng({optimizationLevel: 3}),
-		imageminMozjpeg({
-			quality: quality,
-			progressive: true,
-		})                 
-	]) )*/		
-	.pipe(gulp.dest( path.resolve(dist, 'images') ));
+			(args.prod || args.production) || args.cleanCSS,
+			cleanCSS({compatibility: '*'})			
+		),			 
+		gulp.dest( config.dist.jssocials ), 
+		(err) => {
+			if (err) return err_log(err);
+		}
+	);	
 }
 
-function images(filepath, quality){
-	quality = quality || 100;
-	var generateSizes = config.images.sizes.length > 0 ? true : false;
-
-	jpegPngGif(filepath, false, quality);				
-	config.images.webp ? WebP(filepath, false, quality) : false;
-	if( config.images.sizes.length > 0 ){
-		config.images.sizes.map( (size) => {
-			jpegPngGif(filepath, size, quality);				
-			config.images.webp ? WebP(filepath, size, quality) : false;
-		});
-	}
-}
-
-function images_svg(filepath){
-	gulp.src( filepath )		
-	.pipe(gulp.dest( path.resolve(dist, 'images') ));	
-}
-
-function sprite_svg(){
-	gulp.src( path.resolve(src, 'images', 'sprites', 'svg', '**', '*.svg') )
+function svg_sprites(){
+	gulp.src( config.src.svg_sprites )
 	.pipe( imagemin([
 		imagemin.svgo({
 			plugins: [
@@ -176,75 +242,95 @@ function sprite_svg(){
 			symbols: 'sprite_svg.html'
 		},											
 	}))
-	.pipe(gulp.dest( path.resolve(dist, 'images') ))
-	.pipe(gulp.dest( path.resolve(src, 'images') ));
+	.pipe( gulp.dest(config.dist.svg_sprites) )
+	.pipe( gulp.dest('src/images') );
 }
 
-function sprite_png(){
-	gulp.src( path.resolve(src, 'images', 'sprites', 'png', '**', '*.png') )
-	.pipe( imagemin([
-		imagemin.optipng({optimizationLevel: 3}),                  
-	]) )	
-	.pipe(spritesmith({
-		imgName: 'sprite.png',
-		cssName: '../css/sprite.css',
-		imgPath: '../images/sprite.png',
-		padding: 5,
-	}))
-	.pipe(gulp.dest( path.resolve(dist, 'images') ));	
-}
-
-function utilities(){
+function WebP(src, quality){
 	miss.pipe(
-		gulp.src( path.resolve(src, 'css', 'bootstrap.scss') ),
-		sass(),
-		autoprefixer({
-			browsers: browsers
-		}),    
-		gulp.dest( path.resolve(dist, 'css') ), 
+		gulp.src( src ),
+		webp({
+			quality: quality,
+			preset: 'photo',
+			method: 6
+		}),
+		gulp.dest( config.dist.images ),
 		(err) => {
 			if (err) return err_log(err);
-		}
-	);	
+		}		
+	)
 }
 
-function css_vendors(){
+function jpegPngGif(src, quality){
 	miss.pipe(
-		gulp.src( [path.resolve(src, 'css', 'vendors', '*.css'), '!src/css/vendors/normalize.css'] ),  
-		gulp.dest( path.resolve(dist, 'css', 'vendors') ), 
+		gulp.src( src ),
+		imagemin([
+			imagemin.gifsicle({interlaced: true}),
+			imagemin.jpegtran({progressive: true}),
+			imagemin.optipng({optimizationLevel: 0}),
+			imageminMozjpeg({
+				quality: quality,
+				progressive: true,
+			})                 
+		]),
+		gulp.dest( config.dist.images ),
 		(err) => {
 			if (err) return err_log(err);
-		}
-	);	
+		}				
+	)
 }
 
-function jssocials(){
-	miss.pipe(
-		gulp.src( path.resolve(src, 'css', 'vendors', 'jssocials', 'jssocials.scss') ),
-		sass(),
-		autoprefixer({
-			browsers: browsers
-		}),    
-		gulp.dest( path.resolve(dist, 'css', 'vendors') ), 
-		(err) => {
-			if (err) return err_log(err);
-		}
-	);	
+function images(src, quality){
+	quality = quality || 100;
+	jpegPngGif(src, quality);				
+	config.images.webp ? WebP(src, quality) : false;
 }
 
-gulp.task('utilities', function(){
-	utilities();
+gulp.task('images', [], () => {
+	images(config.src.images);
 });
 
-gulp.task('css_vendors', function(){
-	css_vendors();
+gulp.task('svg_sprites', [], () => {
+	svg_sprites();
 });
 
 gulp.task('jssocials', function(){
 	jssocials();
 });
 
-gulp.task('server', [], () => {
+gulp.task('bootstrap', function(){
+	bootstrap();
+});
+
+gulp.task('css', function(){
+	css();
+});
+
+gulp.task('fonts', () => {
+	copyFiles(config.src.fonts, config.dist.fonts);
+});
+
+gulp.task('js', () => {
+	js(config.src.js);
+});
+
+gulp.task('js_vendors', () => {
+	copyFiles(config.src.js_vendors, config.dist.js_vendors);
+});
+
+gulp.task('html', [], ()=>{
+	html(config.src.html);
+});
+
+gulp.task('manifest', [], ()=>{
+	copyFiles(config.src.manifest, config.dist.manifest);
+});
+
+gulp.task('clean', [], ()=>{
+	del.sync( ['./dist/**/*'] );
+});
+
+gulp.task('server', [], ()=>{
 	return gulp.src( dist )
 			.pipe( 
 				server({ 
@@ -253,260 +339,75 @@ gulp.task('server', [], () => {
 					open: false, 
 					directoryListing: false 
 				}) 
-			);                  
+			);
 });
 
-gulp.task('clear_dist', [], () => {
-	del.sync( ['./dist/**/*'] );
-});
+gulp.task('watch', function() { 
 
-gulp.task('pug', [], () => {
-	pugToHtml( [path.resolve(src, 'pug', '*.pug'), '!src/pug/mixins.pug'] );
-});
+	let html_watcher = chokidar.watch( config.watch.html, { ignoreInitial: true } ); 
+	html_watcher.on('change', (file) => { html(file) }); 
+	html_watcher.on('add', (file) => { html(file) }); 
 
-gulp.task('images', [], () => {
-	return images( [path.resolve(src, 'images', '**', '*.{jpg,png,gif}'), '!src/images/sprites{,/**}'] );
-});
+	let manifest_watcher = chokidar.watch( config.watch.manifest, { ignoreInitial: true } ); 
+	manifest_watcher.on('change', (file) => { copyFiles(file, config.dist.manifest) }); 
+	manifest_watcher.on('add', (file) => { copyFiles(file, config.dist.manifest) }); 
 
-gulp.task('images_svg', [], () => {
-	return images_svg( [path.resolve(src, 'images', '**', '*.svg'), '!src/images/sprites{,/**}'] );
-});
+	let js_watcher = chokidar.watch( config.watch.js, { ignoreInitial: true } ); 
+	js_watcher.on('change', (file) => { js(file) }); 
+	js_watcher.on('add', (file) => { js(file) }); 		
 
-gulp.task('sprite_svg', [], () => {
-	return sprite_svg();
-});
+	let js_vendors_watcher = chokidar.watch( config.watch.js_vendors, { ignoreInitial: true } ); 
+	js_vendors_watcher.on('change', (file) => { copyFiles(file, config.dist.js_vendors) }); 
+	js_vendors_watcher.on('add', (file) => { copyFiles(file, config.dist.js_vendors) }); 		
 
-gulp.task('sprite_png', [], () => {
-	return sprite_png();
-});
-
-
-gulp.task('css_bundle', function(){
-	var cssPath = path.resolve(dist, 'css');
-	miss.pipe(
-		gulp.src([
-			path.resolve(cssPath, 'vendors', '**', '*.css'),
-			path.resolve(cssPath, '*.css'),
-		]),
-		concat('bundle.css'),
-		cleanCSS({compatibility: '*'}),
-		gulp.dest( path.resolve(dist, 'css') ), 			
-		(err) => {
-			if (err) return err_log(err);
-		}	
-	);			
-});
-
-gulp.task('css', function(){
-	var cssPath = path.resolve(src, 'css');
-	miss.pipe(
-		gulp.src([
-			path.resolve(cssPath, 'vendors', 'normalize.css'),
-			path.resolve(cssPath, 'style.css'),
-			path.resolve(cssPath, 'blocks', '**', '*.css')
-		]),
-		sourcemaps.init(),
-		concat('style.css'),
-		postcss([
-			//require('postcss-easy-import'),
-			cssnext({
-				browsers: browsers,
-				features: {
-					customProperties: {
-						preserve: true
-					}
-				} 
-			}),
-		]),	
-		//cleanCSS({compatibility: '*'}),
-		sourcemaps.write('/'),
-		gulp.dest( path.resolve(dist, 'css') ), 			
-		(err) => {
-			if (err) return err_log(err);
-		}	
-	);			
-});
-
-gulp.task('fonts', function(){
-	fonts( path.resolve(src, 'fonts', '**', '*') );
-});
-
-gulp.task('site_root', function(){
-	site_root( path.resolve(src, 'root', '**', '*') );
-});
-
-gulp.task('js', () => {
-		miss.pipe(
-			gulp.src( [path.resolve(src, 'js', '*.js'), '!src/js/vendors{,/**}'] ),
-			sourcemaps.init(),
-			babel({
-				presets: ['env'],
-				plugins: ['es6-promise']			
-			}),
-			gulpif(
-				(args.prod || args.production) || args.browserify,
-				browserify({
-					insertGlobals : true,
-				})
-			),
-			gulpif(
-				(args.prod || args.production) || args.uglify,
-				uglify() 			
-			),
-			sourcemaps.write('/'),
-			gulp.dest( path.resolve(dist, 'js') ),
-			(err) => {
-				if (err) return err_log(err);
-			}
-		);
-	}
-);
-
-gulp.task('js_vendors', () => {
-		miss.pipe(
-			gulp.src( path.resolve(src, 'js', 'vendors', '**', '*.js') ),
-			gulp.dest( path.resolve(dist, 'js', 'vendors') ),
-			(err) => {
-				if (err) return err_log(err);
-			}
-		);
-	}
-);
-
-gulp.task('default', ['clear_dist', 'server'], () => {
-
-	gulp.start('images');
-	let images_watcher = chokidar.watch( path.resolve(src, 'images', '**', '*.{jpg,png,gif}'), { ignored: /sprites/, ignoreInitial: true } );
-	images_watcher.on('change', (filepath) => { images(filepath) });	
-	images_watcher.on('add', (filepath) => { images(filepath) });	
-
-	gulp.start('images_svg');
-	let images_svg_watcher = chokidar.watch( path.resolve(src, 'images', '**', '*.svg'), { ignoreInitial: true } );
-	images_svg_watcher.on('change', (filepath) => { images_svg(filepath) });	
-	images_svg_watcher.on('add', (filepath) => { images_svg(filepath) });
-
-	gulp.start('css');
-	let css_watcher = chokidar.watch( path.resolve(src, 'css', '**', '*.css'), {ignoreInitial: true} );
-	css_watcher.on('change', () => { gulp.start('css') });	
-	css_watcher.on('add', () => { gulp.start('css') });	
-
-	gulp.start('fonts');
-	let fonts_watcher = chokidar.watch( path.resolve(src, 'fonts', '**', '*'), {ignoreInitial: true} ); 
-	fonts_watcher.on('change', (filepath) => { fonts(filepath) });	
-	fonts_watcher.on('add', (filepath) => { fonts(filepath) });		
-
-	gulp.start('site_root');
-	let root_watcher = chokidar.watch( path.resolve(src, 'root', '**', '*'), {ignoreInitial: true} ); 
-	root_watcher.on('change', (filepath) => { site_root(filepath) });	
-	root_watcher.on('add', (filepath) => { site_root(filepath) });		
-
-	gulp.start('js');
-	let js_watcher = chokidar.watch( path.resolve(src, 'js', '**', '*.js'), {ignored: /vendors/, ignoreInitial: true} ); 
-	js_watcher.on('change', () => { gulp.start('js') });	
-	js_watcher.on('add', () => { gulp.start('js') });
-
-	gulp.start('js_vendors');
-	let js_vendors_watcher = chokidar.watch( path.resolve(src, 'js', 'vendors', '**', '*.js'), {ignoreInitial: true} ); 
-	js_vendors_watcher.on('change', () => { gulp.start('js_vendors') });	
-	js_vendors_watcher.on('add', () => { gulp.start('js_vendors') });
-
-	if( config.images.generateSpriteSvg ){
-		gulp.start('sprite_svg');
-		let sprite_svg_watcher = chokidar.watch( path.resolve(src, 'images', 'sprites', 'svg', '**', '*'), {ignoreInitial: true} ); 
-		sprite_svg_watcher.on('change', () => { sprite_svg() });	
-		sprite_svg_watcher.on('add', () => { sprite_svg() });		
-	}
-
-	if( config.images.generateSpritePng ){
-		gulp.start('sprite_png');
-		let sprite_png_watcher = chokidar.watch( path.resolve(src, 'images', 'sprites', 'png', '**', '*'), {ignoreInitial: true} ); 
-		sprite_png_watcher.on('change', () => { sprite_png() });	
-		sprite_png_watcher.on('add', () => { sprite_png() });	
-	}
-
-	gulp.start('pug');
-	let pug_watcher = chokidar.watch( path.resolve(src, 'pug', '*.pug'), { ignored: /mixins\.pug/, ignoreInitial: true } );
-	pug_watcher.on('change', (filepath) => { pugToHtml(filepath) });
-	pug_watcher.on('add', (filepath) => { pugToHtml(filepath) });	
-
-	gulp.start('utilities');
-	let utilities_watcher = chokidar.watch( path.resolve(src, 'css', 'bootstrap-4.1.2', 'scss', '**', '*') );
-	utilities_watcher.on('change', (filepath) => { utilities() });
-	utilities_watcher.on('add', (filepath) => { utilities() });
-
-	gulp.start('css_vendors');
-	let css_vendors_watcher = chokidar.watch( path.resolve(src, 'css', 'vendors', '*.css'), { ignored: /normalize\.css/, ignoreInitial: true } );
-	css_vendors_watcher.on('change', (filepath) => { css_vendors() });
-	css_vendors_watcher.on('add', (filepath) => { css_vendors() });		
-	
-	gulp.start('jssocials');
-	let jssocials_watcher = chokidar.watch( path.resolve(src, 'css', 'vendors', 'jssocials', '**', '*'), { ignoreInitial: true } );
-	jssocials_watcher.on('change', (filepath) => { jssocials() });
-	jssocials_watcher.on('add', (filepath) => { jssocials() });		
-
-});
-
-gulp.task('create_files', function(){
-	mkdirp('dist', (err)=>{});	
-	mkdirp('src', (err)=>{});	
-	mkdirp('src/images', (err)=>{});	
-	mkdirp('src/images/sprites', (err)=>{});	
-	mkdirp('src/images/sprites/png', (err)=>{});	
-	mkdirp('src/images/sprites/svg', (err)=>{});	
-	mkdirp('src/fonts', (err)=>{});	
-	mkdirp('src/pug', (err)=>{});	
-	mkdirp('src/js', (err)=>{});	
-	mkdirp('src/css', (err)=>{});	
-	mkdirp('src/css/blocks', (err)=>{});	
-	file('style.css', `@import 'blocks/blocks.css';\r\n`).pipe(gulp.dest('src/css'));
-	file('blocks.css', '').pipe(gulp.dest('src/css/blocks'));
-	file('items.json','[]').pipe(gulp.dest('src/css/blocks'));
-});
-
-
-/* bem task */
-
-const 	BEM = require('./bem.js');
-gulp.task('bem', function() {
-	new Promise((resolve,reject)=>{
-		gulp.src( path.resolve(src, 'css', 'blocks', 'items.json') )
-		.pipe(insert.transform(function(contents, file) {
-			resolve( JSON.parse(contents) );
-			return contents;
-		}));
-	}).then((items)=>{
-		if( items.length === 0 ){ err_log({message:'empty items.json',plugin: 'bem'}) }
-		BEM(args, items);
-		return items;
-	});		
-});
-
-
-gulp.task('restore_items_from_files', function(){
-	let items = [];
-	dl.list( 'src/css/blocks/' , true, function(blocks) {
-		blocks.map((block)=>{
-			var b = {name:block, elements:[], modificators:[]};
-			dl.list( `src/css/blocks/${block}/` , true, function(block_childs) {
-				block_childs.map((block_child)=>{
-					var em = block_child.match(/^__(.*)/);
-					var mm = block_child.match(/^--(.*)/);
-					if( em ){ 
-						var el = {name:em[1],modificators:[]};
-						dl.list( `src/css/blocks/${block}/${em[0]}/` , true, function(element_mods) {
-							element_mods.map((element_mod)=>{
-								el.modificators.push(element_mod.slice(2));
-							});	
-						});
-						b.elements.push(el); 
-					}
-					if( mm ){ 
-						b.modificators.push(mm[1]) 
-					}
-				});
-			});
-			items.push(b);
-		});
+	let fonts_watcher = chokidar.watch( config.watch.fonts, { ignoreInitial: true } ); 
+	fonts_watcher.on('change', (file) => { 
+		var folder = path.parse(file).dir.split(path.sep).pop();
+		copyFiles(file, `${config.dist.fonts}${path.sep}${folder}`); 
+	}); 
+	fonts_watcher.on('add', (file) => { 
+		var folder = path.parse(file).dir.split(path.sep).pop();
+		copyFiles(file, `${config.dist.fonts}${path.sep}${folder}`); 
 	});
-	file('items.json',JSON.stringify(items)).pipe(gulp.dest( path.resolve(src,'css','blocks') ));
+
+	let css_watcher = chokidar.watch( config.watch.css, { ignoreInitial: true } ); 
+	css_watcher.on('change', (file) => { css() }); 
+	css_watcher.on('add', (file) => { css() });
+
+	let bootstrap_watcher = chokidar.watch( config.watch.bootstrap, {ignoreInitial: true} );
+	bootstrap_watcher.on('change', (file) => { bootstrap() });
+	bootstrap_watcher.on('add', (file) => { bootstrap() });	
+
+	let jssocials_watcher = chokidar.watch( config.watch.jssocials, {ignoreInitial: true} );
+	jssocials_watcher.on('change', (file) => { jssocials() });
+	jssocials_watcher.on('add', (file) => { jssocials() });
+
+	let svg_sprites_watcher = chokidar.watch( config.watch.svg_sprites, {ignoreInitial: true} ); 
+	svg_sprites_watcher.on('change', () => { svg_sprites() });	
+	svg_sprites_watcher.on('add', () => { svg_sprites() });	
+
+	let images_watcher = chokidar.watch( config.watch.images, { ignored: /sprites/, ignoreInitial: true } );
+	images_watcher.on('change', (file) => { images(file) });	
+	images_watcher.on('add', (file) => { images(file) });	
+
 });
+
+gulp.task( 'build', ['clean'], function(){
+	runSequence(
+		'html',
+		'manifest',
+		'js',
+		'fonts',
+		'css',
+		'bootstrap',
+		'jssocials',
+		'svg_sprites',
+		'images',
+	)
+});
+
+gulp.task('default', [ 
+	'build', 
+	'server', 
+	'watch' 
+]);
