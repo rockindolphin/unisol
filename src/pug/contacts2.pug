@@ -45,7 +45,7 @@ html(lang="ru")
 											input.form-control.w-auto(type="text")
 									.row.mw-none.mb-5
 										.col-12
-											button.btn.btn-link.w-auto.p-0.link--show-more.font--serif(type="submit") Отправить сообщение
+											button.btn.btn-link.link--submit.p-0(type="submit") Отправить сообщение
 								hr
 								p
 									| Следить за действиями нашего профсоюза, а также знакомиться с последними новостями можно в социальных сетях:
@@ -57,7 +57,7 @@ html(lang="ru")
 									a.socials__icon--round.mr-2(href="#")
 										+icon('telegram-round')
 						aside.page__main-aside
-							a.block__title.fs-3.mt-0.mb-3(href="#") Новости
+							a.block__title.mt-0.mb-3(href="#") Новости
 							+articles--lg([7, 14, 6], 'mb-5')
 			include ./partials/footer.pug
 		+scripts()

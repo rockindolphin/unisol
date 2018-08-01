@@ -1,7 +1,7 @@
 mixin banner-first-aid(userClass)
 	- uc = {class: userClass || ''};
 	.banner.banner--first-aid()&attributes(uc)
-		a.banner__title.fs-3.color--red.mt-0.mb-2(href="#") «Первая помощь»
+		a.banner__title.color--red.mt-0.mb-2(href="#") «Первая помощь»
 		ul.list.list--dots.my-0
 			li.list__item 
 				a.link(href="#") Как учредить первичную профсоюзную организацию?
@@ -14,7 +14,7 @@ mixin banner-first-aid(userClass)
 mixin banner-structure(userClass)
 	- uc = {class: userClass || ''};
 	.banner.banner--structure()&attributes(uc)
-		a.banner__title.fs-3.mt-0.mb-2(href="#") Первичные организации
+		a.banner__title.mt-0.mb-2(href="#") Первичные организации
 		ul.list.list--chewrons.my-0
 			li.list__item 
 				b.font--serif.fs-7.mb-2 Группы в университетах
@@ -25,3 +25,11 @@ mixin banner-join(userClass)
 	a.banner.banner--join.pt-7(href="#")&attributes(uc)
 		h3.banner__title.mt-7.mb-0 Вступить в профсоюз
 		p.mt-0 Присоединяйтесь к нам!
+mixin banner-about(userClass)
+	- uc = {class: userClass || ''};
+	.banner.banner--about.pt-0()&attributes(uc)
+		h3.banner__title.mt-0 Об организации
+		p.mb-0
+			| Первичная организация профсоюза «Университетская солидарность» действует в МГУ имени М. В. Ломоносова с ноября 2013 года.
+		p.mt-0
+			| Она объединяет преподавателей и сотрудников МГУ, которые видят необходимость создания в университете нового, не казенного, а самоуправляемого, независимого профсоюза, строящегося снизу и реально защищающего права и интересы работников. 

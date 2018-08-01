@@ -6,5 +6,18 @@
 	margin-top: 0;
 	display: block;
 	text-decoration: none;
+	font-size: 24px;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 28px;							
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

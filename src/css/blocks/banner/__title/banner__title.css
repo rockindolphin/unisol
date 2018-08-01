@@ -3,6 +3,20 @@
 	font-family: PTSans;
 	font-weight: var(--fw-bold);
 	display: block;
-	text-decoration: none;	
+	text-decoration: none;
+	font-size: 24px;
+	line-height: 1.2;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 28px;
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

@@ -1,11 +1,6 @@
 
-.article__title{
-	display: block;
-	font-weight: var(--fw-bold);
-	text-decoration: none;
+.page__title{
 	font-size: 24px;
-	line-height: 1.2;
-	margin-bottom: 14px;
 	@media (--sm-viewport){
 										
 	}	
@@ -13,10 +8,10 @@
 										
 	}	
 	@media (--lg-viewport){
-		font-size: 28px;
+		font-size: 28px;									
 	}	
 	@media (--xl-viewport){
 										
-	}		
+	}
 }
 

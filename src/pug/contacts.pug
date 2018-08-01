@@ -35,7 +35,7 @@ html(lang="ru")
 										a(href="tel:+79152124007") +7 915 212 40 07
 								p
 									| Интересующие вопросы также можно задать сопредседателям:
-								.d-flex.mb-5
+								.d-flex.mb-5.flex-column.flex-sm-row.align-items-start
 									img.mr-5(src="images/pages/person-1.jpg", alt="person-1")
 									.d-block
 										b.d-block.fs-6.my-1 Кудюкин Павел Михайлович
@@ -43,7 +43,7 @@ html(lang="ru")
 											a(href="mailto:pavkudyukin@gmail.com") pavkudyukin@gmail.com
 											span ; 
 											a(href="tel:+79161801328") +7 916 180 13 28
-								.d-flex.mb-5
+								.d-flex.mb-5.flex-column.flex-sm-row.align-items-start
 									img.mr-5(src="images/pages/person-2.jpg", alt="person-2")
 									.d-block
 										b.d-block.fs-6.my-1 Тиллес Ванда Феликсовна
@@ -51,7 +51,7 @@ html(lang="ru")
 											a(href="mailto:wanda_tilles@rambler.ru") wanda_tilles@rambler.ru
 											span ; 
 											a(href="tel:+79125136352") +7 912 513 63 52
-								.d-flex.mb-5
+								.d-flex.mb-5.flex-column.flex-sm-row.align-items-start
 									img.mr-5(src="images/pages/person-3.jpg", alt="person-3")
 									.d-block
 										b.d-block.fs-6.my-1 Арутюнов Андроник Арамович
@@ -72,7 +72,7 @@ html(lang="ru")
 							+banner-structure('mb-5')
 							+banner-join('mb-5')
 							.block--bordered
-								a.block__title.fs-3.mt-0.mb-3(href=around_page) Вокруг университета
+								a.block__title.mt-0.mb-3(href=around_page) Вокруг университета
 								+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
 			include ./partials/partners.pug
 			include ./partials/footer.pug

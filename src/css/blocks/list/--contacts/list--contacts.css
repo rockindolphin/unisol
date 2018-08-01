@@ -1,20 +1,20 @@
 
 .list--contacts{
 	& > li{
-		font-size: 20px;
+		font-size: 18px;
 		font-weight: var(--fw-bold);
 		font-family: PTSans;
 		& > span{
-			font-size: 20px;
+			font-size: 18px;
 			font-weight: var(--fw-bold);
 			font-family: PTSans;
 		}
 		& > *{
 			font-family: PTSerif;
 			font-weight: normal;
-			font-size: 18px;
-			margin-top: 18px;
-			margin-bottom: 18px;
+			font-size: 16px;
+			margin-top: 10px;
+			margin-bottom: 10px;
 		}
 		& ul {
 			padding-left: 0;
@@ -23,5 +23,27 @@
 			}
 		}
 	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		& > li{
+			font-size: 20px;
+			& > span{
+				font-size: 20px;
+			}
+			& > *{
+				font-size: 18px;
+				margin-top: 18px;
+				margin-bottom: 18px;
+			}
+		}
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

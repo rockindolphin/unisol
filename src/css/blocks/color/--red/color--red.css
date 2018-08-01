@@ -1,5 +1,5 @@
 
 .color--red{
-	color: var(--red_b01);
+	color: var(--red_b01) !important;
 }
 

@@ -1,0 +1,22 @@
+
+.banner--about{
+	background-color: transparent;
+	font-size: 14px;
+	font-family: PTSerif;
+	& .banner__title{
+
+	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 16px;								
+	}	
+	@media (--xl-viewport){
+										
+	}	
+}
+

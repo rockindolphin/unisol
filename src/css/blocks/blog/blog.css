@@ -1,8 +1,8 @@
 
 .blog{
 	width: 100%;
-	font-size: 18px;
-	line-height: 1.25;
+	font-size: 16px;
+	line-height: 1.2;
 	margin-bottom: 15px;
 	& i,
 	& em{
@@ -40,7 +40,7 @@
 	& blockquote{
 		margin-left: 0;
 		margin-right: 0;
-		padding-left: 28px;
+		padding-left: 0px;
 		font-style: italic;
 	}
 	& :--all-headers{
@@ -49,6 +49,22 @@
 	& form{
 		font-family: PTSans;
 		font-size: 16px;
+	}
+	@media (--sm-viewport){
+										
 	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 18px;
+		line-height: 1.25;
+		& blockquote{
+			padding-left: 28px;
+		}		
+	}	
+	@media (--xl-viewport){
+										
+	}		
 }
 

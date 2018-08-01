@@ -1,3 +1,3 @@
 mixin page_title(text, mbClass, userClass)
 	- var uc = {class:`mt-0 ${mbClass || 'mb-5'} ${userClass || ''}` };
-	h3()&attributes(uc)=text
+	h3.page__title()&attributes(uc)=text

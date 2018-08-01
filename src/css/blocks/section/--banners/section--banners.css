@@ -4,7 +4,6 @@
 	& > .page__wrapper{
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		padding-top: var(--page-gap);
 		padding-bottom: var(--page-gap);
 	}
@@ -23,7 +22,9 @@
 			padding-bottom: 40px;			
 		}
 		& .banner{
-			margin-bottom: 0;		
+			margin-bottom: 0;
+			margin-left: 0;		
+			margin-right: 0;				
 		}
 	}	
 	@media (--xl-viewport){
