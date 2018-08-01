@@ -1,0 +1,33 @@
+include ./mixins/mixins.pug
+
+doctype html
+html(lang="ru")
+	+head()
+	body.page
+		include ../images/sprite.svg
+		.page__body
+			include ./partials/header.pug
+			main.page__main
+				section.section.section--articles
+					.page__wrapper
+						.page__main-content
+							.article__wrapper-3
+								+articles--lg([2, 5, 7], 'mb-1')
+				section.section.section--banners
+					.page__wrapper
+						.banner.mw-none.mr-3.bg-transparent.pt-0
+							h3.mt-0 Об организации
+							.font--serif.fs-6
+								p.mb-0
+									| Первичная организация профсоюза «Университетская солидарность» действует в МГУ имени М. В. Ломоносова с ноября 2013 года.
+								p.mt-0
+									| Она объединяет преподавателей и сотрудников МГУ, которые видят необходимость создания в университете нового, не казенного, а самоуправляемого, независимого профсоюза, строящегося снизу и реально защищающего права и интересы работников.  
+						+banner-join()
+				section.section.section--articles
+					.page__wrapper
+						.page__main-content
+							.article__wrapper-3
+								+articles--lg([13, 14, 6], 'mb-5')
+							+showmore()
+			include ./partials/footer.pug
+		+scripts()
