@@ -1,7 +1,7 @@
 
 .article--xl{
 	& .article__title{
-		font-size: 28px;
+		font-size: 20px;
 		margin-bottom: 0px;
 	}
 	& .article__pic{
@@ -9,7 +9,7 @@
 		&::before{
 			content: '';
 			display: block;
-			padding-top: 56%;
+			padding-top: 51%;
 		}		
 		&::after{
 			content: '';
@@ -25,7 +25,10 @@
 		}
 	}
 	& .article__pic-wrapper{
-		padding: 22px 18px;
+		padding-top: 16px;
+		padding-bottom: 16px;
+		padding-left: 18px;
+		padding-right: 18px;
 	}
 	& .article__categories{
 		margin-bottom: 10px;
@@ -33,5 +36,28 @@
 	& .categories__item{
 		padding:  4px 6px;
 	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		& .article__title{
+			font-size: 28px;
+		}
+		& .article__pic-wrapper{
+			padding-top: 22px;
+			padding-bottom: 22px;
+		}
+		& .article__pic{
+			&::before{
+				padding-top: 56%;
+			}
+		}		
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

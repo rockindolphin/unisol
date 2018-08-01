@@ -3,6 +3,22 @@
 	margin-left: auto;
 	font-family: PTSans;
 	font-size: 14px;
-	text-align: right;
+	width: 100%;
+	order: 3;
+	
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		width: auto;									
+		order: 2;
+		text-align: right;
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

@@ -1,10 +1,22 @@
 
 .page__main-aside{
 	width: 100%;
-	max-width: var(--aside-max);
 	flex-shrink: 0;
+	margin-bottom: 30px;
 	& > .block--bordered{
 		padding: 20px 20px;
 	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		max-width: var(--aside-max);
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

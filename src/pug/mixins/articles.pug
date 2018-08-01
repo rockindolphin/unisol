@@ -263,7 +263,7 @@
 		return overflow ? resp.join(' ') + '...' : resp.join(' ');
 	} 
 
-mixin article--full(id)
+mixin article--blog(id)
 	- var article = articles.filter(item => item.id === id);
 	if article.length > 0
 		- 

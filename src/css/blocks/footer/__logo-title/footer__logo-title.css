@@ -1,11 +1,25 @@
 
 .footer__logo-title{
-	font-size: 28px;
+	font-size: 19px;
 	font-weight: var(--fw-bold);
 	font-style: italic;
 	color: color(#ffffff alpha(60%));
 	/*letter-spacing: 1.4px;*/
 	text-transform: uppercase;
-	margin-bottom: 8px;
+	margin-bottom: 14px;
+	word-break: normal;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 28px;
+		margin-bottom: 8px;							
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

@@ -2,8 +2,24 @@
 .partner{
 	display: block;
 	text-decoration: none;
+	flex-shrink: 0;
+	flex-basis: 100%;
+	text-align: center;
 	& > img{
-		width: 100%;
+		max-width: 145px;
 	}
+	@media (--sm-viewport){
+		flex-basis: 50%;						
+	}	
+	@media (--md-viewport){
+		flex-basis: 33%;							
+	}	
+	@media (--lg-viewport){
+		flex-basis: 20%;
+	}	
+	@media (--xl-viewport){
+		flex-basis: 0;
+		margin-bottom: 0;
+	}	
 }
 

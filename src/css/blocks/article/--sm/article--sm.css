@@ -7,5 +7,17 @@
 	& .article__info{
 		margin-bottom: 12px;
 	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

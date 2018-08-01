@@ -3,11 +3,31 @@
 	background-color: var(--gray_faf);
 	& > .page__wrapper{
 		display: flex;
-		flex-direction: row;
-		align-items: stretch;
-		justify-content: space-between;
-		padding-top: 40px;
-		padding-bottom: 40px;
+		flex-direction: column;
+		align-items: center;
+		padding-top: var(--page-gap);
+		padding-bottom: var(--page-gap);
 	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		& > .page__wrapper{
+			flex-direction: row;
+			align-items: stretch;
+			justify-content: space-between;
+			padding-top: 40px;
+			padding-bottom: 40px;			
+		}
+		& .banner{
+			margin-bottom: 0;		
+		}
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

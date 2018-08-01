@@ -16,8 +16,23 @@
 	}
 	& .list__item{
 		&:not(:last-of-type){
-			margin-right: 38px;		
+			margin-right: 25px;		
 		}
 	}
+	@media (--sm-viewport){
+		& .list__item{
+			&:not(:last-of-type){
+				margin-right: 38px;		
+			}
+		}								
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+	}	
+	@media (--xl-viewport){
+									
+	}	
 }
 

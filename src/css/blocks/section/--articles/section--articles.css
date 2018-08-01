@@ -2,11 +2,25 @@
 .section--articles{
 	& > .page__wrapper{
 		display: flex;
-		flex-direction: row;
-		align-items: stretch;
-		justify-content: space-between;
+		flex-direction: column;
 		padding-top: 35px;	
 		padding-bottom: 35px;	
 	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		& > .page__wrapper{
+			flex-direction: row;
+			align-items: stretch;
+			justify-content: space-between;				
+		}	
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 

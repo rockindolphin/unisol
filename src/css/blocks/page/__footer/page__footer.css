@@ -10,7 +10,7 @@
 		justify-content: flex-start;
 		flex-wrap: wrap;
 		padding-top: 40px;
-		padding-bottom: 60px;
+		padding-bottom: 40px;
 	}
 	@media (--sm-viewport){
 										
@@ -19,7 +19,10 @@
 										
 	}	
 	@media (--lg-viewport){
-										
+		& > .page__wrapper{
+			padding-top: 40px;
+			padding-bottom: 60px;
+		}										
 	}	
 	@media (--xl-viewport){
 										

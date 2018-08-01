@@ -3,8 +3,31 @@
 	width: 100%;
 	font-size: 14px;
 	font-family: PTSans;
-	max-width: 90ch;
-	padding-top: 20px;
+	padding-top: 12px;
+	padding-bottom: 12px;
 	color: color(#ffffff alpha(30%));
-	line-height: 1;
+	line-height: 1.2;
+	order: 2;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	border-color: color(#ffffff alpha(30%));
+	margin-bottom: 12px;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		line-height: 1;
+		order: 3;
+		padding-top: 20px;
+		padding-bottom: 0;							
+		margin-bottom: 0;
+		border: none;
+		max-width: 90ch;
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }

@@ -4,5 +4,18 @@
 	color: var(--red_b01);
 	line-height: 1;
 	/*letter-spacing: 0.2px;*/
+	font-size: 12px;							
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 16px;							
+	}	
+	@media (--xl-viewport){
+										
+	}
 }
 

@@ -6,6 +6,18 @@
 	& .article__title{
 		font-size: 16px;
 		margin-bottom: 4px;
+	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+
+	}	
+	@media (--xl-viewport){
+										
 	}	
 }
 

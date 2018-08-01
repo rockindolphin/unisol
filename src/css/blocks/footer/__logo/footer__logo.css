@@ -4,5 +4,21 @@
 	flex-direction: row;
 	align-items: flex-end;
 	justify-content: flex-start;
+	width: 100%;
+	order: 1;
+	margin-bottom: 30px;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		width: auto;
+		margin-bottom: 0;						
+	}	
+	@media (--xl-viewport){
+										
+	}	
 }
 
