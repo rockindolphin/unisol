@@ -22,11 +22,11 @@ header.page__header
 						li.list__item.list__item--hidden
 							a.link(href="#", aria-label="toggle russian")
 								+icon('russia')
-			form.header__search(v-bind:class="{ 'header__search--active': isActive }")
-				input.control__field(type="text", placeholder="Поиск по сайту" @focus="onFocus", @blur="onBlur")
+			form.header__search(v-bind:class="{ 'header__search--active': searchActive }")
+				input.control__field(type="text", placeholder="Поиск по сайту" @focus="activateSearch", @blur="deactivateSearch")
 				button.btn.btn--icon(type="submit")
 					+icon('search')
-			button.header__menu-open(aria-label="open menu")
+			button.header__menu-open(aria-label="open menu", @click="openMenu")
 				+icon('menu')
 	a.header__logo(href=href=index_page)
 		.page__wrapper
@@ -39,8 +39,10 @@ header.page__header
 					| Официальный сайт Межрегионального профсоюза работников высшей школы
 			.header__logo-right
 				include ../../images/logo-right.svg
-	nav.header__menu
+	nav.header__menu.custom-scroll(v-bind:class="{ 'header__menu--open': menuOpen }")
 		.page__wrapper
+			button.header__menu-close(aria-label="close menu", @click="closeMenu")
+				+icon('menu-close')
 			ul.list
 				//-.current-menu-item
 				li.list__item

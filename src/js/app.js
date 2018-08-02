@@ -26,20 +26,11 @@
 			$(this).hide();
 		});
 
-		
-		var headerSearch = new Vue({
-			el: '.header__search',
-			data: {
-				isActive: false,
-			},
-			methods: {
-				onFocus: function(){
-					this.isActive = true;
-				},
-				onBlur: function(){
-					this.isActive = false;
-				}
-			}
+		//custom scrollbar
+		$('.custom-scroll').each(function(){
+			var self = this;
+			var ps = new PerfectScrollbar(this, {wheelPropagation: true});
+			$(this).data('ps', ps);
 		});
 
 		//socials
@@ -67,11 +58,40 @@
 			shareIn: 'popup',
 		});	
 
+		//sliders
 		var sliderPartners = new Swiper('.slider--partners', {
 			direction: 'horizontal',
 			spaceBetween: 0,
 			slidesPerView: 'auto'
-		});					
+		});
+
+		//Vue
+		var page = new Vue({
+			el: '.page__body',
+			data: {
+				menuOpen: false,
+				searchActive: false
+			},
+			methods: {
+				activateSearch: function(){
+					this.searchActive = true;
+				},
+				deactivateSearch: function(){
+					this.searchActive = false;
+				},
+				openMenu: function(){
+					this.menuOpen = true;
+				},
+				closeMenu: function(){
+					this.menuOpen = false;
+				}
+			},
+			computed: {
+				noScroll: function () {
+					return this.menuOpen;
+				}				
+			}
+		});						
 
 	});	
 

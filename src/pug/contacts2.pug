@@ -40,7 +40,8 @@ html(lang="ru")
 										.col-12.mb-2
 											| Введите код на изображении
 										.col-12.mb-3
-											img(src="images/pages/capcha.jpg", alt="capcha")
+											//-img(src="images/pages/capcha.jpg", alt="capcha")
+											+picture({'src': "images/pages/capcha.jpg", 'alt':"capcha"})
 										.col-12.mb-2
 											input.form-control.w-auto(type="text")
 									.row.mw-none.mb-5

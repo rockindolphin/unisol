@@ -16,6 +16,10 @@
 			<path fill="currentColor" d="M0 0h24v3H0zm0 10h24v3H0zm0 10h24v3H0z"></path>
 		</symbol>
 	
+		<symbol id="menu-close" viewBox="0 0 20 21">
+			<path fill="currentColor" d="M.454 17.925L17.424.954l2.122 2.121-16.97 16.97z"></path><path fill="currentColor" d="M2.575.954l16.97 16.97-2.12 2.122L.453 3.076z"></path>
+		</symbol>
+	
 		<symbol id="russia" viewBox="0 0 9 6">
 			<path fill="#D52B1E" d="M0 0h9v6H0z"></path><path fill="#0039A6" d="M0 0h9v4H0z"></path><path fill="#FFF" d="M0 0h9v2H0z"></path>
 		</symbol>

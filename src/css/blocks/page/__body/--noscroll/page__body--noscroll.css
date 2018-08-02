@@ -1,0 +1,7 @@
+
+.page__body--noscroll{
+	height: 100vh !important;
+	padding-right: var(--scrollbar-width);
+	overflow: hidden !important;
+}
+

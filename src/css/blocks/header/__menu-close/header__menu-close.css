@@ -1,0 +1,36 @@
+
+.header__menu-close{
+	background: var(--white);
+	border: none;
+	box-shadow: none;
+	color: var(--black);
+	outline: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 30px;
+	right: var(--page-gap);
+	z-index: 2;
+	&:hover{
+		color: var(--red_b01);
+	}
+	& > .icon,
+	& > svg{
+		width: 32px;
+		height: 32px;
+	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		display: none;		
+	}	
+	@media (--xl-viewport){
+										
+	}
+}
+

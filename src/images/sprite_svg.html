@@ -172,6 +172,10 @@
 			<path fill="currentColor" d="M0 0h24v3H0zm0 10h24v3H0zm0 10h24v3H0z"></path>
 		</symbol>
 	
+		<symbol id="menu-close" viewBox="0 0 20 21">
+			<path fill="currentColor" d="M.454 17.925L17.424.954l2.122 2.121-16.97 16.97z"></path><path fill="currentColor" d="M2.575.954l16.97 16.97-2.12 2.122L.453 3.076z"></path>
+		</symbol>
+	
 		<symbol id="russia" viewBox="0 0 9 6">
 			<path fill="#D52B1E" d="M0 0h9v6H0z"></path><path fill="#0039A6" d="M0 0h9v4H0z"></path><path fill="#FFF" d="M0 0h9v2H0z"></path>
 		</symbol>
@@ -203,7 +207,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(11 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(12 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="sprite.svg">sprite.svg</a></li>
@@ -286,6 +290,23 @@
             <button onclick="invertBackground('icon-box-menu')">Invert Background</button>
             <div class="snippet-popover" id="snippet-menu">
                 <pre><code>&lt;svg class=&quot;icon menu&quot;&gt;&lt;use xlink:href=&quot;#menu&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="menu-close">
+            <div class="icon-box" id="icon-box-menu-close">
+                <svg class="icon menu-close">
+                    <use xlink:href="#menu-close" />
+                </svg>
+            </div>
+            <h2>menu-close</h2>
+            <button onclick="showPopover('snippet-menu-close')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-menu-close')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-menu-close">
+                <pre><code>&lt;svg class=&quot;icon menu-close&quot;&gt;&lt;use xlink:href=&quot;#menu-close&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>

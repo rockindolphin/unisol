@@ -5,7 +5,7 @@ html(lang="ru")
 	+head()
 	body.page
 		include ../images/sprite.svg
-		.page__body
+		.page__body(v-bind:class="{ 'page__body--noscroll': noScroll }")
 			include ./partials/header.pug
 			main.page__main
 				section.section.section--articles
