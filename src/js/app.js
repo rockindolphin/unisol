@@ -58,19 +58,13 @@
 			shareIn: 'popup',
 		});	
 
-		//sliders
-		var sliderPartners = new Swiper('.slider--partners', {
-			direction: 'horizontal',
-			spaceBetween: 0,
-			slidesPerView: 'auto'
-		});
-
 		//Vue
 		var page = new Vue({
 			el: '.page__body',
 			data: {
 				menuOpen: false,
-				searchActive: false
+				searchActive: false,
+				languages: 'ru',
 			},
 			methods: {
 				activateSearch: function(){
@@ -84,6 +78,11 @@
 				},
 				closeMenu: function(){
 					this.menuOpen = false;
+				},
+				toggleLanguage: function(lang, evt){
+					this.language = lang;
+					$('.header__language .list__item').addClass('list__item--hidden');
+					$(evt.target).closest('.list__item').removeClass('list__item--hidden');
 				}
 			},
 			computed: {
@@ -92,6 +91,13 @@
 				}				
 			}
 		});						
+
+		//sliders
+		var sliderPartners = new Swiper('.slider--partners', {
+			direction: 'horizontal',
+			spaceBetween: 0,
+			slidesPerView: 'auto',			
+		});
 
 	});	
 

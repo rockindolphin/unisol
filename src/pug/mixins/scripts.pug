@@ -7,10 +7,12 @@ mixin scripts()
 			{name: 'swiper', vendor: true},
 			{name: 'perfect-scrollbar', vendor: true},
 			{name: 'app', vendor: false},
+			{name: 'comments', vendor: false},
 		];
 	each script in scripts
 		-
 			var script_path = script.vendor ? 'js/vendors/' : 'js/',
-				script_name = args.prod ? `${script.name}.min.js` : `${script.name}.js?ver=${pDate()}`,
-				src = script_path + script_name;
+				script_name = args.prod ? `${script.name}.min.js` : `${script.name}.js`;
+			script_name = script.vendor ? `${script_name}?ver=${pDate()}` : script_name;
+			var src = script_path + script_name;
 		script(src=src)

@@ -1,0 +1,18 @@
+
+.article__wrapper--cols-2{
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+		& .article{
+			max-width: calc(50% - var(--aside-gap)/2);
+		}								
+	}	
+	@media (--lg-viewport){
+	
+	}	
+	@media (--xl-viewport){
+										
+	}	
+}
+

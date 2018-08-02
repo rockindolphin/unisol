@@ -2,5 +2,38 @@
 .header__language{
 	display: flex;
 	flex-direction: row;
+	overflow: hidden;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-right: auto;
+	flex-shrink: 0;
+	& a{
+		display: flex;
+		flex-direction: row;
+		align-items: center;		
+	}
+	& .list__item{
+		position: relative;
+		z-index: 2;
+		order: 1;
+		margin-right: 15px;
+		opacity: 0.6;
+		&:hover{
+			opacity: 1;
+		}			
+	}	
+	& .list__item--hidden{
+		order: 2;
+		z-index: 1;
+		display: block;
+		transform: translateX(-200px);
+		transition: transform var(--anim-dur);
+	}	
+	&:hover{
+		& .list__item--hidden{
+			display: block;
+			transform: translateX(0);
+		}
+	}
 }
 

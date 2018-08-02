@@ -40,9 +40,6 @@
 										
 	}	
 	@media (--md-viewport){
-										
-	}	
-	@media (--lg-viewport){
 		& .article__title{
 			font-size: 28px;
 		}
@@ -54,7 +51,10 @@
 			&::before{
 				padding-top: 56%;
 			}
-		}		
+		}									
+	}	
+	@media (--lg-viewport){
+	
 	}	
 	@media (--xl-viewport){
 										

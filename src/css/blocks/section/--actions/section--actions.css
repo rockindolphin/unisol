@@ -10,6 +10,10 @@
 	& .article__pic{
 		display: none;
 	}	
+	& .article__date{
+		color: var(--white);
+		opacity: 0.6;
+	}	
 	@media (--sm-viewport){
 										
 	}	
@@ -17,17 +21,21 @@
 										
 	}	
 	@media (--lg-viewport){
-		& .article__wrapper-4{
+		& .article__pic{
+			display: block;
+		}
+		& .article__wrapper--cols-4{
+			& .article{
+				max-width: calc(25% - var(--aside-gap)/2);
+			}	
+		}				
+	}	
+	@media (--xl-viewport){
+		& .article__wrapper--cols-4{
 			& .article{
 				max-width: calc(25% - 75px);
 			}	
-		}
-		& .article__pic{
-			display: block;
-		}		
-	}	
-	@media (--xl-viewport){
-										
+		}										
 	}	
 }
 

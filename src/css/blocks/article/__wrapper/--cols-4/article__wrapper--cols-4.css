@@ -1,0 +1,22 @@
+
+.article__wrapper--cols-4{	
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+		& .article{
+			max-width: calc(50% - var(--aside-gap)/2);
+		}										
+	}	
+	@media (--lg-viewport){
+		& .article{
+			max-width: calc(33.3% - var(--aside-gap)/2);
+		}
+	}	
+	@media (--xl-viewport){
+		& .article{
+			max-width: calc(25% - var(--aside-gap)/2);
+		}										
+	}
+}
+

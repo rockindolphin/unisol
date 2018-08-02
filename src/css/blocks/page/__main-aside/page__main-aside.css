@@ -10,10 +10,25 @@
 										
 	}	
 	@media (--md-viewport){
-										
+		& .article__wrapper{
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			& .article{
+				max-width: calc(50% - var(--aside-gap)/2);
+			}			
+		}								
 	}	
 	@media (--lg-viewport){
 		max-width: var(--aside-max);
+		&  .article__wrapper{
+			display: block;
+			& .article{
+				max-width: 100%;
+			}			
+		}		
 	}	
 	@media (--xl-viewport){
 										

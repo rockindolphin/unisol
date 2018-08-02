@@ -14,14 +14,13 @@ header.page__header
 				li.list__item
 					a.link(href="#", aria-label="unisolidaity telegram")
 						+icon('telegram')
-				li.list__item
-					ul.list.header__language
-						li.list__item
-							a.link(href="#", aria-label="toggle english")
-								+icon('britain')
-						li.list__item.list__item--hidden
-							a.link(href="#", aria-label="toggle russian")
-								+icon('russia')
+			ul.list.header__language
+				li.list__item.list__item--hidden(@click="toggleLanguage('en',$event)")
+					a.link(href="#", aria-label="toggle english")
+						+icon('britain')
+				li.list__item(@click="toggleLanguage('ru',$event)")
+					a.link(href="#", aria-label="toggle russian")
+						+icon('russia')
 			form.header__search(v-bind:class="{ 'header__search--active': searchActive }")
 				input.control__field(type="text", placeholder="Поиск по сайту" @focus="activateSearch", @blur="deactivateSearch")
 				button.btn.btn--icon(type="submit")

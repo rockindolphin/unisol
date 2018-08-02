@@ -11,7 +11,7 @@ html(lang="ru")
 				section.section.section--articles
 					.page__wrapper.mb-7.pb-3
 						.page__main-content
-							.article__wrapper-2
+							.article__wrapper.article__wrapper--cols-2
 								+articles--lg([2,5,6,7,13,14,2,5], 'mb-6')
 							.pagination
 								a.pagination__item(href="#") 1
@@ -24,7 +24,8 @@ html(lang="ru")
 							+banner-join('mb-5')
 							.block--bordered
 								a.block__title.mt-0.mb-3(href=around_page) Вокруг университета
-								+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
+								.article__wrapper
+									+articles--xs([4,19,20,21,22,4,19,20], 'mb-4')
 			include ./partials/partners.pug
 			include ./partials/footer.pug
 		+scripts()

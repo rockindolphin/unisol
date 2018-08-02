@@ -59,6 +59,7 @@ html(lang="ru")
 										+icon('telegram-round')
 						aside.page__main-aside
 							a.block__title.mt-0.mb-3(href="#") Новости
-							+articles--lg([7, 14, 6], 'mb-5')
+							.article__wrapper
+								+articles--lg([7, 14, 6], 'mb-5')
 			include ./partials/footer.pug
 		+scripts()

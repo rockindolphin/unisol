@@ -1,23 +1,20 @@
 
-.article__wrapper-3{
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: space-between;
-	flex-wrap: wrap;
+.article__wrapper--cols-3{
 	@media (--sm-viewport){
 										
 	}	
 	@media (--md-viewport){
-										
+		& .article{
+			max-width: calc(50% - var(--aside-gap)/2);
+		}								
 	}	
 	@media (--lg-viewport){
 		& .article{
 			max-width: calc(33.33% - var(--aside-gap)/2);
-		}
+		}	
 	}	
 	@media (--xl-viewport){
 										
-	}	
+	}
 }
 
