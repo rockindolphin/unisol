@@ -1,14 +1,22 @@
 mixin head(title)
-	- function pDate() {return new Date().getTime();}
+	-
+		var styles = [
+			{name: 'bootstrap', vendor: false},
+			{name: 'jssocials', vendor: true},
+			{name: 'swiper', vendor: true},
+			{name: 'style', vendor: false},
+		]
 	head
 		if !title
 			title Unisolidarity
 		else
 			title #{title}
-		link(rel="stylesheet", href="css/bootstrap.css?ver=" + pDate())
-		link(rel="stylesheet", href="css/vendors/jssocials.css?ver=" + pDate())
-		link(rel="stylesheet", href="css/style.css?ver=" + pDate())
-		//link(rel="stylesheet", href="css/bundle.css?ver=" + pDate())
+		each style in styles
+			-
+				var style_path = style.vendor ? 'css/vendors/' : 'css/',
+					style_name = args.prod ? `${style.name}.min.css?ver=${pDate()}` : `${style.name}.css?ver=${pDate()}`,
+					href = style_path + style_name;
+			link(rel="stylesheet", href=href)
 		link(rel='apple-touch-icon', sizes='180x180', href='apple-touch-icon.png')
 		link(rel='icon', type='image/png', sizes='32x32', href='favicon-32x32.png')
 		link(rel='icon', type='image/png', sizes='16x16', href='favicon-16x16.png')

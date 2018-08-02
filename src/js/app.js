@@ -65,7 +65,13 @@
 			showLabel: false,
 			showCount: false,
 			shareIn: 'popup',
-		});				
+		});	
+
+		var sliderPartners = new Swiper('.slider--partners', {
+			direction: 'horizontal',
+			spaceBetween: 0,
+			slidesPerView: 'auto'
+		});					
 
 	});	
 

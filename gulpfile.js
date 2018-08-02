@@ -44,6 +44,7 @@ var config = {
 		manifest: 'src/root/**/*',
 		js: 'src/js/*.js',
 		js_vendors: 'src/js/vendors/*.js',
+		css_vendors: 'src/css/vendors/*.css',
 		fonts:  'src/fonts/**/*',
 		css: [
 			'src/css/vendors/normalize.css',
@@ -60,6 +61,7 @@ var config = {
 		manifest: 'dist',
 		js: 'dist/js',
 		js_vendors: 'dist/js/vendors',
+		css_vendors: 'dist/css/vendors',
 		fonts: 'dist/fonts',
 		css: 'dist/css',
 		bootstrap: 'dist/css',
@@ -72,6 +74,7 @@ var config = {
 		manifest: 'src/root/**/*',
 		js: 'src/js/*.js',
 		js_vendors: 'src/js/vendors/*.js',
+		css_vendors: 'src/css/vendors/*.css',
 		fonts:  'src/fonts/**/*',
 		css: 'src/css/blocks/**/*.css',
 		bootstrap: 'src/css/bootstrap-4.1.2/scss/**/*.scss',
@@ -83,6 +86,10 @@ var config = {
 	images: {
 		'webp': true,
 		'generateSpriteSvg': true,
+		sizes: []
+	},
+	css: {
+		blocksFile: 'src/css/blocks/items.json',
 	}
 };
 
@@ -99,10 +106,9 @@ function err_log(error) {
 } 
 
 function html(src){
-	console.log('run html');
 	miss.pipe(
 		gulp.src(src),
-		pug({pretty: '\t', doctype: 'html', locals: {config: config, path: path}}),
+		pug({pretty: '\t', doctype: 'html', locals: {config: config, path: path, args: args}}),
 		/*w3cjs(), 
 		through2.obj(function(file, enc, cb){ 
 			cb(null, file); 
@@ -123,7 +129,6 @@ function html(src){
 }
 
 function copyFiles(src, dest){
-	console.log('run copyFiles');
 	miss.pipe(
 		gulp.src(src),
 		gulp.dest( dest ), 		
@@ -134,7 +139,6 @@ function copyFiles(src, dest){
 }
 
 function js(src){
-	console.log('run js');
 	miss.pipe(
 		gulp.src( src ),
 		sourcemaps.init(),
@@ -152,6 +156,12 @@ function js(src){
 			(args.prod || args.production) || args.uglify,
 			uglify() 			
 		),
+		gulpif(
+			(args.prod || args.production) || args.uglify,
+			rename({
+				suffix: '.min'
+			})		
+		),		
 		sourcemaps.write('/'),
 		gulp.dest( config.dist.js ),
 		(err) => {
@@ -178,7 +188,13 @@ function css(){
 		gulpif(
 			(args.prod || args.production) || args.cleanCSS,
 			cleanCSS({compatibility: '*'})			
-		),		
+		),
+		gulpif(
+			(args.prod || args.production) || args.cleanCSS,
+			rename({
+				suffix: '.min'
+			})			
+		),				
 		sourcemaps.write('/'),
 		gulp.dest( config.dist.css ), 			
 		(err) => {
@@ -197,7 +213,13 @@ function bootstrap(){
 		gulpif(
 			(args.prod || args.production) || args.cleanCSS,
 			cleanCSS({compatibility: '*'})			
-		),		  
+		),
+		gulpif(
+			(args.prod || args.production) || args.cleanCSS,
+			rename({
+				suffix: '.min'
+			})			
+		),			  
 		gulp.dest( config.dist.bootstrap ), 
 		(err) => {
 			if (err) return err_log(err);
@@ -215,7 +237,13 @@ function jssocials(){
 		gulpif(
 			(args.prod || args.production) || args.cleanCSS,
 			cleanCSS({compatibility: '*'})			
-		),			 
+		),	
+		gulpif(
+			(args.prod || args.production) || args.cleanCSS,
+			rename({
+				suffix: '.min'
+			})			
+		),				 
 		gulp.dest( config.dist.jssocials ), 
 		(err) => {
 			if (err) return err_log(err);
@@ -318,6 +346,10 @@ gulp.task('js_vendors', () => {
 	copyFiles(config.src.js_vendors, config.dist.js_vendors);
 });
 
+gulp.task('css_vendors', () => {
+	copyFiles([config.src.css_vendors, '!src/css/vendors/normalize.css'], config.dist.css_vendors);
+});
+
 gulp.task('html', [], ()=>{
 	html(config.src.html);
 });
@@ -331,7 +363,7 @@ gulp.task('clean', [], ()=>{
 });
 
 gulp.task('server', [], ()=>{
-	return gulp.src( dist )
+	return gulp.src( 'dist' )
 			.pipe( 
 				server({ 
 					livereload: true,
@@ -359,6 +391,10 @@ gulp.task('watch', function() {
 	let js_vendors_watcher = chokidar.watch( config.watch.js_vendors, { ignoreInitial: true } ); 
 	js_vendors_watcher.on('change', (file) => { copyFiles(file, config.dist.js_vendors) }); 
 	js_vendors_watcher.on('add', (file) => { copyFiles(file, config.dist.js_vendors) }); 		
+
+	let css_vendors_watcher = chokidar.watch( config.watch.css_vendors, { ignored: /normalize\.css/, ignoreInitial: true } ); 
+	css_vendors_watcher.on('change', (file) => { copyFiles(file, config.dist.css_vendors) }); 
+	css_vendors_watcher.on('add', (file) => { copyFiles(file, config.dist.css_vendors) }); 		
 
 	let fonts_watcher = chokidar.watch( config.watch.fonts, { ignoreInitial: true } ); 
 	fonts_watcher.on('change', (file) => { 
@@ -397,8 +433,10 @@ gulp.task( 'build', ['clean'], function(){
 		'html',
 		'manifest',
 		'js',
+		'js_vendors',
 		'fonts',
 		'css',
+		'css_vendors',
 		'bootstrap',
 		'jssocials',
 		'svg_sprites',
@@ -411,3 +449,20 @@ gulp.task('default', [
 	'server', 
 	'watch' 
 ]);
+
+const   BEM = require('./bem.js'); 
+gulp.task('bem', function() { 
+	new Promise((resolve,reject)=>{ 
+		gulp.src( config.css.blocksFile ) 
+		.pipe(insert.transform(function(contents, file) { 
+			resolve( JSON.parse(contents) ); 
+			return contents; 
+		})); 
+	}).then((items)=>{ 
+		if( items.length === 0 ){ 
+			err_log({message:'empty items.json', plugin: 'bem'}) 
+		} 
+		BEM(args, items); 
+		return items; 
+	});     
+}); 

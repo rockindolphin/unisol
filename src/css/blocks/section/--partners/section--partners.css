@@ -3,15 +3,8 @@
 	border-top:  1px solid;
 	border-color: var(--gray_d7d);
 	& > .page__wrapper{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
 		padding-top: 15px;
 		padding-bottom: 15px;
-		flex-wrap: wrap;
-		overflow-x: auto;
-		overflow-y: hidden;
 	}
 	& .partner{
 		margin-top: 15px;
@@ -27,16 +20,6 @@
 
 	}	
 	@media (--xl-viewport){
-		& > .page__wrapper{
-			flex-wrap: nowrap;
-		}										
-		& .partner{
-			&:not(:last-of-type){
-				margin-right: 20px;
-			}
-			&:not(:first-of-type){
-				margin-left: 20px;
-			}
-		}									
+									
 	}	
 }

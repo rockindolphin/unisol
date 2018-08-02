@@ -1,6 +1,15 @@
 mixin scripts()
-	- function pDate() {return new Date().getTime();}
-	script(src="js/vendors/jquery-3.2.1.min.js")
-	script(src="js/vendors/vue.min.js")
-	script(src="js/vendors/jssocials.min.js")
-	script(src="js/app.js?ver=" + pDate())
+	-
+		scripts = [
+			{name: 'jquery-3.3.1', vendor: true},
+			{name: 'vue', vendor: true},
+			{name: 'jssocials', vendor: true},
+			{name: 'swiper', vendor: true},
+			{name: 'app', vendor: false},
+		];
+	each script in scripts
+		-
+			var script_path = script.vendor ? 'js/vendors/' : 'js/',
+				script_name = args.prod ? `${script.name}.min.js` : `${script.name}.js?ver=${pDate()}`,
+				src = script_path + script_name;
+		script(src=src)

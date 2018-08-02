@@ -9,17 +9,16 @@
 		max-width: 145px;
 	}
 	@media (--sm-viewport){
-		flex-basis: 50%;						
+					
 	}	
 	@media (--md-viewport){
-		flex-basis: 33%;							
+						
 	}	
 	@media (--lg-viewport){
-		flex-basis: 20%;
+
 	}	
 	@media (--xl-viewport){
-		flex-basis: 0;
-		margin-bottom: 0;
-	}	
+
+	}
 }
 
