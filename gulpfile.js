@@ -431,6 +431,7 @@ gulp.task('watch', function() {
 gulp.task( 'build', ['clean'], function(){
 	runSequence(
 		'html',
+		'images',
 		'manifest',
 		'js',
 		'js_vendors',
@@ -440,7 +441,6 @@ gulp.task( 'build', ['clean'], function(){
 		'bootstrap',
 		'jssocials',
 		'svg_sprites',
-		'images',
 	)
 });
 

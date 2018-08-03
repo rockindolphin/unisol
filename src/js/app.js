@@ -59,13 +59,66 @@
 		});	
 
 		//Vue
+		var article = {
+			id: '',
+			title: '',
+			excerpt: '',
+			date: '',
+			source: '',
+			tags: [],
+			categories: [],
+			picture	: '',
+		}
+
+		var articleXL = Vue.component('article--xl',{
+			props: [
+				'title',
+				'excerpt',
+				'date',
+				'source',
+				'tags',
+				'categories',
+				'picture',
+			],
+			computed: {
+				pic_bg: function () {
+					return `background-image: url(${this.picture});`
+				}
+			},			
+			template: `
+				<article class="article article--xl">
+					<div class="article__pic" :style="pic_bg">
+						<div class="article__pic-wrapper">
+							<div class="article__categories">
+								<a href="tag.html" class="categories__item" v-for="category in categories">{{ category }}</a>
+							</div>
+							<a href="news.html" class="article__title">{{ title }}</a>
+						</div>
+					</div>
+					<div class="article__info">
+						<div class="article__date">{{ date }}</div>
+						<div class="article__tags">
+							<a href="#" class="tags__item" v-for="tag in tags">{{ tag }}</a>
+						</div>
+					</div>
+					<div class="article__excerpt">{{ excerpt }}</div>
+				</article>			
+			`
+		});
+
 		var page = new Vue({
 			el: '.page__body',
 			data: {
 				menuOpen: false,
 				searchActive: false,
 				languages: 'ru',
+				front: {
+					lead: article
+				}
 			},
+			components: {
+				'article--xl': articleXL,
+			},		
 			methods: {
 				activateSearch: function(){
 					this.searchActive = true;
@@ -83,13 +136,41 @@
 					this.language = lang;
 					$('.header__language .list__item').addClass('list__item--hidden');
 					$(evt.target).closest('.list__item').removeClass('list__item--hidden');
+				},
+				getArticle: function(id){
+					var promise = new Promise(function(resolve, reject) {
+						$.ajax({
+							url: 'http://unisol/articles.php',
+							method: 'POST',
+							data: {'get_article': id},
+							success: function(resp){
+								resolve( JSON.parse(resp) );
+							},
+							error: function(err){
+								reject(err);
+							}
+						});
+					});
+					return promise;						
+				},
+				getFrontLead: function(){
+					this.getArticle(1).then(result => {
+						this.front.lead = result;
+					}, error => {
+
+					});			
 				}
 			},
 			computed: {
 				noScroll: function () {
 					return this.menuOpen;
 				}				
-			}
+			},
+			mounted: function () {
+				this.$nextTick(function () {
+					this.getFrontLead();
+				})
+			}			
 		});						
 
 		//sliders
@@ -98,6 +179,8 @@
 			spaceBetween: 0,
 			slidesPerView: 'auto',			
 		});
+
+
 
 	});	
 
