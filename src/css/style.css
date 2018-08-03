@@ -162,6 +162,13 @@ h6{
 	
 }
 
+.scroll__measure{
+	width: 100px;
+	height: 100px;
+	overflow: scroll;
+	position: absolute;
+	top: -9999px;
+}
 
 .custom-scroll{
 	position: relative;

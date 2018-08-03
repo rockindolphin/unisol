@@ -1,0 +1,45 @@
+
+.page__header--menu-open{
+	position: fixed;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--white);
+	& .header__menu-toggle{
+		& .icon--menu{
+			display: none;
+		}
+		& .icon--menu-close{
+			display: inline;
+		}
+	}
+	& .header__logo{
+		display: none;
+	}
+	& .header__menu{
+		display: block;
+	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		& .header__menu{
+			position: initial;
+			z-index: initial;
+			top: initial;
+			left: initial;
+			width: auto;
+			height: auto;
+			background-color: transparent;
+		}
+	}	
+	@media (--xl-viewport){
+										
+	}
+}
+

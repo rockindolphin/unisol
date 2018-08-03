@@ -106,6 +106,127 @@
 			`
 		});
 
+		var articleLG = Vue.component('article--lg',{
+			props: [
+				'title',
+				'excerpt',
+				'date',
+				'source',
+				'tags',
+				'categories',
+				'picture',
+			],
+			computed: {
+				pic_bg: function () {
+					return `background-image: url(${this.picture});`
+				}
+			},			
+			template: `
+				<article class="article article--lg">
+					<div class="article__pic" :style="pic_bg">
+						<div class="article__pic-wrapper">
+							<div class="article__categories">
+								<a href="tag.html" class="categories__item" v-for="category in categories">{{ category }}</a>
+							</div>
+						</div>
+					</div>
+					<div class="article__info">
+						<div class="article__date">{{ date }}</div>
+						<div class="article__tags">
+							<a href="#" class="tags__item" v-for="tag in tags">{{ tag }}</a>
+						</div>
+					</div>
+					<a href="news.html" class="article__title">{{ title }}</a> 
+					<div class="article__excerpt">{{ excerpt }}</div>
+				</article>		
+			`
+		});
+
+		var articleMD = Vue.component('article--md',{
+			props: [
+				'title',
+				'excerpt',
+				'date',
+				'source',
+				'tags',
+				'categories',
+				'picture',
+			],
+			computed: {
+				pic_bg: function () {
+					return `background-image: url(${this.picture});`
+				}
+			},			
+			template: `
+				<article class="article article--md">
+					<div class="article__pic" :style="pic_bg"></div>
+					<div class="article__info">
+						<div class="article__date">{{ date }}</div>
+					</div>
+					<a href="news.html" class="article__title">{{ title }}</a>
+				</article>	
+			`
+		});
+
+		var articleSM = Vue.component('article--sm',{
+			props: [
+				'title',
+				'excerpt',
+				'date',
+				'source',
+				'tags',
+				'categories',
+				'picture',
+			],
+			computed: {
+				pic_bg: function () {
+					return `background-image: url(${this.picture});`
+				}
+			},			
+			template: `
+				<article class="article article--sm">
+					<div class="article__info">
+						<div class="article__date">{{ date }}</div>
+						<div class="article__tags">
+							<a href="#" class="tags__item" v-for="tag in tags">{{ tag }}</a>
+						</div>
+					</div>
+					<a href="news.html" class="article__title">{{ title }}</a> 
+					<div class="article__info">
+						<div class="article__source">{{ source }}</div>
+					</div>
+				</article>
+			`
+		});
+
+		var articleXS = Vue.component('article--xs',{
+			props: [
+				'title',
+				'excerpt',
+				'date',
+				'source',
+				'tags',
+				'categories',
+				'picture',
+			],
+			computed: {
+				pic_bg: function () {
+					return `background-image: url(${this.picture});`
+				}
+			},			
+			template: `
+				<article class="article article--xs">
+					<div class="article__info">
+						<div class="article__date">{{ date }}</div>
+					</div>
+					<a href="news.html" class="article__title">{{ title }}</a> 
+					<div class="article__info">
+						<div class="article__source">{{ source }}</div>
+					</div>
+				</article>
+			`
+		});			
+
 		var page = new Vue({
 			el: '.page__body',
 			data: {
@@ -113,11 +234,19 @@
 				searchActive: false,
 				languages: 'ru',
 				front: {
-					lead: article
+					lead: article,
+					news: [],
+					interview: [],
+					actions: [],
+					around: [],
 				}
 			},
 			components: {
 				'article--xl': articleXL,
+				'article--lg': articleLG,
+				'article--md': articleMD,
+				'article--sm': articleSM,
+				'article--xs': articleXS,
 			},		
 			methods: {
 				activateSearch: function(){
@@ -126,23 +255,20 @@
 				deactivateSearch: function(){
 					this.searchActive = false;
 				},
-				openMenu: function(){
-					this.menuOpen = true;
-				},
-				closeMenu: function(){
-					this.menuOpen = false;
+				toggleMenu: function(){
+					this.menuOpen = !this.menuOpen;
 				},
 				toggleLanguage: function(lang, evt){
 					this.language = lang;
 					$('.header__language .list__item').addClass('list__item--hidden');
 					$(evt.target).closest('.list__item').removeClass('list__item--hidden');
 				},
-				getArticle: function(id){
+				getArticles: function(ids){
 					var promise = new Promise(function(resolve, reject) {
 						$.ajax({
 							url: 'http://unisol/articles.php',
 							method: 'POST',
-							data: {'get_article': id},
+							data: {'get_article': ids.join(',')},
 							success: function(resp){
 								resolve( JSON.parse(resp) );
 							},
@@ -154,12 +280,38 @@
 					return promise;						
 				},
 				getFrontLead: function(){
-					this.getArticle(1).then(result => {
+					this.getArticles([1]).then(result => {
 						this.front.lead = result;
-					}, error => {
-
-					});			
-				}
+					}, error => {});			
+				},
+				getNews: function(){
+					this.getArticles([2, 5, 6, 7]).then(result => {
+						result.map((article)=>{
+							this.front.news.push(article);						
+						})
+					}, error => {});			
+				},
+				getInterview: function(){
+					this.getArticles([11,12,13,14]).then(result => {
+						result.map((article)=>{
+							this.front.interview.push(article);						
+						})
+					}, error => {});			
+				},
+				getActions: function(){
+					this.getArticles([3,8,9,10]).then(result => {
+						result.map((article)=>{
+							this.front.actions.push(article);						
+						})
+					}, error => {});			
+				},
+				getAround: function(){
+					this.getArticles([4,19,20,21,22,2,5,6]).then(result => {
+						result.map((article)=>{
+							this.front.around.push(article);						
+						})
+					}, error => {});			
+				}												
 			},
 			computed: {
 				noScroll: function () {
@@ -169,6 +321,10 @@
 			mounted: function () {
 				this.$nextTick(function () {
 					this.getFrontLead();
+					this.getNews();
+					this.getInterview();
+					this.getActions();
+					this.getAround();
 				})
 			}			
 		});						

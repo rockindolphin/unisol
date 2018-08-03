@@ -318,17 +318,23 @@
 
 
 	if( isset($_REQUEST['get_article']) ){
-		$id = intval($_REQUEST['get_article']);
+		$ids = explode(',', $_REQUEST['get_article']);
 		$found = false;
-		foreach ($articles as $key => $article) {
-			if( $article->id === $id ){
-				$found = true;
-				http_response_code(200);
-				echo json_encode($article);
+		$resp = array();
+		foreach ($ids as $key => $id) {
+			$id = intval($id);
+			foreach ($articles as $key => $article) {
+				if( $article->id === $id ){
+					$found = true;
+					array_push($resp, $article);
+				}
 			}
 		}
-		if( !$found ){
-			http_response_code(404);
+		if( $found ){
+			http_response_code(200);
+			echo json_encode($resp);			
+		}else{
+			http_response_code(404);			
 		}
 	}
 

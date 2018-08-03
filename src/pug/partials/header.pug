@@ -1,4 +1,4 @@
-header.page__header
+header.page__header(v-bind:class="{ 'page__header--menu-open': menuOpen }")
 	.header__top
 		.page__wrapper
 			ul.list.socials.header__socials
@@ -25,8 +25,9 @@ header.page__header
 				input.control__field(type="text", placeholder="Поиск по сайту" @focus="activateSearch", @blur="deactivateSearch")
 				button.btn.btn--icon(type="submit")
 					+icon('search')
-			button.header__menu-open(aria-label="open menu", @click="openMenu")
+			button.header__menu-toggle(aria-label="toggle menu", @click="toggleMenu")
 				+icon('menu')
+				+icon('menu-close')
 	a.header__logo(href=href=index_page)
 		.page__wrapper
 			.header__logo-left
@@ -38,10 +39,8 @@ header.page__header
 					| Официальный сайт Межрегионального профсоюза работников высшей школы
 			.header__logo-right
 				include ../../images/logo-right.svg
-	nav.header__menu.custom-scroll(v-bind:class="{ 'header__menu--open': menuOpen }")
+	nav.header__menu.custom-scroll
 		.page__wrapper
-			button.header__menu-close(aria-label="close menu", @click="closeMenu")
-				+icon('menu-close')
 			ul.list
 				//-.current-menu-item
 				li.list__item
