@@ -84,8 +84,8 @@ var config = {
 	},
 	browsers: ['last 2 versions','ie >= 11','> 1%'],
 	images: {
-		'webp': true,
-		'generateSpriteSvg': true,
+		webp: true,
+		generateSpriteSvg: true,
 		sizes: []
 	},
 	css: {

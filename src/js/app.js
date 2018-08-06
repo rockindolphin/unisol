@@ -234,7 +234,7 @@
 				searchActive: false,
 				languages: 'ru',
 				front: {
-					lead: article,
+					lead: false,
 					news: [],
 					interview: [],
 					actions: [],
@@ -336,7 +336,10 @@
 			slidesPerView: 'auto',			
 		});
 
-
+		//menu
+		$('.header__menu .btn-link').click(function(){
+			$(this).closest('.list__item').toggleClass('list__item--active');
+		});
 
 	});	
 

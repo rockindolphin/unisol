@@ -46,7 +46,9 @@ header.page__header(v-bind:class="{ 'page__header--menu-open': menuOpen }")
 				li.list__item
 					.nav__item
 						a.link(href=about_page)
-							| Профсоюз				
+							| Профсоюз
+						button.btn-link(aria-label="toggle menu item")
+							+icon('chevron-down')
 					ul.list
 						li.list__item
 							.nav__item
@@ -68,6 +70,8 @@ header.page__header(v-bind:class="{ 'page__header--menu-open': menuOpen }")
 					.nav__item
 						a.link(href='#')
 							| Отделения
+						button.btn-link(aria-label="toggle menu item")
+							+icon('chevron-down')
 					ul.list
 						li.list__item
 							.nav__item

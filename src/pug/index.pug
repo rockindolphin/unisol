@@ -11,7 +11,7 @@ html(lang="ru")
 				section.section.section--articles.order-1
 					.page__wrapper.pb-4
 						.page__main-content
-							article--xl(v-bind="front.lead")
+							article--xl(v-if="front.lead"  v-bind="front.lead")
 							//-+article--xl(1)
 						aside.page__main-aside
 							.article__wrapper

@@ -3,6 +3,7 @@
 	position: relative;
 	z-index: 5;
 	width: 100%;
+	background-color: var(--white);
 	@media (--sm-viewport){
 										
 	}	

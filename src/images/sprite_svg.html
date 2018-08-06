@@ -160,6 +160,10 @@
 			<path d="M0 336h511.68V0H0z" fill="#194093"></path><path d="M447.66 0L314.356 87.415V0H196.957v91.007L56.05 0H0v45.433l101.057 65.586H0V227.42h100.237L0 293.475V336h66.316l130.641-85.983V336h117.399v-87.49L449.326 336h62.354v-42.05l-102.7-66.529h102.7V111.02H409.496L511.68 43.813V0z" fill="#fff"></path><path d="M0 0v29.3l123.061 81.719h41.655zm347.197 227.422L511.68 336v-27.256l-122.83-81.322zm-184.121 0L0 336h39.058l157.9-103.248v-5.33zM474.373 0L314.356 104.165v6.854h31.55L511.68 2.716V0z" fill="#e30613"></path><path d="M222.114 0v135.723H.001v66.996h222.113V336h67.085V202.719h222.48v-66.996H289.2V0z" fill="#e30613"></path>
 		</symbol>
 	
+		<symbol id="chevron-down" viewBox="0 0 448 512">
+			<path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
+		</symbol>
+	
 		<symbol id="facebook" viewBox="0 0 24 24">
 			<path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"></path>
 		</symbol>
@@ -207,7 +211,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(12 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(13 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="sprite.svg">sprite.svg</a></li>
@@ -239,6 +243,23 @@
             <button onclick="invertBackground('icon-box-britain')">Invert Background</button>
             <div class="snippet-popover" id="snippet-britain">
                 <pre><code>&lt;svg class=&quot;icon britain&quot;&gt;&lt;use xlink:href=&quot;#britain&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="chevron-down">
+            <div class="icon-box" id="icon-box-chevron-down">
+                <svg class="icon chevron-down">
+                    <use xlink:href="#chevron-down" />
+                </svg>
+            </div>
+            <h2>chevron-down</h2>
+            <button onclick="showPopover('snippet-chevron-down')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-chevron-down')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-chevron-down">
+                <pre><code>&lt;svg class=&quot;icon chevron-down&quot;&gt;&lt;use xlink:href=&quot;#chevron-down&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
