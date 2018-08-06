@@ -6,7 +6,7 @@ html(lang="ru")
 	body.page
 		include ../images/sprite.svg
 		.page__body(v-bind:class="{ 'page__body--noscroll': noScroll }")
-			include ./partials/header.pug
+			+header()
 			main.page__main.d-flex.flex-column
 				section.section.section--articles.order-1
 					.page__wrapper.pb-4
