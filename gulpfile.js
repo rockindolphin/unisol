@@ -146,12 +146,9 @@ function js(src){
 			presets: ['env'],
 			plugins: ['es6-promise']			
 		}),
-		gulpif(
-			(args.prod || args.production) || args.browserify,
-			browserify({
-				insertGlobals : true,
-			})
-		),
+		browserify({
+			insertGlobals : true,
+		}),
 		gulpif(
 			(args.prod || args.production) || args.uglify,
 			uglify() 			
