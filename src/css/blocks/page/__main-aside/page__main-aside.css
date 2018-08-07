@@ -2,7 +2,7 @@
 .page__main-aside{
 	width: 100%;
 	flex-shrink: 0;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 	& > .block--bordered{
 		padding: 20px 20px;
 	}
@@ -23,6 +23,7 @@
 	}	
 	@media (--lg-viewport){
 		max-width: var(--aside-max);
+		margin-bottom: 30px;
 		&  .article__wrapper{
 			display: block;
 			& .article{

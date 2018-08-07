@@ -73,17 +73,32 @@ mixin header(local)
 				button.header__menu-toggle(aria-label="toggle menu", @click="toggleMenu")
 					+icon('menu')
 					+icon('menu-close')
-		a.header__logo(href=href=index_page)
-			.page__wrapper
-				.header__logo-left
-					include ../../images/logo-left.svg
-				.header__logo-text
-					.header__logo-title
-						| Университетская солидарность
-					.header__logo-subtitle
-						| Официальный сайт Межрегионального профсоюза работников высшей школы
-				.header__logo-right
-					include ../../images/logo-right.svg
+		if local
+			a.header__logo.header__logo--local(href=href=index_page)
+				.page__wrapper
+					.header__logo-local
+						include ../../images/logo-mgu.svg
+					.header__logo-text
+						.header__logo-title
+							| Университетская солидарность
+						.header__logo-subtitle
+							| Официальный сайт первичной профсоюзной организации «Университетская солидарность» МГУ
+					.header__logo-general
+						include ../../images/logo-left.svg
+					.header__logo-emblem
+						include ../../images/logo-right.svg
+		else	
+			a.header__logo(href=href=index_page)
+				.page__wrapper
+					.header__logo-general
+						include ../../images/logo-left.svg
+					.header__logo-text
+						.header__logo-title
+							| Университетская солидарность
+						.header__logo-subtitle
+							| Официальный сайт Межрегионального профсоюза работников высшей школы
+					.header__logo-emblem
+						include ../../images/logo-right.svg
 		nav.header__menu.custom-scroll
 			.page__wrapper
 				if local

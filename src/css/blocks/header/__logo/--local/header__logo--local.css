@@ -1,0 +1,39 @@
+
+.header__logo--local{
+	& .header__logo-title{
+
+	}
+	& .header__logo-local{
+		display: block;
+	}
+	& .header__logo-general{
+		display: none;
+	}
+	@media (--sm-viewport){
+		& .header__logo-general{
+			display: block;
+			width: auto;
+			position: absolute;
+			top: 15px;
+			right: calc(var(--page-gap) + 50px);			
+		}
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		& .header__logo-general{
+			position: static;
+			order: 3;
+			margin-right: 15px;
+		}										
+		& .header__logo-title{
+			font-size: 40px;
+			line-height: 1.1;
+		}							
+	}	
+	@media (--xl-viewport){
+										
+	}	
+}
+

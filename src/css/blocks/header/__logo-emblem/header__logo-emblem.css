@@ -1,5 +1,5 @@
 
-.header__logo-right{
+.header__logo-emblem{
 	flex-shrink: 0;	
 	order: 2;
 	position: absolute;
@@ -29,6 +29,6 @@
 	}	
 	@media (--xl-viewport){
 										
-	}	
+	}
 }
 
