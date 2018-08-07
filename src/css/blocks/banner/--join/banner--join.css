@@ -1,13 +1,43 @@
 
 .banner--join{
+	position: relative;
 	background: #ffffff;
 	background-repeat: no-repeat;
-	background-image:	url('../images/banners/banner-join-desaturated.png'),
-						url('../images/banners/banner-join-colorized.png'), 
-						linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 60%, rgba(0,0,0,0.1) 100%);
-	background-position: right 10px, -340px 10px, 0 0;
+	background-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 60%, rgba(0,0,0,0.1) 100%);
+	& > *{
+		position: relative;
+		z-index: 2;
+	}
+	&::before,
+	&::after{
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 1;
+		top: 10px;
+		background-repeat: no-repeat;
+	}
+	&::before{
+		width: 190px; 
+		height: 115px;
+		right: 0;
+		background-image: url('../images/banners/banner-join-sprite.png');
+		background-position: -220px -10px;	
+	}
+	&::after{
+		width: 94px; 
+		height: 94px;
+		left: 25px;
+		background-image: url('../images/banners/banner-join-sprite.png');
+		background-position: -10px -145px;
+	}		
 	&:hover{
-		background-position: -340px 10px, right 10px, 0 0;
+		&::before{
+			background-position: -10px -10px;
+		}
+		&::after{
+			background-position: -124px -145px;
+		}		
 	}
 }
 

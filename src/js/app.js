@@ -196,9 +196,10 @@
 					$(evt.target).closest('.list__item').removeClass('list__item--hidden');
 				},
 				getArticles: function(ids){
+					var dataUrl = document.location.host === 'localhost:8000' ? 'http://unisol/articles.php' : 'articles.php';
 					var promise = new Promise(function(resolve, reject) {
 						$.ajax({
-							url: 'http://unisol/articles.php',
+							url: dataUrl,
 							method: 'POST',
 							data: {'get_article': ids.join(',')},
 							success: function(resp){
