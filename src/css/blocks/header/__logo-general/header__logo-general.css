@@ -12,6 +12,9 @@
 		width: 145px;
 		height: 92px;
 	}
+	& > img{
+		max-width: 145px;
+	}	
 	@media (--sm-viewport){
 										
 	}	
@@ -25,6 +28,9 @@
 		& > svg{
 			width: 194px;
 			height: 122px;
+		}
+		& > img{
+			max-width: 194px;
 		}
 	}	
 	@media (--xl-viewport){

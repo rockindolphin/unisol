@@ -13,6 +13,9 @@
 		width: 145px;
 		height: 142px;
 	}
+	& > img{
+		max-width: 145px;
+	}
 	@media (--sm-viewport){
 										
 	}	
@@ -27,6 +30,9 @@
 			width: 160px;
 			height: 156px;
 			display: block;
+		}
+		& > img{
+			max-width: 160px;
 		}
 	}	
 	@media (--xl-viewport){
