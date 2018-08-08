@@ -36,7 +36,8 @@ mixin header_menu(menu)
 					.nav__item
 						a.link(href=item.link)= item.title
 						button.btn-link(aria-label="toggle menu item")
-							+icon('chevron-down')
+							//-+icon('chevron-down')
+							icon(name="chevron-down")
 					+header_menu( item.inner )
 				else
 					.nav__item
@@ -49,56 +50,70 @@ mixin header(local)
 				ul.list.socials.header__socials
 					li.list__item
 						a.link(href="#", aria-label="unisolidaity facebook")
-							+icon('facebook')
+							//-+icon('facebook')
+							icon(name="facebook")
 					li.list__item
 						a.link(href="#", aria-label="unisolidaity vkontakte")
-							+icon('vkontakte')
+							//-+icon('vkontakte')
+							icon(name="vkontakte")
 					li.list__item
 						a.link(href="#", aria-label="unisolidaity youtube")
-							+icon('youtube')
+							//-+icon('youtube')
+							icon(name="youtube")
 					li.list__item
 						a.link(href="#", aria-label="unisolidaity telegram")
-							+icon('telegram')
+							//-+icon('telegram')
+							icon(name="telegram")
 				ul.list.header__language
 					li.list__item.list__item--hidden(@click="toggleLanguage('en',$event)")
 						a.link(href="#", aria-label="toggle english")
-							+icon('britain')
+							//-+icon('britain')
+							icon(name="britain")
 					li.list__item(@click="toggleLanguage('ru',$event)")
 						a.link(href="#", aria-label="toggle russian")
-							+icon('russia')
+							//-+icon('russia')
+							icon(name="russia")
 				form.header__search(v-bind:class="{ 'header__search--active': searchActive }")
 					input.control__field(type="text", placeholder="Поиск по сайту" @focus="activateSearch", @blur="deactivateSearch")
 					button.btn.btn--icon(type="submit")
-						+icon('search')
+						//-+icon('search')
+						icon(name="search")
 				button.header__menu-toggle(aria-label="toggle menu", @click="toggleMenu")
-					+icon('menu')
-					+icon('menu-close')
+					//-+icon('menu')
+					icon(name="menu")
+					//-+icon('menu-close')
+					icon(name="menu-close")
 		if local
 			a.header__logo.header__logo--local(href=href=index_page)
 				.page__wrapper
 					.header__logo-local
-						include ../../images/logo-mgu.svg
+						//-+icon('logo-mgu')
+						icon(name="logo-mgu")
 					.header__logo-text
 						.header__logo-title
 							| Университетская солидарность
 						.header__logo-subtitle
 							| Официальный сайт первичной профсоюзной организации «Университетская солидарность» МГУ
 					.header__logo-general
-						include ../../images/logo-left.svg
+						//-+icon('logo-unisolidarity')
+						icon(name="logo-unisolidarity")
 					.header__logo-emblem
-						include ../../images/logo-right.svg
+						//-+icon('logo-unisolidaruty-emblem')
+						icon(name="logo-unisolidaruty-emblem")
 		else	
 			a.header__logo(href=href=index_page)
 				.page__wrapper
 					.header__logo-general
-						include ../../images/logo-left.svg
+						//-+icon('logo-unisolidarity')
+						icon(name="logo-unisolidarity")
 					.header__logo-text
 						.header__logo-title
 							| Университетская солидарность
 						.header__logo-subtitle
 							| Официальный сайт Межрегионального профсоюза работников высшей школы
 					.header__logo-emblem
-						include ../../images/logo-right.svg
+						//-+icon('logo-unisolidaruty-emblem')
+						icon(name="logo-unisolidaruty-emblem")
 		nav.header__menu.custom-scroll
 			.page__wrapper
 				if local

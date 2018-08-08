@@ -4,7 +4,7 @@ doctype html
 html(lang="ru")
 	+head()
 	body.page
-		include ../images/sprite.svg
+		include ./partials/svg_sprite.pug
 		.page__body
 			+header(true)
 			main.page__main.mb-7.pb-3
@@ -52,11 +52,14 @@ html(lang="ru")
 									| Следить за действиями нашего профсоюза, а также знакомиться с последними новостями можно в социальных сетях:
 								.d-flex
 									a.socials__icon--round.mr-2(href="#", aria-label="unisolidaity facebook")
-										+icon('facebook-round')
+										//-+icon('facebook-round')
+										icon(name="facebook-round")
 									a.socials__icon--round.mr-2(href="#", aria-label="unisolidaity vkontakte")
-										+icon('vkontakte-round')
+										//-+icon('vkontakte-round')
+										icon(name="vkontakte-round")
 									a.socials__icon--round.mr-2(href="#", aria-label="unisolidaity telegram")
-										+icon('telegram-round')
+										//-+icon('telegram-round')
+										icon(name="telegram-round")
 						aside.page__main-aside
 							a.block__title.mt-0.mb-3(href="#") Новости
 							.article__wrapper

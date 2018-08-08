@@ -4,7 +4,7 @@ doctype html
 html(lang="ru")
 	+head()
 	body.page
-		include ../images/sprite.svg
+		include ./partials/svg_sprite.pug
 		.page__body(v-bind:class="{ 'page__body--noscroll': noScroll }")
 			+header()
 			main.page__main.d-flex.flex-column

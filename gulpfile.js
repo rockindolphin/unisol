@@ -7,7 +7,7 @@ const gulp = require('gulp'),
 	webp = require('gulp-webp'),//конвертер webp
 	chokidar = require('chokidar'),// следит за файлами
 	imageminMozjpeg = require('imagemin-mozjpeg'),// оптимизация jpeg
-	svgSprite = require("gulp-svg-sprites"),//svg спрайты
+	svgSprite = require("gulp-svg-sprite"),//svg спрайты
 	spritesmith = require('gulp.spritesmith'),//png спрайты
 	imageResize = require('gulp-image-resize'),// генерит изображения разных размеров
 	rename = require('gulp-rename'),
@@ -249,23 +249,15 @@ function jssocials(){
 }
 
 function svg_sprites(){
-	gulp.src( config.src.svg_sprites )
-	.pipe( imagemin([
-		imagemin.svgo({
-			plugins: [
-				{removeViewBox: false},
-				{cleanupIDs: false}
-			]
-		})                 
-	]) )	
+	gulp.src( config.src.svg_sprites )	
 	.pipe(svgSprite({
-		mode: 'symbols',
-		svg: {
-			symbols: 'sprite.svg'
+		mode: {
+			symbol: {
+				dest: '',
+				sprite: 'sprite.svg',
+				example: true        
+			},
 		},
-		preview: {
-			symbols: 'sprite_svg.html'
-		},											
 	}))
 	.pipe( gulp.dest(config.dist.svg_sprites) )
 	.pipe( gulp.dest('src/images') );

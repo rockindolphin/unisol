@@ -2,6 +2,25 @@
 	$(document).ready(function() {
 
 		//Vue
+		var icon = Vue.component('icon',{
+			props: [
+				'name',
+			],
+			computed: {
+				icon_class: function () {
+					return `icon icon--active icon--${this.name}`
+				},
+				xlink: function () {
+					return `#${this.name}`
+				}
+			},						
+			template: `
+				<svg :class="icon_class"">
+					<use :xlink:href="xlink"></use>
+				</svg>
+			`
+		});
+
 		var articleXL = Vue.component('article--xl',{
 			props: [
 				'title',
@@ -174,11 +193,12 @@
 				}
 			},
 			components: {
-				'article--xl': articleXL,
-				'article--lg': articleLG,
-				'article--md': articleMD,
-				'article--sm': articleSM,
-				'article--xs': articleXS,
+				'article--xl': 	articleXL,
+				'article--lg': 	articleLG,
+				'article--md': 	articleMD,
+				'article--sm': 	articleSM,
+				'article--xs': 	articleXS,
+				'icon': 		icon,
 			},		
 			methods: {
 				activateSearch: function(){
