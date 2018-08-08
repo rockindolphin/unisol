@@ -1,0 +1,70 @@
+
+.blog__post{
+	width: 100%;
+	font-size: 16px;
+	line-height: 1.2;
+	margin-bottom: 15px;
+	& i,
+	& em{
+		font-style: italic;
+	}
+	& ol{
+		padding-left: 1.1em;
+		list-style-position: outside;
+		& > li{
+			& > ul{
+				margin-left: -5px;
+			}			
+		}
+	}
+	& ul{
+		padding-left: 14px;
+		list-style-position: outside;
+		list-style-image: url("data:image/svg+xml,%3Csvg shape-rendering='geometricPrecision' height='7' width='6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='2.2' fill='%23000000'%3E%3C/circle%3E%3C/svg%3E%0A");
+		& > li{
+			margin-bottom: 10px;
+		}
+	}
+	& a[href^='tel:']{
+		text-decoration: none;
+	}
+	& a[href^='mailto:']{
+		color: var(--red_b01);
+		text-decoration: underline;
+	}
+	& hr{
+		border: none;
+		border-bottom: 1px solid;
+		border-color: var(--gray_d7d);
+	}
+	& blockquote{
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0px;
+		font-style: italic;
+	}
+	& :--all-headers{
+		font-family: PTSans;
+	}
+	& form{
+		font-family: PTSans;
+		font-size: 16px;
+	}
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		font-size: 18px;
+		line-height: 1.25;
+		& blockquote{
+			padding-left: 28px;
+		}		
+	}	
+	@media (--xl-viewport){
+										
+	}
+}
+
