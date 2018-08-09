@@ -53,9 +53,11 @@ html(lang="ru")
 						aside.page__main-aside
 							a.block__title.mb-4(href="#") «На дне образования»
 							.article__wrapper.article__wrapper
-								+article--lg(15, '', true)
-								+article--lg(16, '', true)
+								//-+article--lg(15)
+								//-+article--lg(16)
+								article--lg(v-for="article in front.video" :key="article.id" v-bind="article")
 							+showmore()
 			include ./partials/partners.pug
 			include ./partials/footer.pug
 		+scripts()
+		script(src="js/front_page_test.js")
