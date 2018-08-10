@@ -1,6 +1,7 @@
 
 .banner--join,
 .widget_banner--join{
+	padding: 0;
 	position: relative;
 	background: #ffffff;
 	background-repeat: no-repeat;
@@ -39,6 +40,14 @@
 		&::after{
 			background-position: -124px -145px;
 		}		
+	}
+	& > a{
+		display: block;
+		text-decoration: none;
+		padding-top: 120px;
+		padding-bottom: 10px;
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 }
 

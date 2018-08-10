@@ -22,9 +22,10 @@ mixin banner-structure(userClass)
 					| Мы защищаем права и интересы работников учебных заведений. Найдите свой университет или создайте первичную организацию 
 mixin banner-join(userClass)
 	- uc = {class: userClass || ''};
-	a.banner.banner--join.pt-7(href="#")&attributes(uc)
-		h3.banner__title.mt-7.mb-0 Вступить в профсоюз
-		p.mt-0 Присоединяйтесь к нам!
+	.banner.banner--join&attributes(uc)
+		a(href="#")
+			h3.banner__title.my-0 Вступить в профсоюз
+			p.mt-0 Присоединяйтесь к нам!
 mixin banner-about(userClass)
 	- uc = {class: userClass || ''};
 	.banner.banner--about.pt-0()&attributes(uc)
