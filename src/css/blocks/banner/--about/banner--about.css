@@ -1,5 +1,6 @@
 
-.banner--about{
+.banner--about,
+.widget_banner--about{
 	background-color: transparent;
 	font-size: 14px;
 	font-family: PTSerif;

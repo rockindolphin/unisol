@@ -1,5 +1,6 @@
 
-.banner--join{
+.banner--join,
+.widget_banner--join{
 	position: relative;
 	background: #ffffff;
 	background-repeat: no-repeat;

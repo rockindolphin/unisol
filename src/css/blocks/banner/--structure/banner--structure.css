@@ -1,5 +1,6 @@
 
-.banner--structure{
+.banner--structure,
+.widget_banner--structure{
 	border:  1px solid;
 	border-color: var(--gray_d7d);
 	background-color: var(--white);
