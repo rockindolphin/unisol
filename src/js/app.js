@@ -155,7 +155,7 @@
 					</div>
 					<a :href="link" class="article__title">{{ title }}</a> 
 					<div class="article__info">
-						<div class="article__source">{{ source }}</div>
+						<a class="article__source" :href="source.link" target="_blank" rel="nofollow" v-if="source">{{ source.name }}</a>
 					</div>
 				</article>
 			`
@@ -184,7 +184,7 @@
 					</div>
 					<a :href="link" class="article__title">{{ title }}</a> 
 					<div class="article__info">
-						<div class="article__source">{{ source }}</div>
+						<a class="article__source" :href="source.link" target="_blank" rel="nofollow" v-if="source">{{ source.name }}</a>
 					</div>
 				</article>
 			`
