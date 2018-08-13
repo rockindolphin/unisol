@@ -3,6 +3,10 @@
 	color: var(--red_b01);
 	& .tags__item{
 		text-decoration: none;
+		display: inline-block;
+		&::first-letter{
+			text-transform: uppercase
+		}
 		&:not(:last-of-type){
 			&::after{
 				content: '\0020•\00a0';
