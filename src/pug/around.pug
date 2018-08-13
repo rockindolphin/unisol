@@ -15,10 +15,11 @@ html(lang="ru")
 							.w-100.fs-6.mb-5 Архив новостей рубрики «Вокруг университета»
 							+articles--xs([4,19,20,21,22,4,19,20,4,19,20,21,22,4,19,20], 'mb-4')
 							.pagination
-								a.pagination__item(href="#") 1
-								.pagination__item.pagination__item--current 2
-								a.pagination__item(href="#") 3
-								a.pagination__item(href="#") >
+								.pagination__items
+									a.pagination__item(href="#") 1
+									.pagination__item.pagination__item--current 2
+									a.pagination__item(href="#") 3
+									a.pagination__item(href="#") >
 						aside.page__main-aside
 							+banner-first-aid('mb-5')
 							+banner-structure('mb-5')

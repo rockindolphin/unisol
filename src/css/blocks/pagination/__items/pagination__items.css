@@ -1,0 +1,29 @@
+
+.pagination__items{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	& > .pagination__item,
+	& > *{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		line-height: 1;
+		border-radius: 50%;
+		background-color: var(--gray_faf);
+		text-decoration: none;
+		&:not(:last-child){
+			margin-right: 10px;
+		}
+	}
+	& > .pagination__item--current,
+	& > .current{
+		color: var(--white);
+		background-color: var(--red_b01)
+	}	
+}
+
