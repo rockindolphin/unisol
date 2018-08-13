@@ -198,11 +198,26 @@
 				languages: 'ru',
 				front: {
 					lead: false,
-					news: [],
-					interview: [],
-					actions: [],
-					around: [],
-					video: [],
+					news: {
+						items: [],
+						page: 0,
+					},
+					interview: {
+						items: [],
+						page: 0,
+					},
+					actions: {
+						items: [],
+						page: 0,
+					},
+					around: {
+						items: [],
+						page: 0,
+					},
+					video: {
+						items: [],
+						page: 0,
+					},
 				}
 			},
 			components: {

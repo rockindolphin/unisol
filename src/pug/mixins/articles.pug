@@ -399,12 +399,12 @@ mixin article--blog(id)
 			var pic_alt = `article-${article[0].id}`
 		.article__categories
 			each category in article[0].categories
-				a.categories__item(href=tag_page) #{category}
+				a.categories__item(href=category.link) #{category.name}
 		.article__info
 			.article__date #{article[0].date}
 			.article__tags
 				each tag in article[0].tags
-					a.tags__item(href="#") #{tag}
+					a.tags__item(href=tag.link) #{tag.name}
 		.article__title #{article[0].title}
 		//-img(src=pic_url, alt=pic_alt)
 		+picture({'src': pic_url, 'alt':pic_alt})

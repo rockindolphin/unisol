@@ -30,7 +30,7 @@
 		function getNews(){
 			getArticles([2, 5, 6, 7]).then(result => {
 				result.map((article)=>{
-					page.front.news.push(article);						
+					page.front.news.items.push(article);						
 				})
 			}, error => {});			
 		}
@@ -38,7 +38,7 @@
 		function getInterview(){
 			getArticles([11,12,13,14]).then(result => {
 				result.map((article)=>{
-					page.front.interview.push(article);						
+					page.front.interview.items.push(article);						
 				})
 			}, error => {});			
 		}
@@ -46,7 +46,7 @@
 		function getActions(){
 			getArticles([3,8,9,10]).then(result => {
 				result.map((article)=>{
-					page.front.actions.push(article);						
+					page.front.actions.items.push(article);						
 				})
 			}, error => {});			
 		}
@@ -54,7 +54,7 @@
 		function getAround(){
 			getArticles([4,19,20,21,22,2,5,6]).then(result => {
 				result.map((article)=>{
-					page.front.around.push(article);						
+					page.front.around.items.push(article);						
 				})
 			}, error => {});			
 		}
@@ -62,7 +62,7 @@
 		function getVideo(){
 			getArticles([15,16]).then(result => {
 				result.map((article)=>{
-					page.front.video.push(article);						
+					page.front.video.items.push(article);						
 				})
 			}, error => {});			
 		}
