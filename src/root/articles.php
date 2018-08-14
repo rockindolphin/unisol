@@ -42,15 +42,6 @@
 		}		
 	}
 
-	class Source{
-		public $name;
-		public $link;
-		public function  __construct($name) {
-			$this->name = $name;			
-			$this->link = '#';			
-		}		
-	}
-
 	class Tag{
 		public $name;
 		public $link;
@@ -108,7 +99,7 @@
 		"title" => '«Бунд физкека». Студенты и преподаватели недовольны реформой в вузе»',
 		"excerpt" => '',
 		"date" => '27.05.18',
-		"source" => new Source('Радио Свобода'),
+		"source" => 'Радио Свобода',
 		"tags" => array(),
 		"categories" => array()
 	));
@@ -275,7 +266,7 @@
 		"title" => '«Академики предрекли интенсивную эмиграцию научной элиты страны» ',
 		"excerpt" => '',
 		"date" => '27.05.18',
-		"source" => new Source('СеверПост'),
+		"source" => 'СеверПост',
 		"tags" => array(),
 		"categories" => array()
 	));
@@ -286,7 +277,7 @@
 		"title" => '«Пять российских университетов вошли в топ-1000 лучших вузов мира»',
 		"excerpt" => '',
 		"date" => '27.05.18',
-		"source" => new Source('Известия'),
+		"source" => 'Известия',
 		"tags" => array(),
 		"categories" => array()
 	));
@@ -297,7 +288,7 @@
 		"title" => '«Лоббист соцсферы: сколько дадут на медицину и образование»',
 		"excerpt" => '',
 		"date" => '27.05.18',
-		"source" => new Source('Газета.ру'),
+		"source" => 'Газета.ру',
 		"tags" => array(),
 		"categories" => array()
 	));
@@ -308,7 +299,7 @@
 		"title" => '«Первый этап формирования Миннауки РФ может быть завершен в июне»',
 		"excerpt" => '',
 		"date" => '27.05.18',
-		"source" => new Source('ТАСС'),
+		"source" => 'ТАСС',
 		"tags" => array(),
 		"categories" => array()
 	));

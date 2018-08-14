@@ -51,10 +51,7 @@
 			title: '«Бунд физкека». Студенты и преподаватели недовольны реформой в вузе»',
 			excerpt: '',
 			date: '27.05.18',
-			source: {
-				name: 'Радио Свобода',
-				link: '#'
-			},
+			source: 'Радио Свобода',
 			tags: [],
 			categories: []
 		},		
@@ -243,10 +240,7 @@
 			title: 'Депутат Олег Шеин обратился к ректору МФТИ в защиту прав членов первички «Университетской солидарности» в вузе',
 			excerpt: '',
 			date: '28 мая 2018',
-			source: {
-				name: 'СеверПост',
-				link: '#'
-			},
+			source: 'СеверПост',
 			tags: [
 				{name: 'Заявление', link:'#'}, 
 				{name: 'МФТИ', link:'#'}, 
@@ -260,10 +254,7 @@
 			title: '«Академики предрекли интенсивную эмиграцию научной элиты страны» ',
 			excerpt: '',
 			date: '27.05.18',
-			source: {
-				name: 'СеверПост',
-				link: '#'
-			},
+			source: 'СеверПост',
 			tags: [],
 			categories: []
 		},		
@@ -272,10 +263,7 @@
 			title: '«Пять российских университетов вошли в топ-1000 лучших вузов мира»',
 			excerpt: '',
 			date: '27.05.18',
-			source: {
-				name: 'Известия',
-				link: '#'
-			},
+			source: 'Известия',
 			tags: [],
 			categories: []
 		},		
@@ -284,10 +272,7 @@
 			title: '«Лоббист соцсферы: сколько дадут на медицину и образование»',
 			excerpt: '',
 			date: '27.05.18',
-			source: {
-				name: 'Газета.ру',
-				link: '#'
-			},
+			source: 'Газета.ру',
 			tags: [],
 			categories: []
 		},		
@@ -296,10 +281,7 @@
 			title: '«Первый этап формирования Миннауки РФ может быть завершен в июне»',
 			excerpt: '',
 			date: '27.05.18',
-			source: {
-				name: 'ТАСС',
-				link: '#'
-			},			
+			source: 'ТАСС',			
 			tags: [],
 			categories: []
 		},		
@@ -509,7 +491,7 @@ mixin article--sm(id, userClass)
 			a.article__title(href=news_page) #{article[0].title}
 			.article__info
 				if article[0].source
-					a.article__source(href=article[0].source.link, target="_blank", rel="nofollow") #{article[0].source.name}
+					div.article__source #{article[0].source}
 	else
 		p(style="color: red;")= 'Error! article not found'
 
@@ -527,7 +509,7 @@ mixin article--xs(id, userClass)
 			a.article__title(href=news_page) #{article[0].title}
 			.article__info
 				if article[0].source
-					a.article__source(href=article[0].source.link, target="_blank", rel="nofollow") #{article[0].source.name}
+					div.article__source #{article[0].source}
 	else
 		p(style="color: red;")= 'Error! article not found'
 
