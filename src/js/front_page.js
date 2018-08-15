@@ -2,6 +2,10 @@
 	$(document).ready(function() {
 
 		var app = window.unisolidarity;
+		//first page is also loaded via wordpress
+		app.vue.front.news.page = 1;
+		app.vue.front.interview.page = 1;
+		app.vue.front.video.page = 1;
 
 		function wp_ajax_call(action, block, link){
 			var promise = new Promise(function(resolve, reject) {

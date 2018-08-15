@@ -1,11 +1,13 @@
 
 .banner--about,
-.widget_banner--about{
+.widget_text{
 	background-color: transparent;
 	font-size: 14px;
 	font-family: PTSerif;
+	max-width: none !important;
+	padding-top: 0;
 	& .banner__title{
-
+		margin-top: 0;
 	}
 	@media (--sm-viewport){
 										

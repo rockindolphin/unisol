@@ -26,10 +26,9 @@ mixin banner-join(userClass)
 		a(href="#")
 			h3.banner__title.my-0 Вступить в профсоюз
 			p.mt-0 Присоединяйтесь к нам!
-mixin banner-about(userClass)
-	- uc = {class: userClass || ''};
-	.banner.banner--about.pt-0()&attributes(uc)
-		h3.banner__title.mt-0 Об организации
+mixin banner-about()
+	.banner.banner--about
+		h3.banner__title Об организации
 		p.mb-0
 			| Первичная организация профсоюза «Университетская солидарность» действует в МГУ имени М. В. Ломоносова с ноября 2013 года.
 		p.mt-0

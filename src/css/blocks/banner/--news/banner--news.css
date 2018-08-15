@@ -1,0 +1,10 @@
+
+.banner--news,
+.widget_banner--news{
+	padding:  0;
+	background-color: transparent;
+	font-family: PTSerif;
+	font-size: 16px; 
+	max-width: none;
+}
+

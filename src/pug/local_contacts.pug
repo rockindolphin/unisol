@@ -61,8 +61,9 @@ html(lang="ru")
 										//-+icon('telegram-round')
 										icon(name="telegram-round")
 						aside.page__main-aside
-							a.block__title.mt-0.mb-3(href="#") Новости
-							.article__wrapper
-								+articles--lg([7, 14, 6], 'mb-5')
+							.banner.banner--news
+								a.block__title.mt-0.mb-3(href="#") Новости
+								.article__wrapper
+									+articles--lg([7, 14, 6], 'mb-5')
 			include ./partials/footer.pug
 		+scripts()

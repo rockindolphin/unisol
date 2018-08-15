@@ -24,6 +24,8 @@
 										
 	}	
 	@media (--lg-viewport){
+		display: inline-block;
+		width: auto;
 		padding: 0;
 		text-align: left;
 		background-color: transparent;
