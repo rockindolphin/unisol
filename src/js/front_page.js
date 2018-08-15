@@ -3,16 +3,19 @@
 
 		var app = window.unisolidarity;
 
-		function wp_ajax_call(action, block){
+		function wp_ajax_call(action, block, link){
 			var promise = new Promise(function(resolve, reject) {
+				freezeShowMore(link);
 				$.ajax({
 					url: app.ajax_url,
 					method: 'POST',
 					data: {'action': action, 'page': block.page+1},
 					success: function(resp){
+						unfreezeShowMore(link);
 						resolve( JSON.parse(resp) );
 					},
 					error: function(err){
+						unfreezeShowMore(link);
 						reject(err);
 					}
 				});
@@ -20,14 +23,14 @@
 			return promise;						
 		}
 
-		function getFrontLead(btn){
-			wp_ajax_call('front_lead').then(result => {
+		function getFrontLead(link){
+			wp_ajax_call('front_lead', app.vue.front.lead, link).then(result => {
 				app.vue.front.lead = result;
 			}, error => {});			
 		}
 
-		function getNews(btn){
-			wp_ajax_call('front_news', app.vue.front.news).then(result => {
+		function getNews(link){
+			wp_ajax_call('front_news', app.vue.front.news, link).then(result => {
 				result.map((article)=>{
 					app.vue.front.news.items.push(article);						
 				})
@@ -35,8 +38,8 @@
 			}, error => {});			
 		}
 
-		function getInterview(btn){
-			wp_ajax_call('front_interview', app.vue.front.interview).then(result => {
+		function getInterview(link){
+			wp_ajax_call('front_interview', app.vue.front.interview, link).then(result => {
 				result.map((article)=>{
 					app.vue.front.interview.items.push(article);						
 				})
@@ -44,8 +47,8 @@
 			}, error => {});			
 		}
 
-		function getActions(btn){
-			wp_ajax_call('front_actions', app.vue.front.actions).then(result => {
+		function getActions(link){
+			wp_ajax_call('front_actions', app.vue.front.actions, link).then(result => {
 				result.map((article)=>{
 					app.vue.front.actions.items.push(article);						
 				})
@@ -53,8 +56,8 @@
 			}, error => {});			
 		}
 
-		function getAround(btn){
-			wp_ajax_call('front_around', app.vue.front.around).then(result => {
+		function getAround(link){
+			wp_ajax_call('front_around', app.vue.front.around, link).then(result => {
 				result.map((article)=>{
 					app.vue.front.around.items.push(article);						
 				})
@@ -62,13 +65,21 @@
 			}, error => {});			
 		}	
 
-		function getVideo(btn){
-			wp_ajax_call('front_video', app.vue.front.video).then(result => {
+		function getVideo(link){
+			wp_ajax_call('front_video', app.vue.front.video, link).then(result => {
 				result.map((article)=>{
 					app.vue.front.video.items.push(article);						
 				})
 				app.vue.front.video.page++;						
 			}, error => {});			
+		}
+
+		function freezeShowMore(link){
+			$(link).addClass('link--active');
+		}	
+
+		function unfreezeShowMore(link){
+			$(link).removeClass('link--active');
 		}	
 
 		$('.link--show-more').click(function(evt){

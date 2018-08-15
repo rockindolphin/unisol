@@ -25,8 +25,8 @@ html(lang="ru")
 						+banner-join()
 				section.section.section--articles.order-4.order-lg-3
 					.page__wrapper
-						.page__main-content.order-2.order-lg-1
-							.article__wrapper.article__wrapper--cols-2.d-none.d-lg-flex
+						.page__main-content.order-2.order-lg-1.mb-0.mb-lg-5
+							.article__wrapper.article__wrapper--cols-2
 								//-+articles--lg([2,5,6,7], 'mb-6')
 								article--lg.mb-6(v-for="article in front.news.items" :key="article.id" v-bind="article")
 							+showmore()
@@ -43,15 +43,16 @@ html(lang="ru")
 						.article__wrapper.article__wrapper--cols-4
 							//-+articles--md([3,8,9,10])
 							article--md(v-for="article in front.actions.items" :key="article.id" v-bind="article")
-				section.section.section--articles.mb-7.pb-7.order-5.d-none.d-lg-block
-					.page__wrapper.pt-4
+				section.section.section--articles.mb-lg-7.pb-lg-7.order-5
+					.page__wrapper.pt-0.pt-lg-4
 						.page__main-content
 							a.block__title.mb-4(href="#") Интервью
 							.article__wrapper.article__wrapper--cols-2
 								//-+articles--lg([11,12,13,14])
 								article--lg(v-for="article in front.interview.items" :key="article.id" v-bind="article")
-							+showmore()
-						aside.page__main-aside
+							.d-none.d-lg-block
+								+showmore()
+						aside.page__main-aside.d-none.d-lg-block
 							a.block__title.mb-4(href="#") «На дне образования»
 							.article__wrapper.article__wrapper
 								//-+article--lg(15)

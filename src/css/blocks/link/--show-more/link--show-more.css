@@ -10,7 +10,11 @@
 	background-color: var(--red_b01);
 	text-align: center;
 	padding: 13px 12px;
-	&:hover{
+	&.link--active{
+		pointer-events: none;
+	}	
+	&:hover,
+	&.link--active{
 		background-color: color(#b01e21 lightness(-10%));
 	}		
 	@media (--sm-viewport){
@@ -24,7 +28,8 @@
 		text-align: left;
 		background-color: transparent;
 		color: var(--red_b01);
-		&:hover{
+		&:hover,
+		&.link--active{
 			background-color: transparent;
 			color: color(#b01e21 lightness(-10%));
 		}
