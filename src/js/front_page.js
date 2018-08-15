@@ -84,7 +84,12 @@
 
 		function unfreezeShowMore(link){
 			$(link).removeClass('link--active');
-		}	
+		}
+
+		function mobileShowMore(link){
+			$(link).addClass('d-none');
+			$('.block--mobile-hidden').removeClass('block--mobile-hidden');			
+		}		
 
 		$('.link--show-more').click(function(evt){
 			evt.preventDefault();
@@ -106,6 +111,9 @@
 				break;
 				case 'front_video':
 					getVideo(this);
+				break;
+				case 'mobile_show_more':
+					mobileShowMore(this);
 				break;
 				default:
 					console.error('Unknown action');

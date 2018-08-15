@@ -1,0 +1,17 @@
+
+.block--mobile-hidden{
+	display: none;
+	@media (--sm-viewport){
+										
+	}	
+	@media (--md-viewport){
+										
+	}	
+	@media (--lg-viewport){
+		display: block;							
+	}	
+	@media (--xl-viewport){
+										
+	}	
+}
+

@@ -72,7 +72,13 @@
 		getInterview();
 		getActions();
 		getAround();
-		getVideo();				
+		getVideo();	
+
+		$('#mobileShowMore').click(function(evt){
+			evt.preventDefault();
+			$(this).addClass('d-none');
+			$('.block--mobile-hidden').removeClass('block--mobile-hidden');
+		});		
 
 	});	
 
