@@ -376,8 +376,7 @@
 mixin tags(tags)
 	.article__tags
 		each tag in tags
-			a.tags__item(href=tag.link) 
-				span.tags__item-name #{tag.name}
+			a.tags__item(href=tag.link) #{tag.name}
 
 mixin categories(categories)
 	.article__categories

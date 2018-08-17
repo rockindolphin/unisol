@@ -14,12 +14,13 @@ mixin banner-first-aid(userClass)
 mixin banner-structure(userClass)
 	- uc = {class: userClass || ''};
 	.banner.banner--structure()&attributes(uc)
-		a.banner__title.mt-0.mb-2(href="#") Первичные организации
-		ul.list.list--chewrons.my-0
-			li.list__item 
-				b.font--serif.fs-7.mb-2 Группы в университетах
-				p.color--gray.mt-0
-					| Мы защищаем права и интересы работников учебных заведений. Найдите свой университет или создайте первичную организацию 
+		a(href="#") 
+			.banner__title.mt-0.mb-2 Первичные организации
+			ul.list.list--chewrons.my-0
+				li.list__item 
+					b.font--serif.fs-7.mb-2 Группы в университетах
+					p.color--gray.mt-0
+						| Мы защищаем права и интересы работников учебных заведений. Найдите свой университет или создайте первичную организацию 
 mixin banner-join(userClass)
 	- uc = {class: userClass || ''};
 	.banner.banner--join&attributes(uc)

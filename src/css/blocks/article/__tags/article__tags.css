@@ -4,13 +4,17 @@
 	& .tags__item{
 		text-decoration: none;
 		display: inline-block;
+		&::first-letter{
+			text-transform: uppercase;
+		}
 		&:not(:last-of-type){
 			margin-right: 4px;
 		}
 		&:not(:first-of-type){
-			&::before{
-				content: '•\00a0';
-			}
+			padding-left: 12px;
+			background-image: url("data:image/svg+xml,%3Csvg height='6' width='6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='2' fill='%23b01e21'%3E%3C/circle%3E%3C/svg%3E%0A");
+			background-repeat: no-repeat;
+			background-position: left 0.5em;
 		}
 	}
 }
