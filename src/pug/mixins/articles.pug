@@ -373,20 +373,27 @@
 		return overflow ? resp.join(' ') + '...' : resp.join(' ');
 	} 
 
+mixin tags(tags)
+	.article__tags
+		each tag in tags
+			a.tags__item(href=tag.link) 
+				span.tags__item-name #{tag.name}
+
+mixin categories(categories)
+	.article__categories
+		each category in categories
+			a.categories__item(href=category.link) #{category.name}
+
 mixin article--blog(id)
 	- var article = articles.filter(item => item.id === id);
 	if article.length > 0
 		- 
 			var pic_url = `images/articles/article-${article[0].id}.jpg`
 			var pic_alt = `article-${article[0].id}`
-		.article__categories
-			each category in article[0].categories
-				a.categories__item(href=category.link) #{category.name}
+		+categories(article[0].categories)
 		.article__info
 			.article__date #{article[0].date}
-			.article__tags
-				each tag in article[0].tags
-					a.tags__item(href=tag.link) #{tag.name}
+			+tags(article[0].tags)
 		.article__title #{article[0].title}
 		//-img(src=pic_url, alt=pic_alt)
 		+picture({'src': pic_url, 'alt':pic_alt})
@@ -405,15 +412,11 @@ mixin article--xl(id, userClass)
 				//-img(src=pic_url, alt=pic_alt, data-bg="true")
 				+picture({'src': pic_url, 'alt':pic_alt, 'data':{'data-bg': 'true'}})
 				.article__pic-wrapper
-					.article__categories
-						each category in article[0].categories
-							a.categories__item(href=category.link) #{category.name}
+					+categories(article[0].categories)
 					a.article__title(href=news_page) #{article[0].title}
 			.article__info
 				.article__date #{article[0].date}
-				.article__tags
-					each tag in article[0].tags					
-						a.tags__item(href=tag.link) #{tag.name}
+				+tags(article[0].tags)
 			.article__excerpt #{article[0].excerpt}		
 	else
 		p(style="color: red;")= 'Error! article not found'
@@ -440,14 +443,10 @@ mixin article--lg(id, userClass)
 					//-img(src=pic_url, alt=pic_alt, data-bg="true")
 					+picture({'src': pic_url, 'alt':pic_alt, 'data':{'data-bg': 'true'}})
 					.article__pic-wrapper
-						.article__categories
-							each category in article[0].categories
-								a.categories__item(href=category.link) #{category.name}
+						+categories(article[0].categories)
 			.article__info
 				.article__date #{article[0].date}
-				.article__tags
-					each tag in article[0].tags					
-						a.tags__item(href=tag.link) #{tag.name}
+				+tags(article[0].tags)
 			a.article__title(href=news_page) #{article[0].title}
 			.article__excerpt #{cutText(article[0].excerpt, 180)}		
 	else
@@ -485,9 +484,7 @@ mixin article--sm(id, userClass)
 		article.article.article--sm()&attributes(uc)
 			.article__info
 				.article__date #{article[0].date}
-				.article__tags
-					each tag in article[0].tags					
-						a.tags__item(href=tag.link) #{tag.name}				
+				+tags(article[0].tags)
 			a.article__title(href=news_page) #{article[0].title}
 			.article__info
 				if article[0].source

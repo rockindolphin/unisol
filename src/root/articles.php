@@ -68,7 +68,7 @@
 		"date" => '28 мая 2018',
 		"source" => false,
 		"tags" => array(new Tag('Ванда Тиллес'), new Tag('Высшее образование'), new Tag('Защита прав'), new Tag('Первичка'), new Tag('ППС'), new Tag('Сокращения')),
-		"categories" => array('Заявления ППО', 'Документы')
+		"categories" => array(new Category('Заявления ППО'), new Category('Документы'))
 	));
 	array_push($articles, $article);
 

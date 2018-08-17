@@ -50,7 +50,9 @@
 					<div class="article__info">
 						<div class="article__date">{{ date }}</div>
 						<div class="article__tags">
-							<a :href="tag.link" class="tags__item" v-for="tag in tags">{{ tag.name }}</a>
+							<a :href="tag.link" class="tags__item" v-for="tag in tags">
+								<span class="tags__item-name">{{ tag.name }}</span>
+							</a>
 						</div>
 					</div>
 					<div class="article__excerpt">{{ excerpt }}</div>
@@ -93,7 +95,9 @@
 					<div class="article__info">
 						<div class="article__date">{{ date }}</div>
 						<div class="article__tags">
-							<a :href="tag.link" class="tags__item" v-for="tag in tags">{{ tag.name }}</a>
+							<a :href="tag.link" class="tags__item" v-for="tag in tags">
+								<span class="tags__item-name">{{ tag.name }}</span>
+							</a>
 						</div>
 					</div>
 					<a :href="link" class="article__title">{{ title }}</a> 
@@ -150,7 +154,9 @@
 					<div class="article__info">
 						<div class="article__date">{{ date }}</div>
 						<div class="article__tags">
-							<a :href="tag.link" class="tags__item" v-for="tag in tags">{{ tag.name }}</a>
+							<a :href="tag.link" class="tags__item" v-for="tag in tags">
+								<span class="tags__item-name">{{ tag.name }}</span>
+							</a>
 						</div>
 					</div>
 					<a :href="link" class="article__title">{{ title }}</a> 

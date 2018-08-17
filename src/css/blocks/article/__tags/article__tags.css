@@ -4,12 +4,12 @@
 	& .tags__item{
 		text-decoration: none;
 		display: inline-block;
-		&::first-letter{
-			text-transform: uppercase
-		}
 		&:not(:last-of-type){
-			&::after{
-				content: '\0020•\00a0';
+			margin-right: 4px;
+		}
+		&:not(:first-of-type){
+			&::before{
+				content: '•\00a0';
 			}
 		}
 	}
