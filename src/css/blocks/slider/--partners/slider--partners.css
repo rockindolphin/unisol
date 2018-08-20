@@ -4,7 +4,7 @@
 	& .slider__wrapper{
 		display: flex;
 		align-items: stretch;
-		justify-content: space-between;
+		justify-content: flex-start;
 	}
 	& .slider__slide{
 		width:  auto;
