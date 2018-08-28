@@ -1,15 +1,12 @@
 document.addEventListener('DOMContentLoaded', function(){
 	
-	if( document.querySelector('#mc-container') ){
-		window.cackle_widget = window.cackle_widget || [];
-		cackle_widget.push({widget: 'Comment', id: 60951});
-		(function() {
-			var mc = document.createElement('script');
-			mc.type = 'text/javascript';
-			mc.async = true;
-			mc.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cackle.me/widget.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
-		})();
+	if( document.querySelector('#disqus_thread') ){
+		var d = document, s = d.createElement('script');
+
+		s.src = '//unisolidarity-1.disqus.com/embed.js';
+
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	}
 	
 });
