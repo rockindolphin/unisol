@@ -63,4 +63,7 @@ html(lang="ru")
 			include ./partials/partners.pug
 			include ./partials/footer.pug
 		+scripts()
-		script(src="js/front_page_test.js")
+		if args.prod
+			script(src="js/front_page_test.min.js")
+		else
+			script(src="js/front_page_test.js")
