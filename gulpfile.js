@@ -29,7 +29,7 @@ const gulp = require('gulp'),
 	w3cjs = require('gulp-w3cjs'),
 	through2 = require('through2'),
 	dl = require('directory-list'),
-	cleanCSS = require('gulp-clean-css'),
+	csso = require('gulp-csso'),
 	PO = require('pofile'),
 	each = require('gulp-each'),
 	sass = require('gulp-sass'),
@@ -183,11 +183,11 @@ function css(){
 			}),
 		]),	
 		gulpif(
-			(args.prod || args.production) || args.cleanCSS,
-			cleanCSS({compatibility: '*'})			
+			(args.prod || args.production) || args.csso,
+			csso()			
 		),
 		gulpif(
-			(args.prod || args.production) || args.cleanCSS,
+			(args.prod || args.production) || args.csso,
 			rename({
 				suffix: '.min'
 			})			
@@ -208,11 +208,11 @@ function bootstrap(){
 			browsers: config.browsers
 		}), 
 		gulpif(
-			(args.prod || args.production) || args.cleanCSS,
-			cleanCSS({compatibility: '*'})			
+			(args.prod || args.production) || args.csso,
+			csso()			
 		),
 		gulpif(
-			(args.prod || args.production) || args.cleanCSS,
+			(args.prod || args.production) || args.csso,
 			rename({
 				suffix: '.min'
 			})			
@@ -232,11 +232,11 @@ function jssocials(){
 			browsers: config.browsers
 		}),   
 		gulpif(
-			(args.prod || args.production) || args.cleanCSS,
-			cleanCSS({compatibility: '*'})			
+			(args.prod || args.production) || args.csso,
+			csso()			
 		),	
 		gulpif(
-			(args.prod || args.production) || args.cleanCSS,
+			(args.prod || args.production) || args.csso,
 			rename({
 				suffix: '.min'
 			})			
