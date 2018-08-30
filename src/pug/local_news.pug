@@ -47,5 +47,13 @@ html(lang="ru")
 								a.block__title.mt-0.mb-3(href="#") Новости
 								.article__wrapper
 									+articles--lg([7, 14, 6], 'mb-5')
+				.page__wrapper
+					hr
+				section.section
+					.page__wrapper
+						a.block__title.mb-4(href="#") Контекст
+						.article__wrapper.article__wrapper--cols-3
+							+articles--lg([11,23,24])
+			include ./partials/partners.pug
 			include ./partials/footer.pug
 		+scripts()
